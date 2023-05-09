@@ -18,6 +18,9 @@ struct s_mlx
 	void* ptr;
 	void* window;
 	t_image main;
+	t_image square;
+	int sidex;
+	int sidey;
 };
 
 
