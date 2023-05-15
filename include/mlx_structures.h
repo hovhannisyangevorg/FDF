@@ -3,6 +3,28 @@
 
 typedef struct s_mlx t_mlx;
 typedef struct s_image t_image;
+typedef struct s_point t_point;
+typedef	struct s_coord t_coord;
+
+
+struct s_point
+{
+	int x;
+	int y;
+	int z;
+};
+
+struct s_coord
+{
+	double x;
+	double y;
+	double z;
+};
+
+
+
+
+
 
 struct	s_image
 {
