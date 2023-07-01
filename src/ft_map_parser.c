@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_map_parser.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/27 14:40:10 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/07/01 14:04:19 by gehovhan         ###   ########.fr       */
+/*   Created: 2023/05/27 18:58:07 by gehovhan          #+#    #+#             */
+/*   Updated: 2023/07/01 14:04:43 by gehovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int main()
+/*
+* TODO: parse map from .fdf file
+*/
+
+void	ft_map_parser(void)
 {
-	printf("\n___Start___\n");
-	ft_map_parser();
-	return (0);
+	
 }

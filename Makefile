@@ -1,36 +1,46 @@
-NAME		=	so_long
-SRS_DIR		=	src
-OBJ_DIR		=	obj
-MLX_PATH	=	mlx
-INCLUDE_DIR	=	include
-INCS		=	-I$(INCLUDE_DIR) -I$(MLX_PATH)
-LINKERS		=	-L$(MLX_PATH) -lmlx -framework OpenGL -framework AppKit
+NAME 		= 	fdf
+SRC_DIR 	= 	src
+OBJ_DIR		= 	obj
+INC_DIR		=	include
+MLX_DIR		=	mlx
 
+FT_LIB			= libft
+LIBS			= $(FT_LIB)/libft.a
 
-
-SORCS		=	$(wildcard $(SRS_DIR)/*.c)
-OBJS		=	$(patsubst $(SRS_DIR)/.c,$(OBJ_DIR)/.o,$(SORCS))
-HEADERS		=	$(wildcard $(INCLUDE_DIR)/*.h)
-
-# Executable Name
-.DEFAULT_GOAL = all
-
-# Command Flags
 CC			=	cc
+INCS		=	-I$(INC_DIR) -I$(MLX_DIR)
+CFLAGS		=	-Wall -Wextra -Werror
+RM			=	rm -rf
 MK			=	mkdir -p
-FLAGS		=	-Wall -Wextra -Werror
 
-mlx:	$(SRS_DIR)
-	$(MAKE) -C $(MLX_PATH)
+SRCS		= 	$(wildcard $(SRC_DIR)/*.c)
+OBJS		=	$(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
+HEADERS		=	$(wildcard $(INC_DIR)/*.h)
+LINKERS		=	-L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 
-$(OBJ_DIR):		$(SRS_DIR)
-	$(MK) $@
+.DEFAULT_GOAL	=	all
 
-$(OBJ_DIR)/%.o: $(SRS_DIR)/%.c $(HEADERS)
-	$(CC) $(FLAGS) $(INCS) $< -o $@
+$(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c $(HEADERS)
+	$(CC) $(CFLAGS) $(INCS) -c $< -o $@
 
-all:	mlx $(NAME)
+all: $(NAME) $(LIBS)
 
-$(NAME):	$(OBJ_DIR)	$(OBJS)
-		$(CC) $(FLAGS) $(INCS)  -o $@ $(OBJS) $(LINKERS)
-.PHONY: all clean fclean re mlx
+$(NAME):	$(OBJ_DIR) $(OBJS)
+	$(CC) $(OBJS) $(CFLAGS) $(INCS) -o $@ $(LINKERS)
+
+$(LIBS):
+	$(MAKE) -C $(FT_LIB)
+
+$(OBJ_DIR):	$(SRC_DIR)
+	$(MK) $(OBJ_DIR)
+
+clean:
+	$(RM) $(OBJ_DIR)
+
+fclean:	clean
+	$(RM) $(NAME)
+
+re:	fclean all
+
+#  DYLD_LIBRARY_PATH=`pwd`/mlx ./fdf
+.PHONY: all clean fclean re 
