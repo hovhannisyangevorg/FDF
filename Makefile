@@ -8,7 +8,7 @@ FT_LIB			= libft
 LIBS			= $(FT_LIB)/libft.a
 
 CC			=	cc
-INCS		=	-I$(INC_DIR) -I$(MLX_DIR)
+INCS		=	-I$(INC_DIR) -I$(MLX_DIR) -I$(FT_LIB)/include
 CFLAGS		=	-Wall -Wextra -Werror
 RM			=	rm -rf
 MK			=	mkdir -p
@@ -16,7 +16,7 @@ MK			=	mkdir -p
 SRCS		= 	$(wildcard $(SRC_DIR)/*.c)
 OBJS		=	$(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
 HEADERS		=	$(wildcard $(INC_DIR)/*.h)
-LINKERS		=	-L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+LINKERS		=	-L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit -L$(FT_LIB) -lft
 
 .DEFAULT_GOAL	=	all
 

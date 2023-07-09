@@ -1,0 +1,8 @@
+{
+	"files.associations": {
+		"_size_t.h": "c",
+		"__locale": "c",
+		"locale": "c",
+		"ostream": "c"
+	}
+}
