@@ -6,7 +6,7 @@
 /*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 19:54:00 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/07/10 20:18:39 by gehovhan         ###   ########.fr       */
+/*   Updated: 2023/07/11 16:20:17 by gehovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ int ft_strhex(const char *hx_token)
 	i = 0;
 	result = 0;
 	len = ft_strlen(hx_token);
-	while (hx_token[i] == 32 || (hx_token[i] >= 9 && hx_token[i] <= 13))
-		i++;
 
 	while (i < len) 
 	{
@@ -46,7 +44,7 @@ int	ft_set_color(char *hx_token)
 	int color;
 
 	color = 0;
-	if (!hx_token || !*hx_token)
+	if (!hx_token || *hx_token)
 	{
 		color = DEFAULT_COLOR;
 		return(color);

@@ -6,14 +6,14 @@
 /*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 14:40:10 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/07/10 20:09:00 by gehovhan         ###   ########.fr       */
+/*   Updated: 2023/07/11 17:15:47 by gehovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 // TODO: [ White or delete ft_strtok function my libft project ]
-
+#include <assert.h>
 int main() 
 {
 	char *token;
@@ -22,9 +22,14 @@ int main()
 
 	if (fd == -1)
 		return (0);
-
+	// printf("%d\n", __LINE__);
 	while ((token = get_next_word(fd)))
+	{
+		
+		// printf("%s\n", token);
+		// assert(token != 0);
 		ft_parse_data(token);
+	}
 	close(fd);
 	return (0);
 }

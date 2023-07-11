@@ -6,7 +6,7 @@
 /*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 18:48:41 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/07/10 20:11:05 by gehovhan         ###   ########.fr       */
+/*   Updated: 2023/07/11 17:32:45 by gehovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,12 @@ char	*ft_extract_substring(const char *token, char c, int index)
 	new = (char *)malloc(sizeof(char) * (len + 1));
 	if (!new)
 		return (0);
-
 	while (token[index] && token[index] != c)
-	{
-		new[i] = (char)token[index];
-		i++;
-		index++;
-	}
+		new[i++] = (char)token[index++];
 	new[i] = '\0';
 	return(new);
 }
-
+//TODO: create function for check if string contains only numbers.
 void	ft_parse_data(char *token)
 {
 	int		hx_color;
@@ -45,13 +40,20 @@ void	ft_parse_data(char *token)
 
 	if (!token || !*token)
 		return ;
-
+	printf("Token---%s-\n", token);
+	
 	w_token1 = ft_extract_substring(token, ',', 0);
 	w_token2 = ft_extract_substring(token, '\0', ft_setindex(token, ','));
+	
+	// printf("1    ---%s-\n", w_token1);
+	// printf("2    ---%s-\n", w_token2);
+	/*
+		if w_token1 is not contains only numbers
+			error
+		number = atoi(w_token1)
+	*/
 	hx_color = ft_set_color(w_token2);
-	printf("%X", hx_color);
-	
-	
+	// printf("------------%X\n", hx_color);
 }
 
 

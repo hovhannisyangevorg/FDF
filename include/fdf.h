@@ -12,7 +12,7 @@
 #include "fdf_structures.h"
 #include "libft.h"
 
-#define DEFAULT_COLOR (0xffff)  // (255 << 16 | 0 << 8 | 0)
+#define DEFAULT_COLOR (0xf)  // (255 << 16 | 0 << 8 | 0)
 
 /* ft_hexdec_check.c */
 int		ft_strhex(const char *hx_token);

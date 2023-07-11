@@ -6,7 +6,7 @@
 /*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 16:39:26 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/07/10 20:07:47 by gehovhan         ###   ########.fr       */
+/*   Updated: 2023/07/11 17:31:01 by gehovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int		ft_strlen_start(const char *str, int start)
 {
-	int len = 0;
+	int len;
+
+	len = 0;
 
 	while (str[start] != '\0')
 	{
