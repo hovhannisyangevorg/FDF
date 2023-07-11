@@ -6,7 +6,7 @@
 /*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 14:40:10 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/07/09 21:13:16 by gehovhan         ###   ########.fr       */
+/*   Updated: 2023/07/10 20:09:00 by gehovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,17 @@
 
 int main() 
 {
-    char *token;
+	char *token;
 	
-    int fd = open("exam.txt", O_RDONLY);
+	int fd = open("exam.txt", O_RDONLY);
 
-    if (fd == -1)
-    {
-        ft_panic("Error opening file");
-        return (1);
-    }
-	
-	while((token = get_next_word(fd)))
+	if (fd == -1)
+		return (0);
+
+	while ((token = get_next_word(fd)))
 		ft_parse_data(token);
-    close(fd);
-    return (0);
+	close(fd);
+	return (0);
 }
 
 

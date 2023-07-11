@@ -3,6 +3,9 @@
 		"_size_t.h": "c",
 		"__locale": "c",
 		"locale": "c",
-		"ostream": "c"
+		"ostream": "c",
+		"sstream": "c",
+		"algorithm": "c",
+		"complex": "c"
 	}
 }

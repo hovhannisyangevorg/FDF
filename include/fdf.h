@@ -12,9 +12,20 @@
 #include "fdf_structures.h"
 #include "libft.h"
 
+#define DEFAULT_COLOR (0xffff)  // (255 << 16 | 0 << 8 | 0)
 
-void	ft_is_xvalue(char *token);
-void	ft_parse_data(char *token);
+/* ft_hexdec_check.c */
+int		ft_strhex(const char *hx_token);
+int		ft_set_color(char *hx_token);
+
+/* ft_panic.c */
 void	ft_panic(char *str);
 
+/* ft_parse_data.c */
+char	*ft_extract_substring(const char *token, char c, int index);
+void	ft_parse_data(char *token);
+
+/* ft_parse_util.c */
+int		ft_strlen_start(const char *str, int start);
+int		ft_setindex(char *token, int c);
 #endif
