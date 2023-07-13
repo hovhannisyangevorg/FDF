@@ -6,7 +6,7 @@
 /*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 17:09:01 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/07/13 17:29:27 by gehovhan         ###   ########.fr       */
+/*   Updated: 2023/07/13 19:04:57 by gehovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -329,63 +329,37 @@ void	        *ft_memcpy(void *dst, const void *src, size_t n);
 
 // #include <stdio.h>
 
-// void ft_strdel(char **ptr)
-// {
-// 	if (!ptr || !*ptr)
-// 		return ;
-// 	free(*ptr);
-// 	*ptr = NULL;
-// }
+void ft_strdel(char **ptr)
+{
+	if (!ptr || !*ptr)
+		return ;
+	free(*ptr);
+	*ptr = NULL;
+}
 
-// void ft_vecstrdell(char ***vecptr)
-// {
-// 	int i;
-// 	if (!vecptr || !(*vecptr))
-// 		return ;
-// 	i = -1;
-// 	while((*vecptr)[++i])
-// 		ft_strdel((*vecptr)[++i]);
-// 	free(vecptr);
-// 	*vecptr = NULL;
-// }
+void ft_vecstrdel(char ***vecptr)
+{
+	int i;
+	if (!vecptr || !(*vecptr))
+		return ;
+	i = -1;
+	while (vecptr && (*vecptr)[++i])
+		ft_strdel((*vecptr) + i);
+	free(*vecptr);
+	*vecptr = NULL;
+}
 
-
-// typedef void (*t_freeargs)(char *str1, char **str2, char ***str3);
-
-
-// void	ft_free_args(char *str1, char **str2, char ***str3)
-// {
-// 	ft_strdel(&str1);
-// 	ft_vecstrdell(str2);
-// }
-
-// int main() 
-// {
-// 	t_freeargs ft_free = ft_free_args;
-
-// 	ft_free(NULL, NULL, NULL);
-//     return 0;
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+void ft_threestrdel(char ****vecptr)
+{
+	int i;
+	if (!vecptr || !(*vecptr))
+		return ;
+	i = -1;
+	while(vecptr && (*vecptr)[++i])
+		ft_vecstrdel((*vecptr) + i);
+	free(*vecptr);
+	*vecptr = NULL;
+}
 
 char **ft_create_matric(size_t row, size_t col, int c)
 {
@@ -416,25 +390,41 @@ char **ft_create_matric(size_t row, size_t col, int c)
 }
 
 
+
+void ft_strdel(char **ptr);
 int main()
 {
 	int i = 0;
 	int j = 0;
+	int k = 0;
 	size_t row = 5;
 	size_t columne = 5;
 	char **matric = ft_create_matric(row, columne, 'F');
+	char **m = ft_create_matric(row, columne, 'A');
+	char ***tree = (char ***)malloc(sizeof(char **) * 3);
+	tree[0] = matric;
+	tree[1] = m;
+	tree[2] = NULL;
+	// ft_threestrdel(&tree);
 
-	while(matric && matric[i])
+	while (tree && tree[i])
 	{
 		j = 0;
-		while (matric && matric[i][j])
+		while(tree[i] && tree[i][j])
 		{
-			printf("%c ", matric[i][j]);
+			k = 0;
+			while (tree[i][j] && tree[i][j][k])
+			{
+				printf("%c ", tree[i][j][k]);
+				++k;	
+			}
+			printf("\n");
 			j++;
 		}
-		printf("\n");
-		i++;
+		printf("\n---------------------------\n");
+		++i;
 	}
+
 
 	
 }
