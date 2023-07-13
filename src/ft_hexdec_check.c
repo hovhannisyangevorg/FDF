@@ -6,7 +6,7 @@
 /*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 19:54:00 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/07/11 16:20:17 by gehovhan         ###   ########.fr       */
+/*   Updated: 2023/07/11 17:57:04 by gehovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int ft_strhex(const char *hx_token)
 	while (i < len) 
 	{
 		result <<= 4;
-
 		if (hx_token[i] >= '0' && hx_token[i] <= '9')
 			result += hx_token[i] - '0';
 		else if (hx_token[i] >= 'A' && hx_token[i] <= 'F')
@@ -33,13 +32,13 @@ int ft_strhex(const char *hx_token)
 		else if (hx_token[i] >= 'a' && hx_token[i] <= 'f')
 			result += hx_token[i] - 'a' + 10;
 		else
-			ft_panic("Error: Invalid hexadecimal string!\n");
+			ft_panic("Error: Invalid hexadecimal string !\n");
 		i++;
 	}
 	return (result);
 }
 
-int	ft_set_color(char *hx_token)
+int	ft_hexdec_check(char *hx_token)
 {
 	int color;
 

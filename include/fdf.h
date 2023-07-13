@@ -16,10 +16,7 @@
 
 /* ft_hexdec_check.c */
 int		ft_strhex(const char *hx_token);
-int		ft_set_color(char *hx_token);
-
-/* ft_panic.c */
-void	ft_panic(char *str);
+int		ft_hexdec_check(char *hx_token);
 
 /* ft_parse_data.c */
 char	*ft_extract_substring(const char *token, char c, int index);
@@ -28,4 +25,7 @@ void	ft_parse_data(char *token);
 /* ft_parse_util.c */
 int		ft_strlen_start(const char *str, int start);
 int		ft_setindex(char *token, int c);
+
+/*ft_decimal_check.c*/
+int	ft_decimal_check(char *de_token);
 #endif

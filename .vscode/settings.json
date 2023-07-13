@@ -6,6 +6,10 @@
 		"ostream": "c",
 		"sstream": "c",
 		"algorithm": "c",
-		"complex": "c"
+		"complex": "c",
+		"__bit_reference": "c",
+		"bitset": "c",
+		"unordered_map": "c",
+		"stdlib.h": "c"
 	}
 }

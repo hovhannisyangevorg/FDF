@@ -6,7 +6,7 @@
 /*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 17:09:01 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/07/11 16:20:54 by gehovhan         ###   ########.fr       */
+/*   Updated: 2023/07/13 17:29:27 by gehovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 #define BUFFER_SIZE 100000000
 
-void			ft_panic(char *str);
+// void			ft_panic(char *str);
 int				ft_setindex(char *token, int c);
 static int	    ft_isupper(int c);
 static int	    ft_islower(int c);
@@ -204,45 +204,468 @@ void	        *ft_memcpy(void *dst, const void *src, size_t n);
 // 	return ;
 // }
 
-int ft_isspace(int arg) 
-{
-    return (arg == 32 || (arg >= 9 && arg <= 13));
-}
+// int ft_isspace(int arg) 
+// {
+//     return (arg == 32 || (arg >= 9 && arg <= 13));
+// }
 
-int ft_strhex(const char *hx_token)
-{
-	int i;
-	int len;
-	int result;
+// int ft_strhex(const char *hx_token)
+// {
+// 	int i;
+// 	int len;
+// 	int result;
 
+// 	i = 0;
+// 	result = 0;
+// 	len = ft_strlen(hx_token);
+// 	while (hx_token[i] == 32 || (hx_token[i] >= 9 && hx_token[i] <= 13))
+// 		i++;
+// 	while (i < len) 
+// 	{
+// 		result <<= 4;
+
+// 		if (hx_token[i] >= '0' && hx_token[i] <= '9')
+// 			result += hx_token[i] - '0';
+// 		else if (hx_token[i] >= 'A' && hx_token[i] <= 'F')
+// 			result += hx_token[i] - 'A' + 10;
+// 		else if (hx_token[i] >= 'a' && hx_token[i] <= 'f')
+// 			result += hx_token[i] - 'a' + 10;
+// 		else
+// 		{	
+// 			printf("Error: Invalid hexadecimal string!\n");
+// 			return(0);
+// 		}
+// 		i++;
+// 	}
+// 	return (result);
+// }
+
+
+
+
+// void ft_strdel(char **str)	//void (*ft_strdel)(char **str)
+// {
+// 	if (!str || !*str)
+// 		return ;
+// 	free(*str);
+// 	*str = NULL;
+// }
+
+
+// void	ft_panic(char *str, char *del)
+// {
+// 	ft_strdel(&del);
+// 	printf("%s", del);
+// 	write (2, str, ft_strlen(str));
+// 	write (2, "\n", 1);
+// 	exit (1);
+// }
+
+// int main()
+// {
+// 	int i = 0;
+// 	char *ptr = (char *)malloc(sizeof(char) * 11);
+// 	if (!ptr)
+// 		return (0);
+// 	while (i < 10)
+// 	{
+// 		ptr[i] = 'A';
+// 		i++;
+// 	}
+// 	// printf("%s\n", ptr);
+// 	ft_panic("Hello Broo", ptr);
+// }
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// void ft_strdel(char **str)	//void (*ft_strdel)(char **str)
+// {
+// 	if (!str || !*str)
+// 		return ;
+// 	free(*str);
+// 	*str = NULL;
+// }
+
+
+// void	ft_panic(char *str, void (*del)(char **str), int flag)
+// {
+// 	ft_strdel(&del);
+// 	printf("%s", del);
+// 	write (2, str, ft_strlen(str));
+// 	write (2, "\n", 1);
+// 	exit (1);
+// }
+
+// int main()
+// {
+// 	int i = 0;
+// 	char *ptr = (char *)malloc(sizeof(char) * 11);
+// 	if (!ptr)
+// 		return (0);
+// 	while (i < 10)
+// 	{
+// 		ptr[i] = 'A';
+// 		i++;
+// 	}
+// 	// printf("%s\n", ptr);
+// 	ft_panic("Hello Broo", ptr);
+// }
+
+
+
+
+
+
+
+
+
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+// #include <stdio.h>
+
+// void ft_strdel(char **ptr)
+// {
+// 	if (!ptr || !*ptr)
+// 		return ;
+// 	free(*ptr);
+// 	*ptr = NULL;
+// }
+
+// void ft_vecstrdell(char ***vecptr)
+// {
+// 	int i;
+// 	if (!vecptr || !(*vecptr))
+// 		return ;
+// 	i = -1;
+// 	while((*vecptr)[++i])
+// 		ft_strdel((*vecptr)[++i]);
+// 	free(vecptr);
+// 	*vecptr = NULL;
+// }
+
+
+// typedef void (*t_freeargs)(char *str1, char **str2, char ***str3);
+
+
+// void	ft_free_args(char *str1, char **str2, char ***str3)
+// {
+// 	ft_strdel(&str1);
+// 	ft_vecstrdell(str2);
+// }
+
+// int main() 
+// {
+// 	t_freeargs ft_free = ft_free_args;
+
+// 	ft_free(NULL, NULL, NULL);
+//     return 0;
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+char **ft_create_matric(size_t row, size_t col, int c)
+{
+	size_t i;
+	size_t j;
+
+	if (row < 0 || col < 0)
+		return(0);
+	char **new = (char **)malloc(sizeof(char*) * (row + 1));
+	if (!new || !(*new))
+		return (0);
 	i = 0;
-	result = 0;
-	len = ft_strlen(hx_token);
-	while (hx_token[i] == 32 || (hx_token[i] >= 9 && hx_token[i] <= 13))
-		i++;
-	while (i < len) 
+	j = 0;
+	while (i < row)
 	{
-		result <<= 4;
-
-		if (hx_token[i] >= '0' && hx_token[i] <= '9')
-			result += hx_token[i] - '0';
-		else if (hx_token[i] >= 'A' && hx_token[i] <= 'F')
-			result += hx_token[i] - 'A' + 10;
-		else if (hx_token[i] >= 'a' && hx_token[i] <= 'f')
-			result += hx_token[i] - 'a' + 10;
-		else
-		{	
-			printf("Error: Invalid hexadecimal string!\n");
-			return(0);
+		j = 0;
+		new[i] = (char *)malloc(sizeof(char) * (col + 1));
+		while(j < col)
+		{
+			new[i][j] = c;
+			j++;
 		}
+		new[i][j] = '\0';
 		i++;
 	}
-	return (result);
+	new[i] = NULL;
+	return (new);
 }
+
 
 int main()
 {
+	int i = 0;
+	int j = 0;
+	size_t row = 5;
+	size_t columne = 5;
+	char **matric = ft_create_matric(row, columne, 'F');
+
+	while(matric && matric[i])
+	{
+		j = 0;
+		while (matric && matric[i][j])
+		{
+			printf("%c ", matric[i][j]);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
+
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -594,12 +1017,12 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	return (i + ft_strlen(src));
 }
 
-void	ft_panic(char *str)
-{
-	write (2, str, ft_strlen(str));
-	write (2, "\n", 1);
-	exit (EXIT_FAILURE);
-}
+// void	ft_panic(char *str)
+// {
+// 	write (2, str, ft_strlen(str));
+// 	write (2, "\n", 1);
+// 	exit (EXIT_FAILURE);
+// }
 
 
 // static char	*ft_join(char *s1, char const *s2)

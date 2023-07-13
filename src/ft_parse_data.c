@@ -6,7 +6,7 @@
 /*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 18:48:41 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/07/11 17:32:45 by gehovhan         ###   ########.fr       */
+/*   Updated: 2023/07/11 20:28:22 by gehovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,29 +31,25 @@ char	*ft_extract_substring(const char *token, char c, int index)
 	new[i] = '\0';
 	return(new);
 }
-//TODO: create function for check if string contains only numbers.
+
+//! TODO: create function for check if string contains only numbers.
 void	ft_parse_data(char *token)
 {
-	int		hx_color;
+	int		de_coord;
+	// int		hx_color;
 	char	*w_token1;
 	char	*w_token2;
 
 	if (!token || !*token)
 		return ;
-	printf("Token---%s-\n", token);
-	
 	w_token1 = ft_extract_substring(token, ',', 0);
 	w_token2 = ft_extract_substring(token, '\0', ft_setindex(token, ','));
-	
-	// printf("1    ---%s-\n", w_token1);
-	// printf("2    ---%s-\n", w_token2);
-	/*
-		if w_token1 is not contains only numbers
-			error
-		number = atoi(w_token1)
-	*/
-	hx_color = ft_set_color(w_token2);
-	// printf("------------%X\n", hx_color);
+
+	de_coord = ft_decimal_check(w_token1, w_token2);
+	// hx_color = ft_hexdec_check(w_token2);
+
+	printf("Token1 = -%s-\n", w_token1);
+	printf("coord  =  %d\n", de_coord);
 }
 
 
