@@ -6,7 +6,7 @@
 /*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 17:09:01 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/07/13 19:04:57 by gehovhan         ###   ########.fr       */
+/*   Updated: 2023/07/13 22:39:39 by gehovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -325,11 +325,146 @@ void	        *ft_memcpy(void *dst, const void *src, size_t n);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-// #include <stdio.h>
+// typedef struct s_free
+// {
+// 	char *error;
+// 	char *str;
+// 	char **strvec;
+// 	char ***strthree;
+// 	int flag;
+// }	t_free;
 
-void ft_strdel(char **ptr)
+
+void 		ft_strdel(char **ptr);
+void 		ft_vecstrdel(char ***vecptr);
+void 		ft_threestrdel(char ****vecptr);
+static void	ft_panic_utils(char *error);
+void		ft_panic(char *error, char *str, char **strvec, char ***strthree);
+char	 	**ft_create_matric(size_t row, size_t col, int c);
+
+
+void 		ft_strdel(char **ptr)
 {
 	if (!ptr || !*ptr)
 		return ;
@@ -359,6 +494,42 @@ void ft_threestrdel(char ****vecptr)
 		ft_vecstrdel((*vecptr) + i);
 	free(*vecptr);
 	*vecptr = NULL;
+}
+
+static void	ft_panic_utils(char *error)
+{	
+	write (2, error, ft_strlen(error));
+	write (2, "\n", 1);
+	exit (1);
+}
+
+void	ft_panic(char *error, char *str, char **strvec, char ***strthree)
+{
+	int flag = 0;
+
+	// if (!error || !(*error))
+	// 	return ;
+	// if (!str || !(*str))
+	// 	flag++;
+	// if(!strvec || !(*strvec))
+	// 	flag++;
+	// if(!strthree || !(*strthree))
+	// 	flag++;
+
+
+	// if (flag == 1)
+	// {
+	// }else if(flag == 2)
+	// {
+		
+	// }else if(flag == 3)
+	// {
+		
+	// }
+	ft_strdel(&str);
+	ft_vecstrdel(&strvec);
+	ft_threestrdel(&strthree);
+	ft_panic_utils(error);
 }
 
 char **ft_create_matric(size_t row, size_t col, int c)
@@ -391,7 +562,8 @@ char **ft_create_matric(size_t row, size_t col, int c)
 
 
 
-void ft_strdel(char **ptr);
+
+
 int main()
 {
 	int i = 0;
@@ -407,27 +579,199 @@ int main()
 	tree[2] = NULL;
 	// ft_threestrdel(&tree);
 
-	while (tree && tree[i])
+	printf("\n)))))))))))))))))))))))--- 1 ---)))))))))))))))))))))))))))))))))\n");
+	while (matric && matric[i])
 	{
-		j = 0;
-		while(tree[i] && tree[i][j])
-		{
-			k = 0;
-			while (tree[i][j] && tree[i][j][k])
-			{
-				printf("%c ", tree[i][j][k]);
-				++k;	
-			}
-			printf("\n");
-			j++;
-		}
-		printf("\n---------------------------\n");
+			printf("%s \n", matric[i]);
 		++i;
 	}
-
-
+	printf("\n)))))))))))))))))))))))--- 1 ---)))))))))))))))))))))))))))))))))\n");
 	
+	ft_panic("Error:", NULL, matric, NULL);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	// printf("\n)))))))))))))))))))))))--- 1 ---)))))))))))))))))))))))))))))))))\n");
+	// while (tree && tree[i])
+	// {
+	// 	j = 0;
+	// 	while(tree[i] && tree[i][j])
+	// 	{
+	// 		k = 0;
+	// 		while (tree[i][j] && tree[i][j][k])
+	// 		{
+	// 			printf("%c ", tree[i][j][k]);
+	// 			++k;	
+	// 		}
+	// 		printf("\n");
+	// 		j++;
+	// 	}
+	// 	printf("\n---------------------------\n");
+	// 	++i;
+	// }
+	// printf("\n)))))))))))))))))))))))--- 1 ---)))))))))))))))))))))))))))))))))\n");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

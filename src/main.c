@@ -6,33 +6,26 @@
 /*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 14:40:10 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/07/11 20:25:38 by gehovhan         ###   ########.fr       */
+/*   Updated: 2023/07/13 20:15:09 by gehovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 // TODO: [ White or delete ft_strtok function my libft project ]
-int main() 
-{
-	char *token;
+// int main() 
+// {
+// 	char *token;
 	
-	int fd = open("exam.txt", O_RDONLY);
+// 	int fd = open("exam.txt", O_RDONLY);
 
-	if (fd == -1)
-		return (0);
-	while ((token = get_next_word(fd)))
-		ft_parse_data(token);
-	close(fd);
-	return (0);
-}
-
-
-
-
-
-
-
+// 	if (fd == -1)
+// 		return (0);
+// 	while ((token = get_next_word(fd)))
+// 		ft_parse_data(token);
+// 	close(fd);
+// 	return (0);
+// }
 
 
 
