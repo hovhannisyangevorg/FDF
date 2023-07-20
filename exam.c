@@ -6,7 +6,7 @@
 /*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 17:09:01 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/07/13 22:39:39 by gehovhan         ###   ########.fr       */
+/*   Updated: 2023/07/20 18:18:07 by gehovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -442,8 +442,6 @@ void	        *ft_memcpy(void *dst, const void *src, size_t n);
 
 
 
-
-
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 // typedef struct s_free
@@ -456,109 +454,160 @@ void	        *ft_memcpy(void *dst, const void *src, size_t n);
 // }	t_free;
 
 
-void 		ft_strdel(char **ptr);
-void 		ft_vecstrdel(char ***vecptr);
-void 		ft_threestrdel(char ****vecptr);
-static void	ft_panic_utils(char *error);
-void		ft_panic(char *error, char *str, char **strvec, char ***strthree);
-char	 	**ft_create_matric(size_t row, size_t col, int c);
+// void 		ft_strdel(char **ptr);
+// void 		ft_vecstrdel(char ***vecptr);
+// void 		ft_threestrdel(char ****vecptr);
+// static void	ft_panic_utils(char *error);
+// void		ft_panic(char *error, char *str, char **strvec, char ***strthree);
+// char	 	**ft_create_matric(size_t row, size_t col, int c);
 
 
-void 		ft_strdel(char **ptr)
-{
-	if (!ptr || !*ptr)
-		return ;
-	free(*ptr);
-	*ptr = NULL;
-}
+// void 		ft_strdel(char **ptr)
+// {
+// 	if (!ptr || !*ptr)
+// 		return ;
+// 	free(*ptr);
+// 	*ptr = NULL;
+// }
 
-void ft_vecstrdel(char ***vecptr)
-{
-	int i;
-	if (!vecptr || !(*vecptr))
-		return ;
-	i = -1;
-	while (vecptr && (*vecptr)[++i])
-		ft_strdel((*vecptr) + i);
-	free(*vecptr);
-	*vecptr = NULL;
-}
+// void ft_vecstrdel(char ***vecptr)
+// {
+// 	int i;
+// 	if (!vecptr || !(*vecptr))
+// 		return ;
+// 	i = -1;
+// 	while (vecptr && (*vecptr)[++i])
+// 		ft_strdel((*vecptr) + i);
+// 	free(*vecptr);
+// 	*vecptr = NULL;
+// }
 
-void ft_threestrdel(char ****vecptr)
-{
-	int i;
-	if (!vecptr || !(*vecptr))
-		return ;
-	i = -1;
-	while(vecptr && (*vecptr)[++i])
-		ft_vecstrdel((*vecptr) + i);
-	free(*vecptr);
-	*vecptr = NULL;
-}
+// void ft_threestrdel(char ****vecptr)
+// {
+// 	int i;
+// 	if (!vecptr || !(*vecptr))
+// 		return ;
+// 	i = -1;
+// 	while(vecptr && (*vecptr)[++i])
+// 		ft_vecstrdel((*vecptr) + i);
+// 	free(*vecptr);
+// 	*vecptr = NULL;
+// }
 
-static void	ft_panic_utils(char *error)
-{	
-	write (2, error, ft_strlen(error));
-	write (2, "\n", 1);
-	exit (1);
-}
+// static void	ft_panic_utils(char *error)
+// {	
+// 	write (2, error, ft_strlen(error));
+// 	write (2, "\n", 1);
+// 	exit (1);
+// }
 
-void	ft_panic(char *error, char *str, char **strvec, char ***strthree)
-{
-	int flag = 0;
+// void	ft_panic(char *error, char *str, char **strvec, char ***strthree)
+// {
+// 	ft_strdel(&str);
+// 	ft_vecstrdel(&strvec);
+// 	ft_threestrdel(&strthree);
+// 	ft_panic_utils(error);
+// }
 
-	// if (!error || !(*error))
-	// 	return ;
-	// if (!str || !(*str))
-	// 	flag++;
-	// if(!strvec || !(*strvec))
-	// 	flag++;
-	// if(!strthree || !(*strthree))
-	// 	flag++;
+// char **ft_create_matric(size_t row, size_t col, int c)
+// {
+// 	size_t i;
+// 	size_t j;
+
+// 	if (row < 0 || col < 0)
+// 		return(0);
+// 	char **new = (char **)malloc(sizeof(char*) * (row + 1));
+// 	if (!new || !(*new))
+// 		return (0);
+// 	i = 0;
+// 	j = 0;
+// 	while (i < row)
+// 	{
+// 		j = 0;
+// 		new[i] = (char *)malloc(sizeof(char) * (col + 1));
+// 		while(j < col)
+// 		{
+// 			new[i][j] = c;
+// 			j++;
+// 		}
+// 		new[i][j] = '\0';
+// 		i++;
+// 	}
+// 	new[i] = NULL;
+// 	return (new);
+// }
 
 
-	// if (flag == 1)
-	// {
-	// }else if(flag == 2)
-	// {
-		
-	// }else if(flag == 3)
-	// {
-		
-	// }
-	ft_strdel(&str);
-	ft_vecstrdel(&strvec);
-	ft_threestrdel(&strthree);
-	ft_panic_utils(error);
-}
 
-char **ft_create_matric(size_t row, size_t col, int c)
-{
-	size_t i;
-	size_t j;
 
-	if (row < 0 || col < 0)
-		return(0);
-	char **new = (char **)malloc(sizeof(char*) * (row + 1));
-	if (!new || !(*new))
-		return (0);
-	i = 0;
-	j = 0;
-	while (i < row)
-	{
-		j = 0;
-		new[i] = (char *)malloc(sizeof(char) * (col + 1));
-		while(j < col)
-		{
-			new[i][j] = c;
-			j++;
-		}
-		new[i][j] = '\0';
-		i++;
-	}
-	new[i] = NULL;
-	return (new);
-}
+
+// int main()
+// {
+// 	int i = 0;
+// 	int j = 0;
+// 	int k = 0;
+// 	size_t row = 5;
+// 	size_t columne = 5;
+// 	char **matric = ft_create_matric(row, columne, 'F');
+// 	char **m = ft_create_matric(row, columne, 'A');
+// 	char ***tree = (char ***)malloc(sizeof(char **) * 3);
+// 	tree[0] = matric;
+// 	tree[1] = m;
+// 	tree[2] = NULL;
+// 	// ft_threestrdel(&tree);
+
+// 	printf("\n)))))))))))))))))))))))--- 1 ---)))))))))))))))))))))))))))))))))\n");
+// 	while (matric && matric[i])
+// 	{
+// 			printf("%s \n", matric[i]);
+// 		++i;
+// 	}
+// 	printf("\n)))))))))))))))))))))))--- 1 ---)))))))))))))))))))))))))))))))))\n");
+	
+// 	ft_panic("Error:", NULL, matric, NULL);
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -566,63 +615,7 @@ char **ft_create_matric(size_t row, size_t col, int c)
 
 int main()
 {
-	int i = 0;
-	int j = 0;
-	int k = 0;
-	size_t row = 5;
-	size_t columne = 5;
-	char **matric = ft_create_matric(row, columne, 'F');
-	char **m = ft_create_matric(row, columne, 'A');
-	char ***tree = (char ***)malloc(sizeof(char **) * 3);
-	tree[0] = matric;
-	tree[1] = m;
-	tree[2] = NULL;
-	// ft_threestrdel(&tree);
-
-	printf("\n)))))))))))))))))))))))--- 1 ---)))))))))))))))))))))))))))))))))\n");
-	while (matric && matric[i])
-	{
-			printf("%s \n", matric[i]);
-		++i;
-	}
-	printf("\n)))))))))))))))))))))))--- 1 ---)))))))))))))))))))))))))))))))))\n");
-	
-	ft_panic("Error:", NULL, matric, NULL);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1267,6 +1260,8 @@ size_t ft_strlen(const char *str)
 {
 	const char	*ptr;
 
+	if(!str && !(*str))
+		return(0);
 	ptr = str;
 	while (ptr && *ptr)
 		ptr++;
@@ -1456,4 +1451,324 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 // 	ft_strlcpy(new, s1, len1 + 1);
 // 	ft_strlcat(new, s2, len1 + len2 + 1);
 // 	return (new);
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// static void ft_free_utils(char *mes, char *de_token, char *hx_token)
+// {
+// 	ft_free_args(de_token, 0, 0);
+// 	ft_free_args(hx_token, 0, 0);
+// 	ft_panic (mes);
+// }
+
+// int	ft_atoi_fdf(char *de_token, char *hx_token)
+// {
+// 	size_t	i;
+// 	int		sign;
+// 	int		res;
+// 	int		mult;
+
+// 	i = 0;
+// 	res = 0;
+// 	sign = 1;
+// 	mult = 0;
+// 	if (!(de_token) || !(*de_token))
+// 		return (0);
+// 	while (de_token && *de_token && ft_isspace(de_token[i]))
+// 		++i;
+// 	if (de_token[i] == '-' || de_token[i] == '+')
+// 	{
+// 		if (de_token[i] == '-')
+// 			sign = -1;
+// 		++i;
+// 	}
+// 	while (de_token[i] == '0')
+// 		++i;
+// 	while ('0' <= de_token[i] && de_token[i] <= '9')
+// 	{
+// 		if (ft_ismultiply_overflow(res, 10))
+// 			ft_free_utils("Error: Overflow error", de_token, hx_token);
+// 		mult = res * 10;
+// 		if (ft_isadd_overflow(mult, (de_token[i] - '0'), sign))
+// 			ft_free_utils("Error: Overflow error", de_token, hx_token);
+// 		res = res * 10 + (de_token[i] - '0');
+// 		++i;
+// 	}
+// 	if (ft_ismultiply_overflow(res, sign))
+// 		ft_free_utils("Error: Overflow error", de_token, hx_token);
+// 	return (sign * res);
+// }
+
+// int	ft_decimal_check(char *de_token, char *hx_token)
+// {
+// 	int i;
+// 	int value;
+	
+// 	if (!de_token || !(*de_token))
+// 		return (0);
+// 	i = -1;
+// 	value = 0;
+// 	while (de_token[++i])
+// 		if (!ft_isdigit(de_token[i]))
+// 			ft_free_utils("Error: Overflow error", de_token, hx_token);
+// 	value = ft_atoi_fdf(de_token, hx_token);
+// 	return (value);
 // }

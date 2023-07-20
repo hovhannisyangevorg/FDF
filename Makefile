@@ -9,7 +9,7 @@ LIBS			= $(FT_LIB)/libft.a
 
 CC			=	cc
 INCS		=	-I$(INC_DIR) -I$(MLX_DIR) -I$(FT_LIB)/include
-CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-Wall -Wextra -Werror -g3 -fsanitize=address
 RM			=	rm -rf
 MK			=	mkdir -p
 
@@ -43,4 +43,5 @@ fclean:	clean
 re:	fclean all
 
 #  DYLD_LIBRARY_PATH=`pwd`/mlx ./fdf
+#  -g3 -fsanitize=address
 .PHONY: all clean fclean re 
