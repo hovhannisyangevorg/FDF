@@ -102,7 +102,7 @@ struct s_matrix
 	t_point3d	*map;
 	size_t		capacity;
 	size_t		size;
-}
+};
 
 // function (matrix* m, t_point3d)
 // if capacity is 0 change capacity and size to 1 and allocate memory for 1 point
