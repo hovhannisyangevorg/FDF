@@ -9,9 +9,10 @@ LIBS			= $(FT_LIB)/libft.a
 
 CC			=	cc
 INCS		=	-I$(INC_DIR) -I$(MLX_DIR) -I$(FT_LIB)/include
-CFLAGS		=	-Wall -Wextra -Werror -g3 -fsanitize=address
 RM			=	rm -rf
 MK			=	mkdir -p
+CFLAGS		=	-Wall -Wextra -Werror $(SANIT_FLAG)
+SANIT_FLAG	=	-g3 -fsanitize=address
 
 SRCS		= 	$(wildcard $(SRC_DIR)/*.c)
 OBJS		=	$(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))

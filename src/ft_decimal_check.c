@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
- #include "fdf.h"
+#include "fdf.h"
+
+struct s_decimal_check t_decimal_check;
 
 struct s_decimal_check
 {

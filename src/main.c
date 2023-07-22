@@ -14,7 +14,6 @@
 
 // TODO: [ White or delete ft_strtok function my libft project ]
 
-
 int main() 
 {
 	char *token;

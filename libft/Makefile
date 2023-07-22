@@ -6,7 +6,7 @@
 #    By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/27 21:12:42 by gehovhan          #+#    #+#              #
-#    Updated: 2023/07/20 16:31:52 by gehovhan         ###   ########.fr        #
+#    Updated: 2023/07/20 21:39:03 by gehovhan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,9 +28,10 @@ OBJS			= $(SRCS:.c=.o)
 
 HDRS			=	include/libft.h
 INCS			=	-Iinclude
-CC				= cc -g3 -fsanitize=address
-RM				= rm -f
-CFLAGS			= -Wall -Wextra -Werror -Iinclude
+CC				= 	cc
+RM				= 	rm -f
+CFLAGS			= 	-Wall -Wextra -Werror -Iinclude
+SANIT_FLAG		=	-g3 -fsanitize=address
 
 .DEFAULT_GOAL	=	all
 

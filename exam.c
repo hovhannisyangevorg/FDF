@@ -6,7 +6,7 @@
 /*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 17:09:01 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/07/20 18:18:07 by gehovhan         ###   ########.fr       */
+/*   Updated: 2023/07/21 17:32:28 by gehovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -346,6 +346,163 @@ void	        *ft_memcpy(void *dst, const void *src, size_t n);
 
 
 
+typedef struct s_matrix t_matrix;
+typedef struct s_point3d t_point3d;
+
+struct s_point3d
+{
+	int x;
+	int y;
+	int z;
+	int color;
+};
+
+struct s_matrix
+{
+	t_point3d	*cord;
+	size_t		capacity;
+	size_t		size;
+};
+
+// function (matrix* m, t_point3d)
+// if capacity is 0 change capacity and size to 1 and allocate memory for 1 point
+// if matrix size grater than it capacity
+// allocate memory in size and copy content to it after free previus memory
+
+
+// t_point3d	*ft_init_point3d(t_point3d vulue, size_t size)
+// {
+// 	int i;
+
+// 	if (size == 0)
+	// return(0);
+// 	t_point3d	*new_point = (t_point3d *)malloc(sizeof(t_point3d) * size);
+// 	if (!new_point)
+// 		return(0);
+// 	i = 0;
+// 	while(i < size)
+// 	{
+// 		new_point[i].x = vulue.x;
+// 		new_point[i].y = vulue.y;
+// 		new_point[i].z = vulue.z;
+// 		new_point[i].color = vulue.color;
+// 		i++;
+// 	}
+// 	return(new_point);
+// }
+
+
+t_point3d	*ft_init_point3d(t_point3d vulue, size_t size, size_t capacity)
+{
+	int i;
+
+	if (capacity == 0)
+		capacity++;
+	if (size == capacity)
+		capacity *= 2;
+
+	t_point3d	*new_point = (t_point3d *)malloc(sizeof(t_point3d) * capacity);
+	if (!new_point)
+		return(0);
+	i = 0;
+	while(i < size)
+	{
+		new_point[i].x = vulue.x;
+		new_point[i].y = vulue.y;
+		new_point[i].z = vulue.z;
+		new_point[i].color = vulue.color;
+		i++;
+	}
+	return(new_point);
+}
+
+//t_array array_struct;
+void init(t_matrix* m, size_t size)
+{
+	if (!m)
+		return;
+	m->size = size;
+	m->capacity = size;
+	m->cord = 0;
+	if (size)
+		m->cord = malloc(sizeof(t_point3d) * size);
+}
+
+// void resize()
+
+void push_back(t_matrix *m, t_point3d val)
+{
+	// printf("size: %lu cap: %lu\n", m->size, m->capacity);
+	if(!m) 
+		return;
+	size_t old_size = m->size;
+	if (!m->capacity)
+	{
+		m->capacity = 1;
+		m->cord = (t_point3d *)malloc(sizeof(t_point3d));
+		*m->cord = val;
+		++m->size;
+	}
+	else if (m->size + 1 < m->capacity)
+	{
+		++m->size;
+		m->cord[old_size] = val;
+	}
+	else
+	{
+		m->capacity *= 2;
+		t_point3d* tmp;
+		tmp = (t_point3d *)malloc(sizeof(t_point3d) * m->capacity);
+		if (!tmp)
+			return ;
+		for(size_t i = 0; i < old_size; ++i)
+		{
+			tmp[i] = m->cord[i];
+		}
+		tmp[old_size] = val;
+		free(m->cord);
+		m->cord = tmp;
+		++m->size;
+	}
+}
+void print(t_matrix* m)
+{
+	for(size_t i = 0; i < m->size; ++i)
+		printf("(%d %d %d %x) ", m->cord[i].x, m->cord[i].y, m->cord[i].z, m->cord[i].color);
+	printf("\n");
+}
+
+int main()
+{
+	t_matrix m;
+	init(&m, 0);
+	push_back(&m, (t_point3d){1,2,3,0xff});
+	push_back(&m, (t_point3d){0,2,6,0x00});
+	push_back(&m, (t_point3d){1,2,3,0xff});
+	push_back(&m, (t_point3d){0,2,6,0x00});
+	push_back(&m, (t_point3d){1,2,3,0xff});
+	push_back(&m, (t_point3d){0,2,6,0x00});
+	push_back(&m, (t_point3d){1,2,3,0xff});
+	push_back(&m, (t_point3d){0,2,6,0x00});
+	print(&m);
+	// int i;
+	// int len = 10;
+	// t_point3d	*point = ft_init_point3d((t_point3d){0, 1, 0, 0}, 0, 0);
+	// if (!point)
+	// 	return(0);
+	// i = 0;
+	// while(i < len)
+	// {
+	// 	printf("\n----------------------------------\n");
+	// 	printf("x = %d\n", point[i].x);
+	// 	printf("y = %d\n", point[i].y);
+	// 	printf("z = %d\n", point[i].z);
+	// 	printf("color = %d\n", point[i].color);
+	// 	printf("\n----------------------------------\n");
+	// 	i++;
+	// }
+	// free(point);
+}
 
 
 
@@ -376,18 +533,18 @@ void	        *ft_memcpy(void *dst, const void *src, size_t n);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+// t_matrix	*ft_init_matrix(t_point3d	*map, size_t capacity, size_t size)
+// {
+// 	if (!map)
+// 		return(0);
+// 	t_matrix	*matrix = (t_matrix *)malloc(sizeof(t_matrix) * capacity);
+// 	if (!matrix)
+// 		return(0);
+// 	matrix->map  = map;
+// 	matrix->size = size;
+// 	matrix->capacity = capacity;
+// 	return(matrix);
+// }
 
 
 
@@ -602,20 +759,6 @@ void	        *ft_memcpy(void *dst, const void *src, size_t n);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-int main()
-{
-}
 
 
 

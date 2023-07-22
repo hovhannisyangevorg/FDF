@@ -108,7 +108,6 @@ struct s_matrix
 // if capacity is 0 change capacity and size to 1 and allocate memory for 1 point
 // if matrix size grater than it capacity
 // allocate memory in size and copy content to it after free previus memory
-//
 
 #endif
 
