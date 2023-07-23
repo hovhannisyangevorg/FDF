@@ -6,7 +6,7 @@
 /*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 14:40:10 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/07/20 21:10:40 by gehovhan         ###   ########.fr       */
+/*   Updated: 2023/07/23 12:53:28 by gehovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 int main() 
 {
+	t_matrix matrix;
 	char *token;
 	int height;
 	int width;
@@ -26,6 +27,7 @@ int main()
 
 	if (fd == -1)
 		return (0);
+	ft_init(&matrix, 0);
 	height = 0;
 	tmp = height;
 	width = 0;
@@ -42,7 +44,7 @@ int main()
 			flag = 0;
 			++width;
 		}
-		ft_parse_data(token);
+		ft_parse_data(token, width, height, &matrix);
 		free(token);
 	}
 	close(fd);

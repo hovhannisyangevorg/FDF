@@ -5,6 +5,7 @@ typedef struct s_image t_image;
 typedef struct s_mlx t_mlx;
 typedef struct s_point3d t_point3d;
 typedef struct s_vector3d t_vector3d;
+typedef struct s_matrix t_matrix;
 // typedef struct s_point2d t_point2d;
 // typedef struct s_vector2d t_vector2d;
 // typedef struct s_map t_map;
@@ -13,7 +14,6 @@ typedef struct s_vector3d t_vector3d;
 // typedef struct s_calcul t_calcul;
 // typedef enum e_projection t_projection;
 // typedef enum e_move t_move;
-
 
 /*
 * struct	s_image
@@ -91,17 +91,17 @@ struct s_vector3d
 	int 	color;
 };
 
+struct s_matrix
+{
+	t_point3d	*cord;
+	size_t		capacity;
+	size_t		size;
+};
+
 struct s_calcul
 {
 	t_point3d 	*math;
 	t_vector3d	*vector;
-};
-
-struct s_matrix
-{
-	t_point3d	*map;
-	size_t		capacity;
-	size_t		size;
 };
 
 // function (matrix* m, t_point3d)

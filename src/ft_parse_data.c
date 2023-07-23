@@ -6,12 +6,13 @@
 /*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 18:48:41 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/07/20 21:03:50 by gehovhan         ###   ########.fr       */
+/*   Updated: 2023/07/23 13:10:31 by gehovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <stdio.h>
+
 char	*ft_extract_substring(const char *token, char c, int index)
 {
 	int 	i = 0;
@@ -24,7 +25,6 @@ char	*ft_extract_substring(const char *token, char c, int index)
 	new = (char *)malloc(sizeof(char) * (len + 1));
 	if (!new)
 		return (0);
-	// printf("\n--------------$%d$------\n",  len);
 	while (token[index] && token[index] != c)
 		new[i++] = (char)token[index++];
 	new[i] = '\0';
@@ -32,8 +32,9 @@ char	*ft_extract_substring(const char *token, char c, int index)
 }
 
 //! TODO: create function for check if string contains only numbers.
-void	ft_parse_data(char *token)
+void	ft_parse_data(char *token, int width, int height, t_matrix *matrix)
 {
+	// (void)matrix;
 	int		de_coord;
 	int		hx_color;
 	char	*w_token1;
@@ -45,7 +46,9 @@ void	ft_parse_data(char *token)
 	w_token2 = ft_extract_substring(token, '\0', ft_setindex(token, ','));
 	de_coord = ft_decimal_check(&w_token1, &w_token2);
 	hx_color = ft_hexdec_check(&w_token1, &w_token2);
-
+	printf("\n-------------Count %d ----------------\n", ++i);
+	ft_push_back(matrix, (t_point3d){width, height, de_coord, hx_color});
+	ft_print_matrix(matrix);
 }
 
 
@@ -56,6 +59,26 @@ void	ft_parse_data(char *token)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	// printf("\nWidth = -%d-\n", width);
+	// printf("Heigth = -%d-\n", height);
+	// printf("Token1 = -%d-\n", de_coord);
+	// printf("Token1 = -%x-\n", hx_color);
+	// printf("\n_________________________________\n");
 
 
 

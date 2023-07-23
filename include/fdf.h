@@ -22,7 +22,7 @@ int		ft_hexdec_check(char **de_token, char **hx_token);
 
 /* ft_parse_data.c */
 char	*ft_extract_substring(const char *token, char c, int index);
-void	ft_parse_data(char *token);
+void	ft_parse_data(char *token, int width, int height, t_matrix *matrix);
 
 /* ft_parse_util.c */
 int		ft_strlen_start(const char *str, int start, char c);
@@ -34,5 +34,12 @@ void	ft_free_utils(char *mes, char **de_token, char **hx_token);
 
 /*ft_free_args.c*/
 void	ft_free_args(char **str, char ***strvec, char ****strthree);
+
+/* ft_push_back.c */
+t_point3d	*ft_init_point3d(t_point3d vulue, size_t size, size_t capacity);
+void		ft_init(t_matrix *m, size_t size);
+void		ft_update_capacity(t_matrix *m, size_t size);
+void		ft_push_back(t_matrix *m, t_point3d val);
+void		ft_print_matrix(t_matrix *m);
 
 #endif

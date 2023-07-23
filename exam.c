@@ -6,7 +6,7 @@
 /*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 17:09:01 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/07/21 17:32:28 by gehovhan         ###   ########.fr       */
+/*   Updated: 2023/07/23 12:20:17 by gehovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -301,82 +301,183 @@ void	        *ft_memcpy(void *dst, const void *src, size_t n);
 // 	exit (1);
 // }
 
-// int main()
+int main()
+{
+	printf("heloo");
+	return (0);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////* ft_push_back() *////////////////////////////////////////////////////////////////////////////////////////
+
+// typedef struct s_matrix t_matrix;
+// typedef struct s_point3d t_point3d;
+
+// struct s_point3d
 // {
-// 	int i = 0;
-// 	char *ptr = (char *)malloc(sizeof(char) * 11);
-// 	if (!ptr)
-// 		return (0);
-// 	while (i < 10)
-// 	{
-// 		ptr[i] = 'A';
-// 		i++;
-// 	}
-// 	// printf("%s\n", ptr);
-// 	ft_panic("Hello Broo", ptr);
-// }
+// 	int x;
+// 	int y;
+// 	int z;
+// 	int color;
+// };
 
+// struct s_matrix
+// {
+// 	t_point3d	*cord;
+// 	size_t		capacity;
+// 	size_t		size;
+// };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-typedef struct s_matrix t_matrix;
-typedef struct s_point3d t_point3d;
-
-struct s_point3d
-{
-	int x;
-	int y;
-	int z;
-	int color;
-};
-
-struct s_matrix
-{
-	t_point3d	*cord;
-	size_t		capacity;
-	size_t		size;
-};
-
-// function (matrix* m, t_point3d)
-// if capacity is 0 change capacity and size to 1 and allocate memory for 1 point
-// if matrix size grater than it capacity
-// allocate memory in size and copy content to it after free previus memory
-
-
-// t_point3d	*ft_init_point3d(t_point3d vulue, size_t size)
+// t_point3d	*ft_init_point3d(t_point3d vulue, size_t size, size_t capacity)
 // {
 // 	int i;
 
-// 	if (size == 0)
-	// return(0);
-// 	t_point3d	*new_point = (t_point3d *)malloc(sizeof(t_point3d) * size);
+// 	if (capacity == 0)
+// 		capacity++;
+// 	if (size == capacity)
+// 		capacity *= 2;
+
+// 	t_point3d	*new_point = (t_point3d *)malloc(sizeof(t_point3d) * capacity);
 // 	if (!new_point)
 // 		return(0);
 // 	i = 0;
@@ -391,161 +492,75 @@ struct s_matrix
 // 	return(new_point);
 // }
 
-
-t_point3d	*ft_init_point3d(t_point3d vulue, size_t size, size_t capacity)
-{
-	int i;
-
-	if (capacity == 0)
-		capacity++;
-	if (size == capacity)
-		capacity *= 2;
-
-	t_point3d	*new_point = (t_point3d *)malloc(sizeof(t_point3d) * capacity);
-	if (!new_point)
-		return(0);
-	i = 0;
-	while(i < size)
-	{
-		new_point[i].x = vulue.x;
-		new_point[i].y = vulue.y;
-		new_point[i].z = vulue.z;
-		new_point[i].color = vulue.color;
-		i++;
-	}
-	return(new_point);
-}
-
-//t_array array_struct;
-void init(t_matrix* m, size_t size)
-{
-	if (!m)
-		return;
-	m->size = size;
-	m->capacity = size;
-	m->cord = 0;
-	if (size)
-		m->cord = malloc(sizeof(t_point3d) * size);
-}
-
-// void resize()
-
-void push_back(t_matrix *m, t_point3d val)
-{
-	// printf("size: %lu cap: %lu\n", m->size, m->capacity);
-	if(!m) 
-		return;
-	size_t old_size = m->size;
-	if (!m->capacity)
-	{
-		m->capacity = 1;
-		m->cord = (t_point3d *)malloc(sizeof(t_point3d));
-		*m->cord = val;
-		++m->size;
-	}
-	else if (m->size + 1 < m->capacity)
-	{
-		++m->size;
-		m->cord[old_size] = val;
-	}
-	else
-	{
-		m->capacity *= 2;
-		t_point3d* tmp;
-		tmp = (t_point3d *)malloc(sizeof(t_point3d) * m->capacity);
-		if (!tmp)
-			return ;
-		for(size_t i = 0; i < old_size; ++i)
-		{
-			tmp[i] = m->cord[i];
-		}
-		tmp[old_size] = val;
-		free(m->cord);
-		m->cord = tmp;
-		++m->size;
-	}
-}
-void print(t_matrix* m)
-{
-	for(size_t i = 0; i < m->size; ++i)
-		printf("(%d %d %d %x) ", m->cord[i].x, m->cord[i].y, m->cord[i].z, m->cord[i].color);
-	printf("\n");
-}
-
-int main()
-{
-	t_matrix m;
-	init(&m, 0);
-	push_back(&m, (t_point3d){1,2,3,0xff});
-	push_back(&m, (t_point3d){0,2,6,0x00});
-	push_back(&m, (t_point3d){1,2,3,0xff});
-	push_back(&m, (t_point3d){0,2,6,0x00});
-	push_back(&m, (t_point3d){1,2,3,0xff});
-	push_back(&m, (t_point3d){0,2,6,0x00});
-	push_back(&m, (t_point3d){1,2,3,0xff});
-	push_back(&m, (t_point3d){0,2,6,0x00});
-	print(&m);
-	// int i;
-	// int len = 10;
-	// t_point3d	*point = ft_init_point3d((t_point3d){0, 1, 0, 0}, 0, 0);
-	// if (!point)
-	// 	return(0);
-	// i = 0;
-	// while(i < len)
-	// {
-	// 	printf("\n----------------------------------\n");
-	// 	printf("x = %d\n", point[i].x);
-	// 	printf("y = %d\n", point[i].y);
-	// 	printf("z = %d\n", point[i].z);
-	// 	printf("color = %d\n", point[i].color);
-	// 	printf("\n----------------------------------\n");
-	// 	i++;
-	// }
-	// free(point);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// t_matrix	*ft_init_matrix(t_point3d	*map, size_t capacity, size_t size)
+// void ft_init(t_matrix* m, size_t size)
 // {
-// 	if (!map)
-// 		return(0);
-// 	t_matrix	*matrix = (t_matrix *)malloc(sizeof(t_matrix) * capacity);
-// 	if (!matrix)
-// 		return(0);
-// 	matrix->map  = map;
-// 	matrix->size = size;
-// 	matrix->capacity = capacity;
-// 	return(matrix);
+// 	if (!m)
+// 		return;
+// 	m->size = size;
+// 	m->capacity = size;
+// 	m->cord = 0;
+// 	if (size)
+// 		m->cord = malloc(sizeof(t_point3d) * size);
 // }
 
+// void ft_update_capacity(t_matrix *m, size_t size)
+// {
+// 	t_point3d* tmp;
+// 	size_t new_cap;
+
+// 	new_cap = m->capacity;
+// 	if (!m->capacity)
+// 		new_cap = size;
+// 	else if (m->capacity <= size)
+// 		new_cap *= 2;
+// 	if (new_cap != m->capacity)
+// 	{
+// 		tmp = (t_point3d *)malloc(sizeof(t_point3d) * new_cap);
+// 		if (!tmp)
+// 			return;
+// 		for(size_t i = 0; i < m->size; ++i)
+// 		{
+// 			tmp[i] = m->cord[i];
+// 		}
+// 		if (m->cord)
+// 			free(m->cord);
+// 		m->cord = tmp;
+// 		m->capacity = new_cap;
+// 	}
+// }
+
+// void ft_push_back(t_matrix *m, t_point3d val)
+// {
+// 	if(!m) 
+// 		return;
+// 	ft_update_capacity(m, m->size + 1);
+// 	m->cord[m->size] = val;
+// 	++m->size;
+// }
+
+// void ft_print_matrix(t_matrix* m)
+// {
+// 	for(size_t i = 0; i < m->size; ++i)
+// 		printf("(%d %d %d %x) ", m->cord[i].x, m->cord[i].y, m->cord[i].z, m->cord[i].color);
+// 	printf("\n");
+// }
+
+// int main()
+// {
+// 	t_matrix m;
+// 	ft_init(&m, 0);
+// 	ft_push_back(&m, (t_point3d){1,2,3,0xff});
+// 	ft_push_back(&m, (t_point3d){0,2,6,0x00});
+// 	ft_push_back(&m, (t_point3d){1,2,3,0xff});
+// 	ft_push_back(&m, (t_point3d){0,2,6,0x00});
+// 	ft_push_back(&m, (t_point3d){1,2,3,0xff});
+// 	ft_push_back(&m, (t_point3d){0,2,6,0x00});
+// 	ft_push_back(&m, (t_point3d){1,2,3,0xff});
+// 	ft_push_back(&m, (t_point3d){0,2,6,0x00});
+// 	print(&m);
+// }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -599,7 +614,135 @@ int main()
 
 
 
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 // typedef struct s_free
 // {
@@ -695,9 +838,6 @@ int main()
 // }
 
 
-
-
-
 // int main()
 // {
 // 	int i = 0;
@@ -724,6 +864,7 @@ int main()
 // 	ft_panic("Error:", NULL, matric, NULL);
 // }
 
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
 
@@ -775,25 +916,6 @@ int main()
 
 
 
-	// printf("\n)))))))))))))))))))))))--- 1 ---)))))))))))))))))))))))))))))))))\n");
-	// while (tree && tree[i])
-	// {
-	// 	j = 0;
-	// 	while(tree[i] && tree[i][j])
-	// 	{
-	// 		k = 0;
-	// 		while (tree[i][j] && tree[i][j][k])
-	// 		{
-	// 			printf("%c ", tree[i][j][k]);
-	// 			++k;	
-	// 		}
-	// 		printf("\n");
-	// 		j++;
-	// 	}
-	// 	printf("\n---------------------------\n");
-	// 	++i;
-	// }
-	// printf("\n)))))))))))))))))))))))--- 1 ---)))))))))))))))))))))))))))))))))\n");
 
 
 
@@ -1161,45 +1283,90 @@ int main()
 
 
 
-// ?????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
 
-// int ft_is_xvalue(char *token)
-// {
-// 	int i = 0;
 
-// 	if (!token || !(*token))
-// 		return 0;
 
-// 	while (token[i] != '\0')
-// 	{
-// 		if (!isxdigit(token[i]))
-// 		{
-// 			printf("error: not hexadecimal\n");
-// 			return (0);
-//         }
-// 		i++;
-// 	}
-// 	return (1);
-// }
 
-// #define F 100
 
-// int main()
-// {
-// 	// char *str = "";
-// 	// char *token1 = ft_extract_substring(str, ',', 0);
-// 	// char *token2 = ft_extract_substring(str, '\0', (ft_setindex(str, ',')));
 
-// 	// printf("token 1 =%s-\n", token1);
-// 	// printf("token 2 =%s-\n", token2);
 
-// 	char *a = "0x45fffffffdfswfffff";
-// 	int color = 0;
-	
-// 	color = F;
-// 	printf("%d\n", color);
-// 	return(0);
-// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1391,14 +1558,6 @@ int ft_stop_point(int vul)
     return (0);
 }
 
-
-
-
-
-
-
-
-
 size_t ft_strlen(const char *str)
 {
 	const char	*ptr;
@@ -1488,430 +1647,3 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 		dst[i + j] = '\0';
 	return (i + ft_strlen(src));
 }
-
-// void	ft_panic(char *str)
-// {
-// 	write (2, str, ft_strlen(str));
-// 	write (2, "\n", 1);
-// 	exit (EXIT_FAILURE);
-// }
-
-
-// static char	*ft_join(char *s1, char const *s2)
-// {
-// 	size_t	i;
-// 	size_t	j;
-// 	char* str;
-
-// 	i = -1;
-// 	j = -1;
-// 	if (!s1 && !s2)
-// 		return (ft_strdup(""));
-// 	if (s1 && !s2)
-// 		return (ft_strdup(s1));
-// 	if (!s1 && s2)
-// 		return (ft_strdup(s2));
-// 	str = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-// 	if (!str)
-// 		return (0);
-// 	while(s1 && s1[++i])
-// 		str[++j] = s1[i];
-// 	i = -1;
-// 	while(s2 && s2[++i])
-// 		str[++j] = s2[i];
-// 	str[j] = 0;
-// 	free(s1);
-// 	return (str);
-// }
-
-
-
-// char	*ft_join(char *s1, char const *s2)
-// {
-// 	int i;
-// 	int j;
-// 	char* str;
-
-// 	i = -1;
-// 	j = -1;
-// 	str = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-// 	if (!str)
-// 		return (0);
-// 	while(s1 && s1[++i])
-// 		str[++j] = s1[i];
-// 	i = -1;
-// 	while(s2 && s2[++i])
-// 		str[++j] = s2[i];
-// 	str[j] = 0;
-// 	free(s1);
-// 	return (str);
-// }
-
-// static char	*ft_join(char *s1, char const *s2)
-// {
-// 	size_t	i;
-// 	size_t	j;
-// 	char* str;
-
-// 	i = -1;
-// 	j = -1;
-// 	if (!s1 && !s2)
-// 		return (ft_strdup(""));
-// 	if (s1 && !s2)
-// 		return (ft_strdup(s1));
-// 	if (!s1 && s2)
-// 		return (ft_strdup(s2));
-// 	str = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-// 	if (!str)
-// 		return (0);
-// 	while(s1 && s1[++i])
-// 		str[++j] = s1[i];
-// 	i = -1;
-// 	while(s2 && s2[++i])
-// 		str[++j] = s2[i];
-// 	str[j] = 0;
-// 	free(s1);
-// 	return (str);
-// }
-
-// char	*ft_strjoin(char const *s1, char const *s2)
-// {
-// 	char	*new;
-// 	size_t	len1;
-// 	size_t	len2;
-
-// 	if (!s1 && !s2)
-// 		return (ft_strdup(""));
-// 	if (s1 && !s2)
-// 		return (ft_strdup(s1));
-// 	if (!s1 && s2)
-// 		return (ft_strdup(s2));
-// 	len1 = ft_strlen(s1);
-// 	len2 = ft_strlen(s2);
-// 	new = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
-// 	if (!new)
-// 		return (NULL);
-// 	ft_strlcpy(new, s1, len1 + 1);
-// 	ft_strlcat(new, s2, len1 + len2 + 1);
-// 	return (new);
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// static void ft_free_utils(char *mes, char *de_token, char *hx_token)
-// {
-// 	ft_free_args(de_token, 0, 0);
-// 	ft_free_args(hx_token, 0, 0);
-// 	ft_panic (mes);
-// }
-
-// int	ft_atoi_fdf(char *de_token, char *hx_token)
-// {
-// 	size_t	i;
-// 	int		sign;
-// 	int		res;
-// 	int		mult;
-
-// 	i = 0;
-// 	res = 0;
-// 	sign = 1;
-// 	mult = 0;
-// 	if (!(de_token) || !(*de_token))
-// 		return (0);
-// 	while (de_token && *de_token && ft_isspace(de_token[i]))
-// 		++i;
-// 	if (de_token[i] == '-' || de_token[i] == '+')
-// 	{
-// 		if (de_token[i] == '-')
-// 			sign = -1;
-// 		++i;
-// 	}
-// 	while (de_token[i] == '0')
-// 		++i;
-// 	while ('0' <= de_token[i] && de_token[i] <= '9')
-// 	{
-// 		if (ft_ismultiply_overflow(res, 10))
-// 			ft_free_utils("Error: Overflow error", de_token, hx_token);
-// 		mult = res * 10;
-// 		if (ft_isadd_overflow(mult, (de_token[i] - '0'), sign))
-// 			ft_free_utils("Error: Overflow error", de_token, hx_token);
-// 		res = res * 10 + (de_token[i] - '0');
-// 		++i;
-// 	}
-// 	if (ft_ismultiply_overflow(res, sign))
-// 		ft_free_utils("Error: Overflow error", de_token, hx_token);
-// 	return (sign * res);
-// }
-
-// int	ft_decimal_check(char *de_token, char *hx_token)
-// {
-// 	int i;
-// 	int value;
-	
-// 	if (!de_token || !(*de_token))
-// 		return (0);
-// 	i = -1;
-// 	value = 0;
-// 	while (de_token[++i])
-// 		if (!ft_isdigit(de_token[i]))
-// 			ft_free_utils("Error: Overflow error", de_token, hx_token);
-// 	value = ft_atoi_fdf(de_token, hx_token);
-// 	return (value);
-// }
