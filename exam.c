@@ -6,7 +6,7 @@
 /*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 17:09:01 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/07/23 12:20:17 by gehovhan         ###   ########.fr       */
+/*   Updated: 2023/07/23 22:22:43 by gehovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -301,101 +301,134 @@ void	        *ft_memcpy(void *dst, const void *src, size_t n);
 // 	exit (1);
 // }
 
-int main()
+// int main()
+// {
+// 	printf("heloo");
+// 	return (0);
+// }
+
+
+
+
+
+
+
+
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+/**
+* function drawline(cord1_x, cord1_y, cord2_x, cord2_y)
+*     module_x = absolute value of (cord2_x - cord1_x)
+*     module_y = absolute value of (cord2_y - cord1_y)
+*     x = cord1_x
+*     y = cord1_y
+*     p = 2 * module_y - module_x
+* 
+*     while x <= cord2_x
+*         print (x, y)
+*         x = x + 1
+* 
+*         if p >= 0
+*             y = y + 1
+*             p = p + 2 * module_y - 2 * module_x
+*         else
+*             p = p + 2 * module_y
+*         end if
+*     end while
+* end function
+*/
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct	s_line_cord
 {
-	printf("heloo");
-	return (0);
+	int x1; 
+	int x2; 
+	int y1;
+	int y2;
+} t_line_cord;
+
+struct s_line
+{
+	int	dx;
+} t_line;
+
+
+
+
+
+void	drawline(int x1, int y1, int x2, int y2)
+{
+    int x;
+	int y;
+    int x_end;
+    int dx;
+    int dy;
+    int d;
+    int i1;
+    int i2;
+	
+	dx = x2 - x1;//  delta:
+	dy = y2 - y1;//	 delta:
+	d = ((2 * dy) - dx); // irakan gci heravorutyuny "distance"
+	i1 = 2 * dy;
+	i2 = 2 * (dy - dx);
+	
+    /* Consider (x, y) as starting point and x_end as maximum possible value of x */
+    if (dx < 0)
+	{
+        x = x2;
+        y = y2;
+        x_end = x1;
+    } else 
+	{
+        x = x1;
+        y = y1;
+        x_end = x2;
+    }
+
+    /* Generate point at (x, y) coordinates */
+    printf("(%d, %d)\n", x, y);
+    /* Check if whole line is generated. */
+    while (x < x_end) 
+	{
+        /* Calculate coordinates of the next pixel */
+        if (d < 0)
+            d += i1;
+        else 
+		{
+            d += i2;
+            y++;
+        }
+        x++;
+        printf("(%d, %d)\n", x, y);
+    }
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+int main()
+{
+    int	cord1_x;
+	int	cord1_y;    
+	int	cord2_x;
+	int	cord2_y;
+
+    printf("Enter co-ordinates of first point: ");
+    scanf("%d%d", &cord1_x, &cord1_y);
+
+    printf("Enter co-ordinates of second point: ");
+    scanf("%d%d", &cord2_x, &cord2_y);
+
+    drawline(cord1_x, cord1_y, cord2_x, cord2_y);
+
+    return 0;
+}
 
 
 

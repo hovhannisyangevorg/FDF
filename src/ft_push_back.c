@@ -6,34 +6,15 @@
 /*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 11:16:15 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/07/23 13:09:27 by gehovhan         ###   ########.fr       */
+/*   Updated: 2023/07/23 14:22:23 by gehovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-// t_point3d	*ft_init_point3d(t_point3d vulue, size_t size, size_t capacity)
+// void	ft_free()
 // {
-// 	size_t		i;
-// 	t_point3d	*new_point;
-
-// 	if (capacity == 0)
-// 		capacity++;
-// 	if (size == capacity)
-// 		capacity *= 2;
-// 	new_point = (t_point3d *)malloc(sizeof(t_point3d) * capacity);
-// 	if (!new_point)
-// 		return (0);
-// 	i = 0;
-// 	while (i < size)
-// 	{
-// 		new_point[i].x = vulue.x;
-// 		new_point[i].y = vulue.y;
-// 		new_point[i].z = vulue.z;
-// 		new_point[i].color = vulue.color;
-// 		i++;
-// 	}
-// 	return (new_point);
+	
 // }
 
 void	ft_init(t_matrix *m, size_t size)
@@ -45,7 +26,7 @@ void	ft_init(t_matrix *m, size_t size)
 	m->cord = 0;
 	if (size)
 	{
-		m->cord = malloc(sizeof(t_point3d) * size);
+		m->cord = (t_point3d *)malloc(sizeof(t_point3d) * size);
 		if (!m->cord)
 			return ;
 	}
