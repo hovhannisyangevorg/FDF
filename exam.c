@@ -6,11 +6,12 @@
 /*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 17:09:01 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/07/23 22:22:43 by gehovhan         ###   ########.fr       */
+/*   Updated: 2023/08/11 18:00:58 by gehovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <limits.h>
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
@@ -34,6 +35,9 @@ size_t	        ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	        ft_strlcat(char *dst, const char *src, size_t size);
 int             ft_strfind(const char *str, const char *chars);
 void	        *ft_memcpy(void *dst, const void *src, size_t n);
+int				ft_isadd_overflow(int a, int b, int sign);
+int				ft_ismultiply_overflow(int a, int b);
+void			ft_panic(char *error);
 
 // static int	ft_isspace(char c)
 // {
@@ -317,118 +321,436 @@ void	        *ft_memcpy(void *dst, const void *src, size_t n);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+// #include <math.h>
+
+// typedef struct	s_line_cord
+// {
+// 	int x1; 
+// 	int x2; 
+// 	int y1;
+// 	int y2;
+// } t_line_cord;
+
+// typedef struct	s_distance_formula
+// {
+// 	int x;
+//     int y;
+//     int dx;
+//     int dy;
+//     int d;		
+// } t_distance_formula;
+
+// // Calculating distance
+// int ft_distance(t_line_cord *cord, int dx, int dy)
+// {
+//     return (int)sqrt(dx * dx + dy * dy);
+// }
+
+// void ft_drawline(t_line_cord *cord)
+// {
+// 	t_distance_formula dist;
+//     int x_end;
+//     int i1;
+//     int i2;
+
+//     dist.dx = cord->x2 - cord->x1;   				// Calculate the change in x (delta x)
+//     dist.dy = cord->y2 - cord->y1;   				// Calculate the change in y (delta y)
+// 	dist.d = ft_distance(cord, dist.dx, dist.dy);				// Initialize the decision parameter d using the "Distance formula"
+//     i1 = 2 * dist.dy;    							// Calculate the increments for diagonally moving pixels
+//     i2 = 2 * (dist.dy - dist.dx); 						// Calculate the increments for vertically moving pixels
+
+//     /* 
+// 		Determine the starting point and x_end 
+// 	*/
+//     if (dist.dx < 0)
+//     {
+//         dist.x = cord->x2;
+//         dist.y = cord->y2;
+//         x_end = cord->x1;
+//     }
+//     else
+//     {
+//         dist.x = cord->x1;
+//         dist.y = cord->y1;
+//         x_end = cord->x2;
+//     }
+
+//     /* Print the starting point */
+//     printf("(%d, %d)\n", dist.x, dist.y);
+    
+//     /* Draw the line using Bresenham's algorithm */
+//     while (dist.x < x_end)
+//     {
+//         if (dist.d < 0)
+//             dist.d += i1; // Move diagonally
+//         else
+//         {
+//             dist.d += i2; // Move vertically and diagonally
+//             dist.y++;
+//         }
+//         dist.x++;
+//         printf("(%d, %d)\n", dist.x, dist.y); // Print the current pixel coordinates
+//     }
+// }
+
+// int main()
+// {
+// 	t_line_cord cord;
+// 	cord.x1 = 1;
+// 	cord.y1 = 5;
+// 	cord.x2 = 8;
+// 	cord.y2 = 15;
+//     ft_drawline(&cord);
+
+//     return 0;
+// }
+
+
+//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+
 #include <stdio.h>
-#include <stdlib.h>
+#include <math.h>
 
-/**
-* function drawline(cord1_x, cord1_y, cord2_x, cord2_y)
-*     module_x = absolute value of (cord2_x - cord1_x)
-*     module_y = absolute value of (cord2_y - cord1_y)
-*     x = cord1_x
-*     y = cord1_y
-*     p = 2 * module_y - module_x
-* 
-*     while x <= cord2_x
-*         print (x, y)
-*         x = x + 1
-* 
-*         if p >= 0
-*             y = y + 1
-*             p = p + 2 * module_y - 2 * module_x
-*         else
-*             p = p + 2 * module_y
-*         end if
-*     end while
-* end function
-*/
-
-
-#include <stdio.h>
-#include <stdlib.h>
-
-typedef struct	s_line_cord
+typedef struct s_line_cord
 {
 	int x1; 
-	int x2; 
 	int y1;
+	int z1;
+	int x2; 
 	int y2;
+	int z2;
 } t_line_cord;
 
-struct s_line
+typedef struct s_distance_formula
 {
-	int	dx;
-} t_line;
-
-
-
-
-
-void	drawline(int x1, int y1, int x2, int y2)
-{
-    int x;
+	int x;
 	int y;
-    int x_end;
-    int dx;
-    int dy;
-    int d;
-    int i1;
-    int i2;
-	
-	dx = x2 - x1;//  delta:
-	dy = y2 - y1;//	 delta:
-	d = ((2 * dy) - dx); // irakan gci heravorutyuny "distance"
-	i1 = 2 * dy;
-	i2 = 2 * (dy - dx);
-	
-    /* Consider (x, y) as starting point and x_end as maximum possible value of x */
-    if (dx < 0)
-	{
-        x = x2;
-        y = y2;
-        x_end = x1;
-    } else 
-	{
-        x = x1;
-        y = y1;
-        x_end = x2;
-    }
+	int z;
+	int dx;
+	int dy;
+	int dz;
+	int d;
+} t_distance_formula;
 
-    /* Generate point at (x, y) coordinates */
-    printf("(%d, %d)\n", x, y);
-    /* Check if whole line is generated. */
-    while (x < x_end) 
-	{
-        /* Calculate coordinates of the next pixel */
-        if (d < 0)
-            d += i1;
-        else 
-		{
-            d += i2;
-            y++;
-        }
-        x++;
-        printf("(%d, %d)\n", x, y);
-    }
+
+int ft_distance(t_distance_formula *dist)
+{
+    return ((int)sqrt(pow(dist->dx, 2) + pow(dist->dy, 2) + pow(dist->dz, 2)));
 }
 
+void ft_drawline(t_line_cord *cord)
+{
+	t_distance_formula dist;
+	int x_end;
+	int i1;
+	int i2;
+
+	dist.dx = (cord->x2 - cord->x1);
+	dist.dy = (cord->y2 - cord->y1);
+	dist.dz = (cord->z2 - cord->z1);
+	dist.d  = ft_distance(&dist);
+	i1 = (2 * dist.dy);
+	i2 = (2 * (dist.dy - dist.dx));
+
+	if (dist.dx < 0)
+	{
+		dist.x = cord->x2;
+		dist.y = cord->y2;
+		dist.z = cord->z2;
+		x_end = cord->x1;
+	}
+	else
+	{
+		dist.x = cord->x1;
+		dist.y = cord->y1;
+		dist.z = cord->z1;
+		x_end = cord->x2;
+	}
+	// printf("(%d, %d, %d)\n", dist.x, dist.y, dist.z);
+	while (dist.x < x_end)
+	{
+		if (dist.d < 0)
+			dist.d += i1;
+		else
+		{
+			dist.d += i2;
+			dist.y++;
+		}
+		dist.x++;
+		dist.z++;
+		printf("(%d, %d, %d)\n", dist.x, dist.y, dist.z);
+	}
+}
 
 int main()
 {
-    int	cord1_x;
-	int	cord1_y;    
-	int	cord2_x;
-	int	cord2_y;
+    t_line_cord cord;
+    cord.x1 = 21;
+    cord.y1 = 5;
+    cord.z1 = 2;
+    cord.x2 = 8;
+    cord.y2 = 15;
+    cord.z2 = 10;
 
-    printf("Enter co-ordinates of first point: ");
-    scanf("%d%d", &cord1_x, &cord1_y);
-
-    printf("Enter co-ordinates of second point: ");
-    scanf("%d%d", &cord2_x, &cord2_y);
-
-    drawline(cord1_x, cord1_y, cord2_x, cord2_y);
+    ft_drawline(&cord);
 
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1679,4 +2001,38 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	if (i < size)
 		dst[i + j] = '\0';
 	return (i + ft_strlen(src));
+}
+
+
+int	ft_ismultiply_overflow(int a, int b)
+{
+	int	result;
+
+	if (a == 0 || b == 0)
+		return (0);
+	result = a * b;
+	if (a == result || a == result / b)
+		return (0);
+	return (1);
+}
+
+int	ft_isadd_overflow(int a, int b, int sign)
+{
+	int	result;
+
+	result = a + b;
+	if (sign < 0 && result == INT_MIN)
+		return (0);
+	if (a > 0 && b > 0 && result < 0)
+		return (1);
+	if (a < 0 && b < 0 && result > 0)
+		return (1);
+	return (0);
+}
+
+void	ft_panic(char *error)
+{
+	write (2, error, ft_strlen(error));
+	write (2, "\n", 1);
+	exit (1);
 }

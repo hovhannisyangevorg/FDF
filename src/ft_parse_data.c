@@ -6,7 +6,7 @@
 /*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 18:48:41 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/07/23 13:10:31 by gehovhan         ###   ########.fr       */
+/*   Updated: 2023/08/11 18:30:02 by gehovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,10 @@ void	ft_parse_data(char *token, int width, int height, t_matrix *matrix)
 	w_token2 = ft_extract_substring(token, '\0', ft_setindex(token, ','));
 	de_coord = ft_decimal_check(&w_token1, &w_token2);
 	hx_color = ft_hexdec_check(&w_token1, &w_token2);
-	printf("\n-------------Count %d ----------------\n", ++i);
+	printf("\n------------- Count ----------------\n");
 	ft_push_back(matrix, (t_point3d){width, height, de_coord, hx_color});
 	ft_print_matrix(matrix);
+	printf("\n------------- Count ----------------\n");
 }
 
 
