@@ -37,9 +37,10 @@ void	ft_free_args(char **str, char ***strvec, char ****strthree);
 
 /* ft_push_back.c */
 t_point3d	*ft_init_point3d(t_point3d vulue, size_t size, size_t capacity);
-void		ft_init(t_matrix *m, size_t size);
+void	    ft_init(t_map *map, size_t size);
 void		ft_update_capacity(t_matrix *m, size_t size);
 void		ft_push_back(t_matrix *m, t_point3d val);
 void		ft_print_matrix(t_matrix *m);
+void	    ft_decide_x(t_map *map);
 
 #endif

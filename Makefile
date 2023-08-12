@@ -2,7 +2,15 @@ NAME 		= 	fdf
 SRC_DIR 	= 	src
 OBJ_DIR		= 	obj
 INC_DIR		=	include
-MLX_DIR		=	mlx
+OS 			=	$(shell uname -s)
+
+ifeq ($(OS), Linux)
+	LINKERS +=  -lXext -lX11 -lm -lz
+	MLX_DIR = mlx_linux
+else
+	LINKERS +=  -framework OpenGL -framework AppKit
+	MLX_DIR		=	mlx
+endif
 
 FT_LIB			= libft
 LIBS			= $(FT_LIB)/libft.a
@@ -12,19 +20,23 @@ INCS		=	-I$(INC_DIR) -I$(MLX_DIR) -I$(FT_LIB)/include
 RM			=	rm -rf
 MK			=	mkdir -p
 CFLAGS		=	-Wall -Wextra -Werror $(SANIT_FLAG)
-SANIT_FLAG	=	-g3 -fsanitize=address
+SANIT_FLAG	=	-g3 #-fsanitize=address
 
 SRCS		= 	$(wildcard $(SRC_DIR)/*.c)
 OBJS		=	$(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
 HEADERS		=	$(wildcard $(INC_DIR)/*.h)
-LINKERS		=	-L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit -L$(FT_LIB) -lft
+
+
+LINKERS		=	-L$(MLX_DIR) -lmlx -L$(FT_LIB) -lft
+
+
 
 .DEFAULT_GOAL	=	all
 
 $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c $(HEADERS)
 	$(CC) $(CFLAGS) $(INCS) -c $< -o $@
 
-all: $(NAME) $(LIBS)
+all: $(LIBS) $(NAME) 
 
 $(NAME):	$(OBJ_DIR) $(OBJS)
 	$(CC) $(OBJS) $(CFLAGS) $(INCS) -o $@ $(LINKERS)

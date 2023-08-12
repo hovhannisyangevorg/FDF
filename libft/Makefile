@@ -3,14 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+         #
+#    By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/27 21:12:42 by gehovhan          #+#    #+#              #
-#    Updated: 2023/07/20 21:39:03 by gehovhan         ###   ########.fr        #
+#    Updated: 2023/08/11 20:01:48 by gevorg           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= libft.a
+
+OS 			=	$(shell uname -s)
 
 SRCS			=	src/ft_isalpha.c src/ft_isdigit.c src/ft_isalnum.c  src/ft_isascii.c src/ft_isprint.c \
 					src/ft_strlen.c src/ft_memset.c src/ft_bzero.c src/ft_memcpy.c src/ft_memmove.c \
@@ -30,7 +32,7 @@ HDRS			=	include/libft.h
 INCS			=	-Iinclude
 CC				= 	cc
 RM				= 	rm -f
-CFLAGS			= 	-Wall -Wextra -Werror -Iinclude
+CFLAGS			= 	-Wall -Wextra -Werror -Iinclude -D$(OS)
 SANIT_FLAG		=	-g3 -fsanitize=address
 
 .DEFAULT_GOAL	=	all

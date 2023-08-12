@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_word.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 18:23:24 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/07/20 20:51:41 by gehovhan         ###   ########.fr       */
+/*   Updated: 2023/08/12 15:55:07 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,13 @@ static char	*get_buffer(char *buff)
 	return (after);
 }
 
-static char	*get_token(char **buff, int *flag)
+static char	*get_token(char **buff, size_t*h)
 {
 	int		i;
 	int		j;
 	int		len;
 	char	*token;
-
+	
 	i = 0;
 	j = 0;
 	len = 0;
@@ -75,18 +75,21 @@ static char	*get_token(char **buff, int *flag)
 	{
 		free(*buff);
 		*buff = 0;
-		(*flag)++;
+		(*h)++;
 		return (0);
 	}
 	while ((*buff) && (*buff)[i] && ft_isspace((*buff)[i]))
-		i++;
-	j = i;
-	while ((*buff) && (*buff)[i] && !ft_isspace((*buff)[i++]))
 	{
 		if ((*buff)[i] == '\n')
-			(*flag)++;
-		len++;
+			(*h)++;
+		i++;
 	}
+	j = i;
+	while ((*buff) && (*buff)[i] && !ft_isspace((*buff)[i++]))
+		len++;
+	if ((*buff)[i] == '\n')
+		(*h)++;
+		
 	token = (char *)malloc(sizeof(char) * (len + 1));
 	if (!token)
 		return (0);
@@ -97,7 +100,7 @@ static char	*get_token(char **buff, int *flag)
 	return (token);
 }
 
-char *get_next_word(int fd, int *flag) 
+char *get_next_word(int fd, size_t *h) 
 {
 	static char *buff;
 	char		*readed;
@@ -120,7 +123,7 @@ char *get_next_word(int fd, int *flag)
 	free(readed);
 	if (res < 0)
 		return (0);
-	token = get_token(&buff, flag);
+	token = get_token(&buff, h);
 	buff = get_buffer(buff);
 	return (token);
 }

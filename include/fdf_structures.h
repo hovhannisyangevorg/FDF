@@ -6,9 +6,9 @@ typedef struct s_mlx t_mlx;
 typedef struct s_point3d t_point3d;
 typedef struct s_vector3d t_vector3d;
 typedef struct s_matrix t_matrix;
-// typedef struct s_point2d t_point2d;
+typedef struct s_map t_map;
 // typedef struct s_vector2d t_vector2d;
-// typedef struct s_map t_map;
+// typedef struct s_point2d t_point2d;
 
 
 // typedef struct s_calcul t_calcul;
@@ -96,6 +96,13 @@ struct s_matrix
 	t_point3d	*cord;
 	size_t		capacity;
 	size_t		size;
+};
+
+struct s_map
+{
+	t_matrix matrix;
+	size_t height;
+	size_t width;
 };
 
 struct s_calcul

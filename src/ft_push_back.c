@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push_back.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 11:16:15 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/11 18:29:18 by gehovhan         ###   ########.fr       */
+/*   Updated: 2023/08/12 18:22:25 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,18 @@
 	
 // }
 
-void	ft_init(t_matrix *m, size_t size)
+void	ft_init(t_map *map, size_t size)
 {
-	if (!m)
+	if (!map)
 		return ;
-	m->size = size;
-	m->capacity = size;
-	m->cord = 0;
+
+	map->matrix.size = size;
+	map->matrix.capacity = size;
+	map->matrix.cord = 0;
 	if (size)
 	{
-		m->cord = (t_point3d *)malloc(sizeof(t_point3d) * size);
-		if (!m->cord)
+		map->matrix.cord = (t_point3d *)malloc(sizeof(t_point3d) * size);
+		if (!map->matrix.cord)
 			return ;
 	}
 }
@@ -81,8 +82,51 @@ void	ft_print_matrix(t_matrix *m)
 	while (i < m->size)
 	{
 		printf ("%zu). ", ++print_count);
-		printf ("(%d, %d, ", m->cord[i].x, m->cord[i].y);
-		printf ("%d, %x)\n", m->cord[i].z, m->cord[i].color);
+		printf ("(%d, %d, %d, %x)\n", m->cord[i].x, m->cord[i].y, m->cord[i].z, m->cord[i].color);
 		i++;
 	}
 }
+
+void	ft_decide_x(t_map *map)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	j = 0;
+	while (i < map->height)
+	{
+		j = 0;
+		while (j < map->width)
+		{
+			map->matrix.cord[i * map->width + j].x = j;
+			// printf ("{%d, %d, %d, %x}\n", map->matrix.cord[i * map->width + j].x, map->matrix.cord[i * map->width + j].y, map->matrix.cord[i * map->width + j].z, map->matrix.cord[i * map->width + j].color);
+			j++;
+		}
+		i++;
+	}
+}
+
+
+
+
+
+// void	ft_decide_x(t_map *map)
+// {
+// 	size_t	i;
+// 	size_t	j;
+
+// 	i = 0;
+// 	j = 0;
+// 	while (i < map->height)
+// 	{
+// 		j = 0;
+// 		while (j < map->width)
+// 		{
+// 			map->matrix.cord[i * map->width + j].x = j;
+// 			// printf ("{%d, %d, %d, %x}\n", map->matrix.cord[i * map->width + j].x, map->matrix.cord[i * map->width + j].y, map->matrix.cord[i * map->width + j].z, map->matrix.cord[i * map->width + j].color);
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// }

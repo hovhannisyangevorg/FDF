@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:10:28 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/07/20 20:39:42 by gehovhan         ###   ########.fr       */
+/*   Updated: 2023/08/12 15:54:10 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 # include <limits.h>
 # include <unistd.h>
 # include <fcntl.h>
-
+#ifdef Linux
+	#include <stdint.h>
+#endif
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 100
 # endif
@@ -59,7 +61,7 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 char	*ft_strpbrk(const char *str1, const char *str2);
 int		ft_strfind(const char *str, const char *chars);
-char 	*get_next_word(int fd, int *flag);
+char 	*get_next_word(int fd, size_t* h);
 void	ft_panic(char *error);
 int		ft_ismultiply_overflow(int a, int b);
 int		ft_isadd_overflow(int a, int b, int sign);
