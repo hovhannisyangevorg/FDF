@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exam.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 17:09:01 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/11 18:00:58 by gehovhan         ###   ########.fr       */
+/*   Updated: 2023/08/14 17:12:51 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -483,6 +483,19 @@ void			ft_panic(char *error);
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////irakan|||||||||||||||||||||||||
+/*
 #include <stdio.h>
 #include <math.h>
 
@@ -571,61 +584,201 @@ int main()
 
     return 0;
 }
+*/
+
+
+
+
+// #include <stdio.h>
+// #include <stdlib.h>
+
+// typedef struct s_add
+// {
+// 	int *arr;
+// 	int size;
+// 	int capacity;
+// 	int elem;	
+// } t_add;
+
+// void ft_init_arrey(t_add *tab, size_t size)
+// {
+// 	if (!tab)
+// 		return ;
+
+// 	tab->size = size;
+// 	tab->capacity = size;
+// 	tab->elem = 0;
+// 	if (size)
+// 	{
+// 		tab->arr = (int *)malloc(sizeof(int) * size);
+// 		if (!tab->arr)
+// 			return ;
+// 	}
+// }
+
+// void	ft_update_capacity_arrey(t_add *tab, size_t size)
+// {
+// 	size_t 	i;
+// 	size_t 	new_cap;
+// 	int 	*arr;
+// 	if (!tab)
+// 		return (NULL);
+
+// 	if (!tab->capacity)
+// 		new_cap = size;
+// 	else if (tab->capacity <= size)
+// 		new_cap *= 2;
+// 	i = 0;
+// 	if (new_cap != tab->capacity)
+// 	{
+// 		arr = (int *)malloc(sizeof(int) * new_cap);
+// 		if (!arr)
+// 			return ;
+// 		while (i < tab->size)
+// 		{
+// 			arr[i] = tab->arr[i];
+// 			i++;
+// 		}
+// 		tab->capacity = new_cap;
+// 		tab.
+// 	}	
+// }
+
+// void	ft_push_back(t_matrix *m, t_point3d val)
+// {
+// 	if (!m)
+// 		return ;
+// 	ft_update_capacity(m, m->size + 1);
+// 	m->cord[m->size] = val;
+// 	++m->size;
+// }
+
+// int main()
+// {
+// 	t_add tab;
+
+// 	ft_init_arrey(&tab, 0);
+// 	printf("%d, %d, %d,", tab.capacity, tab.size, tab.elem);
+// }
+ 
 
 
 
 
 
 
+#include <stdio.h>
+#include <stdlib.h>
+
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct s_add
+{
+    int *arr;
+    size_t size;
+    size_t capacity;
+} t_add;
+
+void	ft_tabcpy(int *tab1, int *tab2, size_t size)
+{
+	int i;
+	if (!tab1)
+		return ;
+	if (!tab2)
+		return ;
+	i = 0;
+	while (i < size)
+	{
+		tab1[i] = tab2[i];
+		i++;
+    }
+}
+
+void	*ft_memset(void *str, int c, size_t n)
+{
+	unsigned char	*ptr;
+
+	ptr = (unsigned char *)str;
+	while (n--)
+		*ptr++ = (unsigned char)c;
+	return (str);
+}
 
 
+void ft_init(t_add *tab, size_t size)
+{
+	if (!tab)
+		return ;
+	tab->size = size;
+	tab->capacity = size;
+	tab->arr = 0;
+	if (size)
+	{
+		tab->arr = (int *)malloc(sizeof(int) * size);
+		ft_memset(tab->arr, 0, (sizeof(int)));
+		if (!tab->arr)
+			return ;
+	}
+}
+
+void	ft_update_capacity(t_add *tab)
+{
+	int 	*new_tab;
+	size_t 	new_cap;
+	if (!tab)
+		return ;
+	new_cap = tab->capacity;
+	if (!new_cap)
+		new_cap = 1;
+	else if (tab->size + 1 >= new_cap)
+		new_cap *= 2;
+	if (new_cap != tab->capacity)
+	{
+		new_tab = (int *)malloc(sizeof(int) * new_cap);
+		ft_tabcpy(new_tab, tab->arr, tab->size);
+		if (tab->arr)
+			free(tab->arr);
+		tab->arr = new_tab;
+		tab->capacity = new_cap;
+	}
+}
+
+void ft_push_back(t_add *tab, int val)
+{
+	if (!tab)
+		return ;
+	ft_update_capacity(tab);
+	tab->arr[tab->size] = val;
+	tab->size++;
+}
+
+int main()
+{
+    t_add my_tab;
+    
+    ft_init(&my_tab, 10);
+	// ft_push_back(&my_tab, 1);	
+	// ft_push_back(&my_tab, 8);	
+	// ft_push_back(&my_tab, 10);	
+	// ft_push_back(&my_tab, 15);	
+	// ft_push_back(&my_tab, 20);	
+	// ft_push_back(&my_tab, 320);	
+	// ft_push_back(&my_tab, 255);	
+	
+    
+	for (int i = 0; i < 25; i++)
+        ft_push_back(&my_tab, i);
 
 
+    for (int i = 0; i < my_tab.size; i++)
+        printf("%d ", my_tab.arr[i]);
+    printf("\n");
 
+    free(my_tab.arr);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    return 0;
+}
 
 
 

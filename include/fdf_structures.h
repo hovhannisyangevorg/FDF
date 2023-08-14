@@ -7,6 +7,7 @@ typedef struct s_point3d t_point3d;
 typedef struct s_vector3d t_vector3d;
 typedef struct s_matrix t_matrix;
 typedef struct s_map t_map;
+typedef struct s_add t_add;
 // typedef struct s_vector2d t_vector2d;
 // typedef struct s_point2d t_point2d;
 
@@ -109,6 +110,21 @@ struct s_calcul
 {
 	t_point3d 	*math;
 	t_vector3d	*vector;
+};
+
+/*
+*{
+*    int *arr;
+*    int size;
+*    int capacity;
+*    int elem;
+*}
+*/
+struct s_add
+{
+    int *arr;
+    size_t size;
+    size_t capacity;
 };
 
 // function (matrix* m, t_point3d)

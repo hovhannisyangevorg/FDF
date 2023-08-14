@@ -43,4 +43,7 @@ void		ft_push_back(t_matrix *m, t_point3d val);
 void		ft_print_matrix(t_matrix *m);
 void	    ft_decide_x(t_map *map);
 
+/* ft_push_arrey.c */
+void ft_init_arrey(t_add *tab, size_t size);
+void ft_push_arrey(t_add *tab, int val);
 #endif
