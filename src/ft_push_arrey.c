@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push_arrey.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 18:43:26 by gevorg            #+#    #+#             */
-/*   Updated: 2023/08/15 17:34:35 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/08/15 22:37:16 by gehovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static void	ft_tabcpy_util(int *tab1, int *tab2, size_t size)
 {
-	size_t  i;
+	size_t	i;
+
 	if (!tab1)
 		return ;
 	if (!tab2)
@@ -24,10 +25,10 @@ static void	ft_tabcpy_util(int *tab1, int *tab2, size_t size)
 	{
 		tab1[i] = tab2[i];
 		i++;
-    }
+	}
 }
 
-void ft_init_arrey(t_add *tab, size_t size)
+void	ft_init_arrey(t_add *tab, size_t size)
 {
 	if (!tab)
 		return ;
@@ -45,8 +46,9 @@ void ft_init_arrey(t_add *tab, size_t size)
 
 static void	ft_update_capacity_arrey(t_add *tab)
 {
-	int 	*new_tab;
-	size_t 	new_cap;
+	int		*new_tab;
+	size_t	new_cap;
+
 	if (!tab)
 		return ;
 	new_cap = tab->capacity;
@@ -65,9 +67,10 @@ static void	ft_update_capacity_arrey(t_add *tab)
 	}
 }
 
-void ft_push_arrey(t_add *tab, int val)
+void	ft_push_arrey(t_add *tab, int val)
 {
-	int last;
+	int	last;
+
 	if (!tab)
 		return ;
 	ft_update_capacity_arrey(tab);

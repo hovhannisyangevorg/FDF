@@ -3,22 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:10:28 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/15 01:00:33 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/08/15 21:53:41 by gehovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
 # include <stdlib.h>
 # include <limits.h>
 # include <unistd.h>
 # include <fcntl.h>
-#ifdef Linux
-	#include <stdint.h>
-#endif
+
+# ifdef Linux
+#  include <stdint.h>
+# endif
+
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10000
 # endif
@@ -61,7 +64,7 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 char	*ft_strpbrk(const char *str1, const char *str2);
 int		ft_strfind(const char *str, const char *chars);
-char 	*get_next_word(int fd, size_t* h);
+char	*get_next_word(int fd, size_t *h);
 void	ft_panic(char *error);
 int		ft_ismultiply_overflow(int a, int b);
 int		ft_isadd_overflow(int a, int b, int sign);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 14:40:10 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/15 19:23:50 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/08/15 20:08:57 by gehovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,24 +96,3 @@ int main()
 	close(fd);
 	return (0);
 }
-
-
-
-
-	// printf("\n-----------------------|||\n");
-	// printf("%ld", map.matrix.size);
-	// printf("\n-----------------------|||\n");
-
-
-
-// void	ft_count_line(char *file_name)
-// {
-// 	int 	fd;
-// 	size_t 	line;
-	
-// 	fd = open(file_name, O_RDONLY);
-// 	if (fd == -1)
-// 		return (0);
-	
-	
-// }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_word.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 18:23:24 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/15 01:10:38 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/08/15 21:58:23 by gehovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static char	*ft_join(char *s1, char const *s2)
 	alloc_size = ft_strlen(s1) + ft_strlen(s2);
 	i = -1;
 	j = -1;
-	str = (char*)malloc((alloc_size + 1) * sizeof(char));
+	str = (char *)malloc((alloc_size + 1) * sizeof(char));
 	if (!str)
 		return (0);
 	while (s1 && s1[++i])
@@ -65,12 +65,12 @@ static char	*get_token(char **buff, size_t*h)
 	int		j;
 	int		len;
 	char	*token;
-	
+
 	i = 0;
 	j = 0;
 	len = 0;
 	if (!buff || !*buff)
-		return 0;
+		return (0);
 	if (!**buff)
 	{
 		free(*buff);
@@ -97,17 +97,18 @@ static char	*get_token(char **buff, size_t*h)
 	return (token);
 }
 
-char *get_next_word(int fd, size_t *h) 
+char	*get_next_word(int fd, size_t *h)
 {
-	static char *buff;
+	static char	*buff;
 	char		*readed;
 	char		*token;
-	int 		res = -1;
+	int			res;
 
+	res = -1;
 	readed = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!readed)
 		return (0);
-	while (1) 
+	while (1)
 	{
 		res = read(fd, readed, BUFFER_SIZE);
 		readed[res] = '\0';

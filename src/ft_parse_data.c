@@ -3,32 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_data.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 18:48:41 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/15 17:50:19 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/08/15 22:33:48 by gehovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <stdio.h>
 
 char	*ft_extract_substring(const char *token, char c, int index)
 {
-	int 	i = 0;
+	int		i;
 	int		len;
 	char	*new;
-	len		= ft_strlen_start(token, index, c);
-	
+
+	len = ft_strlen_start(token, index, c);
 	if (!token || !(*token) || index < 0)
 		return (0);
 	new = (char *)malloc(sizeof(char) * (len + 1));
 	if (!new)
 		return (0);
+	i = 0;
 	while (token[index] && token[index] != c)
 		new[i++] = (char)token[index++];
 	new[i] = '\0';
-	return(new);
+	return (new);
 }
 
 //! TODO: create function for check if string contains only numbers.
