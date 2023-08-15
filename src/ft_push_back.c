@@ -6,16 +6,16 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 11:16:15 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/12 18:22:25 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/08/15 19:20:11 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-// void	ft_free()
-// {
+void	ft_free()
+{
 	
-// }
+}
 
 void	ft_init(t_map *map, size_t size)
 {
@@ -87,7 +87,7 @@ void	ft_print_matrix(t_matrix *m)
 	}
 }
 
-void	ft_decide_x(t_map *map)
+void	ft_decide_x_y(t_map *map)
 {
 	size_t	i;
 	size_t	j;
@@ -100,7 +100,7 @@ void	ft_decide_x(t_map *map)
 		while (j < map->width)
 		{
 			map->matrix.cord[i * map->width + j].x = j;
-			// printf ("{%d, %d, %d, %x}\n", map->matrix.cord[i * map->width + j].x, map->matrix.cord[i * map->width + j].y, map->matrix.cord[i * map->width + j].z, map->matrix.cord[i * map->width + j].color);
+			map->matrix.cord[i * map->width + j].y = i;
 			j++;
 		}
 		i++;

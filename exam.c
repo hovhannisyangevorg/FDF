@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 17:09:01 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/14 17:12:51 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/08/15 01:54:06 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -665,124 +665,121 @@ int main()
 
 
 
-
-
-#include <stdio.h>
-#include <stdlib.h>
+// ??????????????????//????????????????????????????????????????????????????????????????????????????????????????????????????//
 
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct s_add
-{
-    int *arr;
-    size_t size;
-    size_t capacity;
-} t_add;
+// #include <stdio.h>
+// #include <stdlib.h>
 
-void	ft_tabcpy(int *tab1, int *tab2, size_t size)
-{
-	int i;
-	if (!tab1)
-		return ;
-	if (!tab2)
-		return ;
-	i = 0;
-	while (i < size)
-	{
-		tab1[i] = tab2[i];
-		i++;
-    }
-}
+// typedef struct s_add
+// {
+//     int *arr;
+//     size_t size;
+//     size_t capacity;
+// } t_add;
 
-void	*ft_memset(void *str, int c, size_t n)
-{
-	unsigned char	*ptr;
+// void	ft_tabcpy(int *tab1, int *tab2, size_t size)
+// {
+// 	int i;
+// 	if (!tab1)
+// 		return ;
+// 	if (!tab2)
+// 		return ;
+// 	i = 0;
+// 	while (i < size)
+// 	{
+// 		tab1[i] = tab2[i];
+// 		i++;
+//     }
+// }
 
-	ptr = (unsigned char *)str;
-	while (n--)
-		*ptr++ = (unsigned char)c;
-	return (str);
-}
+// void	*ft_memset(void *str, int c, size_t n)
+// {
+// 	unsigned char	*ptr;
+
+// 	ptr = (unsigned char *)str;
+// 	while (n--)
+// 		*ptr++ = (unsigned char)c;
+// 	return (str);
+// }
 
 
-void ft_init(t_add *tab, size_t size)
-{
-	if (!tab)
-		return ;
-	tab->size = size;
-	tab->capacity = size;
-	tab->arr = 0;
-	if (size)
-	{
-		tab->arr = (int *)malloc(sizeof(int) * size);
-		ft_memset(tab->arr, 0, (sizeof(int)));
-		if (!tab->arr)
-			return ;
-	}
-}
+// void ft_init(t_add *tab, size_t size)
+// {
+// 	if (!tab)
+// 		return ;
+// 	tab->size = size;
+// 	tab->capacity = size;
+// 	tab->arr = 0;
+// 	if (size)
+// 	{
+// 		tab->arr = (int *)malloc(sizeof(int) * size);
+// 		ft_memset(tab->arr, 0, (sizeof(int)));
+// 		if (!tab->arr)
+// 			return ;
+// 	}
+// }
 
-void	ft_update_capacity(t_add *tab)
-{
-	int 	*new_tab;
-	size_t 	new_cap;
-	if (!tab)
-		return ;
-	new_cap = tab->capacity;
-	if (!new_cap)
-		new_cap = 1;
-	else if (tab->size + 1 >= new_cap)
-		new_cap *= 2;
-	if (new_cap != tab->capacity)
-	{
-		new_tab = (int *)malloc(sizeof(int) * new_cap);
-		ft_tabcpy(new_tab, tab->arr, tab->size);
-		if (tab->arr)
-			free(tab->arr);
-		tab->arr = new_tab;
-		tab->capacity = new_cap;
-	}
-}
+// void	ft_update_capacity(t_add *tab)
+// {
+// 	int 	*new_tab;
+// 	size_t 	new_cap;
+// 	if (!tab)
+// 		return ;
+// 	new_cap = tab->capacity;
+// 	if (!new_cap)
+// 		new_cap = 1;
+// 	else if (tab->size + 1 >= new_cap)
+// 		new_cap *= 2;
+// 	if (new_cap != tab->capacity)
+// 	{
+// 		new_tab = (int *)malloc(sizeof(int) * new_cap);
+// 		ft_tabcpy(new_tab, tab->arr, tab->size);
+// 		if (tab->arr)
+// 			free(tab->arr);
+// 		tab->arr = new_tab;
+// 		tab->capacity = new_cap;
+// 	}
+// }
 
-void ft_push_back(t_add *tab, int val)
-{
-	if (!tab)
-		return ;
-	ft_update_capacity(tab);
-	tab->arr[tab->size] = val;
-	tab->size++;
-}
+// void ft_push_back(t_add *tab, int val)
+// {
+// 	if (!tab)
+// 		return ;
+// 	ft_update_capacity(tab);
+// 	tab->arr[tab->size] = val;
+// 	tab->size++;
+// }
 
-int main()
-{
-    t_add my_tab;
+// int main()
+// {
+//     t_add my_tab;
     
-    ft_init(&my_tab, 10);
-	// ft_push_back(&my_tab, 1);	
-	// ft_push_back(&my_tab, 8);	
-	// ft_push_back(&my_tab, 10);	
-	// ft_push_back(&my_tab, 15);	
-	// ft_push_back(&my_tab, 20);	
-	// ft_push_back(&my_tab, 320);	
-	// ft_push_back(&my_tab, 255);	
+//     ft_init(&my_tab, 10);
+// 	// ft_push_back(&my_tab, 1);	
+// 	// ft_push_back(&my_tab, 8);	
+// 	// ft_push_back(&my_tab, 10);	
+// 	// ft_push_back(&my_tab, 15);	
+// 	// ft_push_back(&my_tab, 20);	
+// 	// ft_push_back(&my_tab, 320);	
+// 	// ft_push_back(&my_tab, 255);	
 	
     
-	for (int i = 0; i < 25; i++)
-        ft_push_back(&my_tab, i);
+// 	for (int i = 0; i < 25; i++)
+//         ft_push_back(&my_tab, i);
 
 
-    for (int i = 0; i < my_tab.size; i++)
-        printf("%d ", my_tab.arr[i]);
-    printf("\n");
+//     for (int i = 0; i < my_tab.size; i++)
+//         printf("%d ", my_tab.arr[i]);
+//     printf("\n");
 
-    free(my_tab.arr);
+//     free(my_tab.arr);
 
-    return 0;
-}
-
-
-
-
+//     return 0;
+// }
+// ????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
 
 
 

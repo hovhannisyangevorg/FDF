@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 18:23:24 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/15 00:20:56 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/08/15 01:10:38 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,6 @@ static char	*get_token(char **buff, size_t*h)
 	j = i;
 	while ((*buff) && (*buff)[i] && !ft_isspace((*buff)[i++]))
 		len++;
-	if ((*buff)[i] == '\n')
-		(*h)++;
-		
 	token = (char *)malloc(sizeof(char) * (len + 1));
 	if (!token)
 		return (0);

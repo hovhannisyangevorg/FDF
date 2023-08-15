@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 18:43:26 by gevorg            #+#    #+#             */
-/*   Updated: 2023/08/14 23:29:51 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/08/15 17:34:35 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,15 @@ static void	ft_update_capacity_arrey(t_add *tab)
 
 void ft_push_arrey(t_add *tab, int val)
 {
+	int last;
 	if (!tab)
 		return ;
 	ft_update_capacity_arrey(tab);
+	last = 0;
+	if (tab->size)
+		last = tab->arr[tab->size - 1];
 	tab->arr[tab->size] = val;
 	tab->size++;
+	if (tab->size && val == last)
+		--tab->size;
 }

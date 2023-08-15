@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:10:28 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/12 15:54:10 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/08/15 01:00:33 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 	#include <stdint.h>
 #endif
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 100
+#  define BUFFER_SIZE 10000
 # endif
 
 int		ft_isxdigit(int num);

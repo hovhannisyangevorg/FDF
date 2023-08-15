@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 18:48:41 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/12 17:49:19 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/08/15 17:50:19 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*ft_extract_substring(const char *token, char c, int index)
 }
 
 //! TODO: create function for check if string contains only numbers.
-void	ft_parse_data(char *token, int width, int height, t_matrix *matrix)
+void	ft_parse_data(char *token, t_matrix *matrix)
 {
 	int		de_coord;
 	int		hx_color;
@@ -45,5 +45,5 @@ void	ft_parse_data(char *token, int width, int height, t_matrix *matrix)
 	w_token2 = ft_extract_substring(token, '\0', ft_setindex(token, ','));
 	de_coord = ft_decimal_check(&w_token1, &w_token2);
 	hx_color = ft_hexdec_check(&w_token1, &w_token2);
-	ft_push_back(matrix, (t_point3d){width, height, de_coord, hx_color});
+	ft_push_back(matrix, (t_point3d){0, 0, de_coord, hx_color});
 }
