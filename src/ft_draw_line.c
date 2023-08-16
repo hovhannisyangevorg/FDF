@@ -6,16 +6,11 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 00:01:47 by gevorg            #+#    #+#             */
-/*   Updated: 2023/08/16 03:27:42 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/08/16 17:26:57 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-// void	ft_drawing(t_point3d dr_cord)
-// {
-// 	printf("(%d, %d, %d, %d)\n", dr_cord.x, dr_cord.y, dr_cord.z, dr_cord.color);
-// }
 
 static int ft_distance(t_distance_formula *dist)
 {

@@ -27,7 +27,7 @@ OBJS		=	$(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
 HEADERS		=	$(wildcard $(INC_DIR)/*.h)
 
 
-LINKERS		=	-L$(MLX_DIR) -lmlx -L$(FT_LIB) -lft
+LINKERS		=	-L$(MLX_DIR) -lmlx -L$(FT_LIB) -lft -lm
 
 
 
