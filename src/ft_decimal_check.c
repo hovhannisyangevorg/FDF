@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_decimal_check.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 17:49:40 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/15 22:29:44 by gehovhan         ###   ########.fr       */
+/*   Updated: 2023/08/16 03:18:13 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_free_utils(char *mes, char **de_token, char **hx_token)
+static void	ft_free_utils(char *mes, char **de_token, char **hx_token)
 {
 	ft_free_args(de_token, 0, 0);
 	ft_free_args(hx_token, 0, 0);
 	ft_panic (mes);
 }
 
-int	ft_atoi_fdf(char **de_token, char **hx_token)
+static int	ft_atoi_fdf(char **de_token, char **hx_token)
 {
 	struct s_decimal_check	obj;
 

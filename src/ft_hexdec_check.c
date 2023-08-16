@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_hexdec_check.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 19:54:00 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/15 22:31:43 by gehovhan         ###   ########.fr       */
+/*   Updated: 2023/08/16 03:20:53 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	ft_strhex(char **de_token, char **hx_token)
+static int	ft_strhex(char **de_token, char **hx_token)
 {
 	int	i;
 	int	len;

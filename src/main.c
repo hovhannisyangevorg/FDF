@@ -3,17 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 14:40:10 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/15 20:08:57 by gehovhan         ###   ########.fr       */
+/*   Updated: 2023/08/16 03:08:51 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+/*
+TODO: [Remove this function for fdf projects. ft_print_matrix()]
+*/
 
+void	ft_print_matrix(t_matrix *m)
+{
+	size_t	i;
+	size_t	print_count;
 
+	i = 0;
+	print_count = 0;
+	while (i < m->size)
+	{
+		printf("%zu). ", ++print_count);
+		printf("(%d, %d, ", m->cord[i].x, m->cord[i].y);
+		printf("%d, %x)\n", m->cord[i].z, m->cord[i].color);
+		i++;
+	}
+}
+
+/*
+TODO: [Remove this function for fdf projects. ft_print_arrey()]
+*/
 void	ft_print_arrey(t_add *tab, size_t size)
 {
 	size_t i;
@@ -26,33 +47,7 @@ void	ft_print_arrey(t_add *tab, size_t size)
 	}
 	
 }
-
-int ft_tabcmp(int val1, int val2)
-{
-	return (val1 - val2);
-}
-
-int	ft_set_width(t_add *tab, size_t arr_size)
-{
-	size_t	i;
-	int 	val;
-	if (arr_size == 1)
-		return(tab->arr[0]);
-	i = 0;
-	while (tab->size && !tab->arr[i])
-		++i;
-	val = tab->arr[i];
-	while (++i < arr_size)
-	{
-		if (val && ft_tabcmp(tab->arr[i], tab->arr[i - 1]) && val != ft_tabcmp(tab->arr[i], tab->arr[i - 1]))
-		{
-			free(tab->arr);
-			ft_panic("Error: Invalid map is not square.");
-		}
-	}
-	return (val);
-}
-
+		
 // TODO: [ White or delete ft_strtok function my libft project ]
 int main() 
 {
@@ -83,7 +78,7 @@ int main()
 	}
 	ft_push_arrey(&tab, map.matrix.size);
 	// ft_print_arrey(&tab, tab.size);
-	map.width	= ft_set_width(&tab, tab.size);
+	map.width	= ft_determine_width(&tab, tab.size);
 	map.height	= tab.size;
 	ft_decide_x_y(&map);
 	

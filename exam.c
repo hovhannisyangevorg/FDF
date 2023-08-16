@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 17:09:01 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/15 01:54:06 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/08/16 02:12:03 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -495,9 +495,10 @@ void			ft_panic(char *error);
 
 
 //////////////////////////////////irakan|||||||||||||||||||||||||
-/*
+
 #include <stdio.h>
 #include <math.h>
+
 
 typedef struct s_line_cord
 {
@@ -507,6 +508,7 @@ typedef struct s_line_cord
 	int x2; 
 	int y2;
 	int z2;
+	int color;
 } t_line_cord;
 
 typedef struct s_distance_formula
@@ -520,13 +522,25 @@ typedef struct s_distance_formula
 	int d;
 } t_distance_formula;
 
+typedef struct s_point3d
+{
+	int x;
+	int y;
+	int z;
+	int color;
+} t_point3d;
+
+void	ft_drawing(t_point3d dr_cord)
+{
+	printf("(%d, %d, %d, %d)\n", dr_cord.x, dr_cord.y, dr_cord.z, dr_cord.color);
+}
 
 int ft_distance(t_distance_formula *dist)
 {
     return ((int)sqrt(pow(dist->dx, 2) + pow(dist->dy, 2) + pow(dist->dz, 2)));
 }
 
-void ft_drawline(t_line_cord *cord)
+void ft_draw_line(t_line_cord *cord)
 {
 	t_distance_formula dist;
 	int x_end;
@@ -554,7 +568,6 @@ void ft_drawline(t_line_cord *cord)
 		dist.z = cord->z1;
 		x_end = cord->x2;
 	}
-	// printf("(%d, %d, %d)\n", dist.x, dist.y, dist.z);
 	while (dist.x < x_end)
 	{
 		if (dist.d < 0)
@@ -566,25 +579,107 @@ void ft_drawline(t_line_cord *cord)
 		}
 		dist.x++;
 		dist.z++;
-		printf("(%d, %d, %d)\n", dist.x, dist.y, dist.z);
+		ft_drawing((t_point3d){dist.x, dist.y, dist.z, cord->color});
 	}
 }
+
+
+
+
+
+
+
 
 int main()
 {
     t_line_cord cord;
-    cord.x1 = 21;
+    cord.x1 = -21;
     cord.y1 = 5;
     cord.z1 = 2;
     cord.x2 = 8;
     cord.y2 = 15;
     cord.z2 = 10;
+	cord.color = 888888;
 
-    ft_drawline(&cord);
+    ft_draw_line(&cord);
 
     return 0;
 }
-*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -667,8 +762,6 @@ int main()
 
 // ??????????????????//????????????????????????????????????????????????????????????????????????????????????????????????????//
 
-#include <stdio.h>
-#include <stdlib.h>
 
 // #include <stdio.h>
 // #include <stdlib.h>
