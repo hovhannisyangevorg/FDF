@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 14:40:10 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/16 17:54:42 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/08/16 19:26:58 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,23 +54,38 @@ void	ft_print_arrey(t_add *tab, size_t size)
 
 
 
+
+
+void	ft_drawing(t_point3d dr_cord)
+{
+	printf("(%d, %d, %d, %x)\n", dr_cord.x, dr_cord.y, dr_cord.z, dr_cord.color);
+}
+
+
+
 int main() 
 {
 	int		fd;
 	t_map	map;
 	t_add	tab;
+	// t_line_cord d_line = (t_line_cord){10, 10, 0, 10, 55, 0, 0xFFFF};
 
 	fd = open("exam.txt", O_RDONLY);
 	if (fd == -1)
 		return (0);
 
 	ft_parse(&map, &tab, fd);
-	ft_print_arrey(&tab, tab.size);
+	// ft_draw_line(&d_line);//
+	// ft_drawing((t_point3d){map.matrix.cord->x, map.matrix.cord->y, map.matrix.cord->z, map.matrix.cord->color});
+	// ft_print_arrey(&tab, tab.size);
 	ft_print_matrix(&map.matrix);
-	
-	
-	free(tab.arr);
 	free(map.matrix.cord);
 	close(fd);
 	return (0);
 }
+
+
+
+
+
+

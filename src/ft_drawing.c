@@ -6,13 +6,13 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 02:22:22 by gevorg            #+#    #+#             */
-/*   Updated: 2023/08/16 15:56:45 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/08/16 19:01:22 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_drawing(t_point3d dr_cord)
-{
-	printf("(%d, %d, %d, %d)\n", dr_cord.x, dr_cord.y, dr_cord.z, dr_cord.color);
-}
+// void	ft_drawing(t_point3d dr_cord)
+// {
+// 	printf("(%d, %d, %d, %d)\n", dr_cord.x, dr_cord.y, dr_cord.z, dr_cord.color);
+// }

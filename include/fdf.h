@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 22:02:07 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/16 17:52:03 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/08/16 18:57:19 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@
  * Description: This file contains the implementation of the following functions.+
  */
 void		ft_parse(t_map *map, t_add *tab, int fd);
-void		ft_parse_data(char *token, t_matrix *matrix);
 char		*ft_extract_substring(const char *token, char c, int index);
+void		ft_parse_data(char *token, t_matrix *matrix);
 
 /**
  * File: ft_parse_util.c

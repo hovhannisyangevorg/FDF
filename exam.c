@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 17:09:01 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/16 02:12:03 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/08/16 19:16:32 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@ int				ft_isadd_overflow(int a, int b, int sign);
 int				ft_ismultiply_overflow(int a, int b);
 void			ft_panic(char *error);
 
+
+
+
+
+
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 // static int	ft_isspace(char c)
 // {
 // 	return (c == ' ' || c == '\f' || c == '\n' || c == '\r'
@@ -170,6 +176,7 @@ void			ft_panic(char *error);
 //     return (0);
 // }
 
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
@@ -284,218 +291,34 @@ void			ft_panic(char *error);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-// void ft_strdel(char **str)	//void (*ft_strdel)(char **str)
-// {
-// 	if (!str || !*str)
-// 		return ;
-// 	free(*str);
-// 	*str = NULL;
-// }
 
 
-// void	ft_panic(char *str, void (*del)(char **str), int flag)
-// {
-// 	ft_strdel(&del);
-// 	printf("%s", del);
-// 	write (2, str, ft_strlen(str));
-// 	write (2, "\n", 1);
-// 	exit (1);
-// }
 
-// int main()
-// {
-// 	printf("heloo");
-// 	return (0);
-// }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-// #include <math.h>
-
-// typedef struct	s_line_cord
-// {
-// 	int x1; 
-// 	int x2; 
-// 	int y1;
-// 	int y2;
-// } t_line_cord;
-
-// typedef struct	s_distance_formula
-// {
-// 	int x;
-//     int y;
-//     int dx;
-//     int dy;
-//     int d;		
-// } t_distance_formula;
-
-// // Calculating distance
-// int ft_distance(t_line_cord *cord, int dx, int dy)
-// {
-//     return (int)sqrt(dx * dx + dy * dy);
-// }
-
-// void ft_drawline(t_line_cord *cord)
-// {
-// 	t_distance_formula dist;
-//     int x_end;
-//     int i1;
-//     int i2;
-
-//     dist.dx = cord->x2 - cord->x1;   				// Calculate the change in x (delta x)
-//     dist.dy = cord->y2 - cord->y1;   				// Calculate the change in y (delta y)
-// 	dist.d = ft_distance(cord, dist.dx, dist.dy);				// Initialize the decision parameter d using the "Distance formula"
-//     i1 = 2 * dist.dy;    							// Calculate the increments for diagonally moving pixels
-//     i2 = 2 * (dist.dy - dist.dx); 						// Calculate the increments for vertically moving pixels
-
-//     /* 
-// 		Determine the starting point and x_end 
-// 	*/
-//     if (dist.dx < 0)
-//     {
-//         dist.x = cord->x2;
-//         dist.y = cord->y2;
-//         x_end = cord->x1;
-//     }
-//     else
-//     {
-//         dist.x = cord->x1;
-//         dist.y = cord->y1;
-//         x_end = cord->x2;
-//     }
-
-//     /* Print the starting point */
-//     printf("(%d, %d)\n", dist.x, dist.y);
-    
-//     /* Draw the line using Bresenham's algorithm */
-//     while (dist.x < x_end)
-//     {
-//         if (dist.d < 0)
-//             dist.d += i1; // Move diagonally
-//         else
-//         {
-//             dist.d += i2; // Move vertically and diagonally
-//             dist.y++;
-//         }
-//         dist.x++;
-//         printf("(%d, %d)\n", dist.x, dist.y); // Print the current pixel coordinates
-//     }
-// }
-
-// int main()
-// {
-// 	t_line_cord cord;
-// 	cord.x1 = 1;
-// 	cord.y1 = 5;
-// 	cord.x2 = 8;
-// 	cord.y2 = 15;
-//     ft_drawline(&cord);
-
-//     return 0;
-// }
-
-
-//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-
-
-
-
-
-
-
-
-
-
-
-
-
-//////////////////////////////////irakan|||||||||||||||||||||||||
-
+//////////////////////////////////irakan|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+/*
 #include <stdio.h>
 #include <math.h>
 
@@ -584,12 +407,6 @@ void ft_draw_line(t_line_cord *cord)
 }
 
 
-
-
-
-
-
-
 int main()
 {
     t_line_cord cord;
@@ -606,161 +423,14 @@ int main()
     return 0;
 }
 
+//////////////////////////////////irakan|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+*/
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// #include <stdio.h>
-// #include <stdlib.h>
-
-// typedef struct s_add
-// {
-// 	int *arr;
-// 	int size;
-// 	int capacity;
-// 	int elem;	
-// } t_add;
-
-// void ft_init_arrey(t_add *tab, size_t size)
-// {
-// 	if (!tab)
-// 		return ;
-
-// 	tab->size = size;
-// 	tab->capacity = size;
-// 	tab->elem = 0;
-// 	if (size)
-// 	{
-// 		tab->arr = (int *)malloc(sizeof(int) * size);
-// 		if (!tab->arr)
-// 			return ;
-// 	}
-// }
-
-// void	ft_update_capacity_arrey(t_add *tab, size_t size)
-// {
-// 	size_t 	i;
-// 	size_t 	new_cap;
-// 	int 	*arr;
-// 	if (!tab)
-// 		return (NULL);
-
-// 	if (!tab->capacity)
-// 		new_cap = size;
-// 	else if (tab->capacity <= size)
-// 		new_cap *= 2;
-// 	i = 0;
-// 	if (new_cap != tab->capacity)
-// 	{
-// 		arr = (int *)malloc(sizeof(int) * new_cap);
-// 		if (!arr)
-// 			return ;
-// 		while (i < tab->size)
-// 		{
-// 			arr[i] = tab->arr[i];
-// 			i++;
-// 		}
-// 		tab->capacity = new_cap;
-// 		tab.
-// 	}	
-// }
-
-// void	ft_push_back(t_matrix *m, t_point3d val)
-// {
-// 	if (!m)
-// 		return ;
-// 	ft_update_capacity(m, m->size + 1);
-// 	m->cord[m->size] = val;
-// 	++m->size;
-// }
-
-// int main()
-// {
-// 	t_add tab;
-
-// 	ft_init_arrey(&tab, 0);
-// 	printf("%d, %d, %d,", tab.capacity, tab.size, tab.elem);
-// }
- 
-
-
-
-
-// ??????????????????//????????????????????????????????????????????????????????????????????????????????????????????????????//
+// ?????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
 
 
 // #include <stdio.h>
@@ -872,175 +542,7 @@ int main()
 
 //     return 0;
 // }
-// ????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// ??????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
 
 
 
@@ -1159,181 +661,6 @@ int main()
 // }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1466,6 +793,25 @@ int main()
 
 
 
+
+
+
+
+#include <mlx.h>
+
+int main(void)
+{
+    void *mlx_ptr;
+    void *win_ptr;
+
+    mlx_ptr = mlx_init();
+    win_ptr = mlx_new_window(mlx_ptr, 800, 600, "My Image");
+
+    // Your drawing code goes here
+
+    mlx_loop(mlx_ptr);
+    return 0;
+}
 
 
 
@@ -2276,6 +1622,26 @@ int	ft_isadd_overflow(int a, int b, int sign)
 void	ft_panic(char *error)
 {
 	write (2, error, ft_strlen(error));
+	write (2, "\n", 1);
+	exit (1);
+}
+
+
+
+void ft_strdel(char **str)
+{
+	if (!str || !*str)
+		return ;
+	free(*str);
+	*str = NULL;
+}
+
+
+void	ft_panic(char *str, void (*del)(char **str), int flag)
+{
+	ft_strdel(&del);
+	printf("%s", del);
+	write (2, str, ft_strlen(str));
 	write (2, "\n", 1);
 	exit (1);
 }

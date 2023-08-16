@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 18:48:41 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/16 17:50:45 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/08/16 18:59:24 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,6 @@ void 	ft_parse(t_map *map, t_add *tab, int fd)
 	map->width	= ft_determine_width(tab, tab->size);
 	map->height	= tab->size;
 	ft_determine_x_y(map);
+	free(tab->arr);
 	printf("\n--------------------------------------------\nWidth = %lu\nHeigth = %lu\n", map->width, map->height);
 }
