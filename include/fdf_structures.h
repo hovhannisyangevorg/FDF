@@ -10,6 +10,7 @@ typedef struct s_image t_image;
 typedef struct s_mlx t_mlx;
 typedef struct s_point3d t_point3d;
 typedef struct s_matrix t_matrix;
+typedef struct s_centr t_centr;
 
 
 typedef struct s_vector3d t_vector3d;
@@ -169,6 +170,15 @@ struct s_decimal_check
 	int		res;
 	int		sign;
 	int		mult;
+};
+
+
+
+
+struct s_centr
+{
+	size_t center_x;
+	size_t center_y;
 };
 
 #endif

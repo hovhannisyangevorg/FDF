@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 14:40:10 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/16 19:26:58 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/08/18 14:52:17 by gehovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-// #include <stdint.h>
-// #include <math.h>
 
 /*
 TODO: [Remove this function for fdf projects. ft_print_matrix()]
@@ -53,39 +51,59 @@ void	ft_print_arrey(t_add *tab, size_t size)
 }
 
 
+// int main() 
+// {
+// 	int		fd;
+// 	t_map	map;
+// 	t_add	tab;
+// 	// t_line_cord d_line = (t_line_cord){10, 10, 0, 10, 55, 0, 0xFFFF};
+
+// 	fd = open("exam.txt", O_RDONLY);
+// 	if (fd == -1)
+// 		return (0);
+
+// 	ft_parse(&map, &tab, fd);
+// 	// ft_drawing((t_point3d){map.matrix.cord->x, map.matrix.cord->y, map.matrix.cord->z, map.matrix.cord->color});
+	
+	
+// 	// ft_print_arrey(&tab, tab.size);
+// 	ft_print_matrix(&map.matrix);
+// 	free(map.matrix.cord);
+// 	close(fd);
+// 	return (0);
+// }
 
 
 
-void	ft_drawing(t_point3d dr_cord)
-{
-	printf("(%d, %d, %d, %x)\n", dr_cord.x, dr_cord.y, dr_cord.z, dr_cord.color);
+
+
+
+
+
+
+
+
+
+#include <mlx.h>
+
+typedef struct	s_data {
+    void	*mlx;
+    void	*win;
+}				t_data;
+
+void ft_drawing_img(t_data *data, int x, int y) {
+    mlx_pixel_put(data->mlx, data->win, x, y, 0xFFFFFF);
 }
-
-
 
 int main() 
 {
-	int		fd;
-	t_map	map;
-	t_add	tab;
-	// t_line_cord d_line = (t_line_cord){10, 10, 0, 10, 55, 0, 0xFFFF};
+    t_data data;
+    data.mlx = mlx_init();
+    data.win = mlx_new_window(data.mlx, 800, 600, "Image Drawing");
 
-	fd = open("exam.txt", O_RDONLY);
-	if (fd == -1)
-		return (0);
+    ft_drawing_img(&data, 100, 50);
 
-	ft_parse(&map, &tab, fd);
-	// ft_draw_line(&d_line);//
-	// ft_drawing((t_point3d){map.matrix.cord->x, map.matrix.cord->y, map.matrix.cord->z, map.matrix.cord->color});
-	// ft_print_arrey(&tab, tab.size);
-	ft_print_matrix(&map.matrix);
-	free(map.matrix.cord);
-	close(fd);
-	return (0);
+    mlx_loop(data.mlx);
+
+    return 0;
 }
-
-
-
-
-
-

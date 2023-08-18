@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exam.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 17:09:01 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/16 19:16:32 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/08/17 18:37:10 by gehovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -792,12 +792,17 @@ int main()
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
-
-
-
-
-
 #include <mlx.h>
+
+typedef struct s_mlx
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+	t_image	main;
+	int		sidex;
+	int		sidey;
+} t_mlx;
+
 
 int main(void)
 {
@@ -806,8 +811,8 @@ int main(void)
 
     mlx_ptr = mlx_init();
     win_ptr = mlx_new_window(mlx_ptr, 800, 600, "My Image");
-
-    // Your drawing code goes here
+	
+	
 
     mlx_loop(mlx_ptr);
     return 0;
