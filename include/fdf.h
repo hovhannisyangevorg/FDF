@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 22:02:07 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/16 18:57:19 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/08/23 16:53:21 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@
 # include <unistd.h>
 # include <fcntl.h>
 
-# include "mlx.h"
 # include "fdf_structures.h"
 # include "libft.h"
+# include "mlx.h"
 
 # define INVALID_COLOR "Error: Invalid color!\n"
 # define INVALID_OVERFLOW "Error: Overflow error\n"
-# define DEFAULT_COLOR (0xffffff)  // (255 << 16 | 0 << 8 | 0)
+# define DEFAULT_COLOR (0x0000BF)  // (255 << 16 | 0 << 8 | 0)
 
 /**
  * File: ft_parse_data.c
@@ -95,13 +95,13 @@ void		ft_push_arrey(t_add *tab, int val);
  * File: ft_drawing.c
  * Description: This file contains the implementation of the following functions.
  */
-void	ft_drawing(t_point3d dr_cord);
+void	my_mlx_pixel_put(t_image *data, int x, int y, int color);
 
 /**
- * File: ft_draw_line.c
+ * File: ft_bresenham.c
  * Description: This file contains the implementation of the following functions.
  */
-void    ft_draw_line(t_line_cord *cord);
+void ft_bresenham(t_line_cord line_cord, t_image *img_data);
 
 
 

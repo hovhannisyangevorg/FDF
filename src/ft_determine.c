@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 03:02:42 by gevorg            #+#    #+#             */
-/*   Updated: 2023/08/16 03:07:26 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/08/23 11:59:56 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_determine_width(t_add *tab, size_t arr_size)
 	size_t	i;
 	int 	val;
 	if (arr_size == 1)
-		return(tab->arr[0]);
+		return (tab->arr[0]);
 	i = 0;
 	while (tab->size && !tab->arr[i])
 		++i;

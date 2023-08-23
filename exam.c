@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exam.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 17:09:01 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/17 18:37:10 by gehovhan         ###   ########.fr       */
+/*   Updated: 2023/08/23 12:51:24 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -318,113 +318,113 @@ void			ft_panic(char *error);
 
 
 //////////////////////////////////irakan|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-/*
-#include <stdio.h>
-#include <math.h>
+
+// #include <stdio.h>
+// #include <math.h>
 
 
-typedef struct s_line_cord
-{
-	int x1; 
-	int y1;
-	int z1;
-	int x2; 
-	int y2;
-	int z2;
-	int color;
-} t_line_cord;
+// typedef struct s_line_cord
+// {
+// 	int x1; 
+// 	int y1;
+// 	int z1;
+// 	int x2; 
+// 	int y2;
+// 	int z2;
+// 	int color;
+// } t_line_cord;
 
-typedef struct s_distance_formula
-{
-	int x;
-	int y;
-	int z;
-	int dx;
-	int dy;
-	int dz;
-	int d;
-} t_distance_formula;
+// typedef struct s_distance_formula
+// {
+// 	int x;
+// 	int y;
+// 	int z;
+// 	int dx;
+// 	int dy;
+// 	int dz;
+// 	int d;
+// } t_distance_formula;
 
-typedef struct s_point3d
-{
-	int x;
-	int y;
-	int z;
-	int color;
-} t_point3d;
+// typedef struct s_point3d
+// {
+// 	int x;
+// 	int y;
+// 	int z;
+// 	int color;
+// } t_point3d;
 
-void	ft_drawing(t_point3d dr_cord)
-{
-	printf("(%d, %d, %d, %d)\n", dr_cord.x, dr_cord.y, dr_cord.z, dr_cord.color);
-}
+// void	ft_drawing(t_point3d dr_cord)
+// {
+// 	printf("(%d, %d, %d, %d)\n", dr_cord.x, dr_cord.y, dr_cord.z, dr_cord.color);
+// }
 
-int ft_distance(t_distance_formula *dist)
-{
-    return ((int)sqrt(pow(dist->dx, 2) + pow(dist->dy, 2) + pow(dist->dz, 2)));
-}
+// int ft_distance(t_distance_formula *dist)
+// {
+//     return ((int)sqrt(pow(dist->dx, 2) + pow(dist->dy, 2) + pow(dist->dz, 2)));
+// }
 
-void ft_draw_line(t_line_cord *cord)
-{
-	t_distance_formula dist;
-	int x_end;
-	int i1;
-	int i2;
+// void ft_draw_line(t_line_cord *cord)
+// {
+// 	t_distance_formula dist;
+// 	int x_end;
+// 	int i1;
+// 	int i2;
 
-	dist.dx = (cord->x2 - cord->x1);
-	dist.dy = (cord->y2 - cord->y1);
-	dist.dz = (cord->z2 - cord->z1);
-	dist.d  = ft_distance(&dist);
-	i1 = (2 * dist.dy);
-	i2 = (2 * (dist.dy - dist.dx));
+// 	dist.dx = (cord->x2 - cord->x1);
+// 	dist.dy = (cord->y2 - cord->y1);
+// 	dist.dz = (cord->z2 - cord->z1);
+// 	dist.d  = ft_distance(&dist);
+// 	i1 = (2 * dist.dy);
+// 	i2 = (2 * (dist.dy - dist.dx));
 
-	if (dist.dx < 0)
-	{
-		dist.x = cord->x2;
-		dist.y = cord->y2;
-		dist.z = cord->z2;
-		x_end = cord->x1;
-	}
-	else
-	{
-		dist.x = cord->x1;
-		dist.y = cord->y1;
-		dist.z = cord->z1;
-		x_end = cord->x2;
-	}
-	while (dist.x < x_end)
-	{
-		if (dist.d < 0)
-			dist.d += i1;
-		else
-		{
-			dist.d += i2;
-			dist.y++;
-		}
-		dist.x++;
-		dist.z++;
-		ft_drawing((t_point3d){dist.x, dist.y, dist.z, cord->color});
-	}
-}
+// 	if (dist.dx < 0)
+// 	{
+// 		dist.x = cord->x2;
+// 		dist.y = cord->y2;
+// 		dist.z = cord->z2;
+// 		x_end = cord->x1;
+// 	}
+// 	else
+// 	{
+// 		dist.x = cord->x1;
+// 		dist.y = cord->y1;
+// 		dist.z = cord->z1;
+// 		x_end = cord->x2;
+// 	}
+// 	while (dist.x < x_end)
+// 	{
+// 		if (dist.d < 0)
+// 			dist.d += i1;
+// 		else
+// 		{
+// 			dist.d += i2;
+// 			dist.y++;
+// 		}
+// 		dist.x++;
+// 		dist.z++;
+// 		ft_drawing((t_point3d){dist.x, dist.y, dist.z, cord->color});
+// 	}
+// }
 
 
-int main()
-{
-    t_line_cord cord;
-    cord.x1 = -21;
-    cord.y1 = 5;
-    cord.z1 = 2;
-    cord.x2 = 8;
-    cord.y2 = 15;
-    cord.z2 = 10;
-	cord.color = 888888;
+// int main()
+// {
+//     t_line_cord cord;
+//     cord.x1 = 800;
+//     cord.y1 = 20;
+//     cord.z1 = 2;
+//     cord.x2 = 8;
+//     cord.y2 = 15;
+//     cord.z2 = 10;
+// 	cord.color = 888888;
 
-    ft_draw_line(&cord);
+//     ft_draw_line(&cord);
 
-    return 0;
-}
+//     return 0;
+// }
 
 //////////////////////////////////irakan|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-*/
+
 
 
 
@@ -792,29 +792,308 @@ int main()
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
-#include <mlx.h>
+// int main(void)
+// {
+//     return 0;
+// }
 
-typedef struct s_mlx
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// }}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
+
+
+// typedef struct s_distance_formula
+// {
+//     int x;
+//     int y;
+//     int z;
+//     int dx;
+//     int dy;
+//     int d;
+// } t_distance_formula;
+
+// struct s_line_cord
+// {
+//     int x1;
+//     int y1;
+//     int x2;
+//     int y2;
+//     int color;
+// };
+
+// struct s_image
+// {
+//     void *img_ptr;
+//     char *addr_ptr;
+//     int bits_per_pixel;
+//     int line_length;
+//     int endian;
+// };
+
+// int ft_distance(t_distance_formula *dist)
+// {
+// 	return ((int)sqrt(pow(dist->dx, 2) + pow(dist->dy, 2)));
+// }
+
+// void ft_draw_line(t_image *img_data, t_line_cord cord)
+// {
+//     t_distance_formula dist;
+//     int x_end;
+//     int i1;
+//     int i2;
+
+//     dist.x = cord.x1;
+//     dist.y = cord.y1;
+
+//     // Calculate dx and dy based on the line direction
+//     dist.dx = abs(cord.x2 - cord.x1);
+//     dist.dy = abs(cord.y2 - cord.y1);
+
+//     if (dist.dx < dist.dy)
+//     {
+//         dist.d = 2 * dist.dx - dist.dy;
+//         i1 = 2 * dist.dx;
+//         i2 = 2 * (dist.dx - dist.dy);
+
+//         if (cord.y1 < cord.y2)
+//         {
+//             x_end = cord.x2;
+//         }
+//         else
+//         {
+//             x_end = cord.x1;
+//             dist.dy = -dist.dy;
+//         }
+
+//         while (dist.x <= x_end)
+//         {
+//             my_mlx_pixel_put(img_data, dist.x, dist.y, cord.color);
+
+//             if (dist.d < 0)
+//             {
+//                 dist.d += i1;
+//             }
+//             else
+//             {
+//                 dist.d += i2;
+//                 dist.y++;
+//             }
+
+//             dist.x++;
+//         }
+//     }
+//     else
+//     {
+//         // Handle the case where |dy| <= |dx| similarly
+//         // You can add the code for this case here
+//     }
+// }
+
+
+// void main()
+// {
+
+//     t_image img_data;
+
+//     t_line_cord cord;
+//     cord.x1 = 10;
+//     cord.y1 = 10;
+//     cord.x2 = 100;
+//     cord.y2 = 100;
+//     cord.color = 0xFF0000; 
+//     ft_draw_line(&img_data, cord);
+
+// }
+
+
+
+
+
+
+
+
+
+
+
+// }}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+//{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{INPLEMENTATION FOR BRESENHAM LINE ALGORITM{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
+
+#include <stdio.h>
+
+
+typedef struct s_line_cord
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	t_image	main;
-	int		sidex;
-	int		sidey;
-} t_mlx;
+	int x1; 
+	int y1;
+	int x2; 
+	int y2;
+	int color;
+} t_line_cord;
 
-
-int main(void)
+typedef struct s_calcul_bresen
 {
-    void *mlx_ptr;
-    void *win_ptr;
+	float		x;
+	float		y;
+    float		dx;
+    float		dy;
+	int			sx;
+	int			sy;
+	float		m;
+	float 		pk;
+} t_calcul_bresen;
 
-    mlx_ptr = mlx_init();
-    win_ptr = mlx_new_window(mlx_ptr, 800, 600, "My Image");
-	
-	
 
-    mlx_loop(mlx_ptr);
+
+void ft_swap(float *dx, float *dy)
+{
+	float tmp_d;
+
+	tmp_d = *dx;
+    *dx = *dy;
+    *dy = tmp_d;
+}
+
+//Function for finding absolute value
+static int ft_abs (int n)
+{
+    return ((n > 0) ? n : ( n * (-1)));
+}
+
+static int ft_get_sign(float delta)
+{
+	if (delta >= 0)
+		return (1);
+	else
+		return (0);
+}
+
+/**
+ * Line slope formula
+ * 
+ * m = (x2−x1) / (y2−y1).
+ */
+static float ft_line_slope(float dx, float dy)
+{
+	return (dy / dx);
+}
+
+/**
+ * Line slope formula
+ * 
+ * dx = x2 − x1.
+ * dy = y2 - y1.
+ */
+float ft_delta(float start, float end)
+{
+	return (end - start);
+}
+
+void ft_suport_utils(t_calcul_bresen *calcul, int is_swap)
+{
+	if (calcul->pk < 0)
+	{
+		if (!is_swap)
+		{
+			calcul->x = calcul->x + calcul->sx;
+			printf("%f, %f\n", calcul->x, calcul->y);
+		}
+		else
+		{
+			calcul->y = calcul->y + calcul->sy;
+			printf(" %f, %f\n", calcul->x, calcul->y);
+		}
+		calcul->pk = calcul->pk + 2 * ft_abs(calcul->dy);
+	}
+	else
+	{
+		calcul->x = calcul->x + calcul->sx;
+		calcul->y = calcul->y + calcul->sy;
+		printf("%f, %f\n", calcul->x, calcul->y);
+		calcul->pk = calcul->pk + 2 * (ft_abs(calcul->dy) - ft_abs(calcul->dx));
+	}
+}
+
+
+void ft_utils(t_calcul_bresen *calcul, int is_swap)
+{
+	int i;
+
+	i = -1;
+	while (++i <= ft_abs(calcul->dx))
+		ft_suport_utils(calcul, is_swap);
+}
+
+void ft_bresenham(t_line_cord line_cord)
+{
+	t_calcul_bresen  calcul;
+	int			is_swap;
+	float		tmp_dx;
+
+    calcul.x = line_cord.x1;
+    calcul.y = line_cord.y1;
+	calcul.dx = ft_delta(line_cord.x1, line_cord.x2);
+	calcul.dy = ft_delta(line_cord.y1, line_cord.y2);
+    calcul.sx = ft_get_sign(calcul.dx);
+    calcul.sy = ft_get_sign(calcul.dy);
+	calcul.m =	ft_line_slope(calcul.dx, calcul.dy);
+    is_swap	= 0;
+
+    if (calcul.m > 1)
+    {
+		ft_swap(&calcul.dx, &calcul.dy);
+        is_swap = 1;
+    }
+
+    calcul.pk = 2 * ft_abs(calcul.y) - ft_abs(calcul.dx);
+    printf("%f, %f\n", calcul.x, calcul.y);
+	ft_utils(&calcul, is_swap);
+}
+
+int main()
+{
+    ft_bresenham((t_line_cord){0, 5, 10, 5});
     return 0;
 }
 
@@ -836,59 +1115,27 @@ int main(void)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        // if (calcul->pk < 0)
+        // {
+        //     if (!is_swap)
+		// 	{
+        //         calcul->x = calcul->x + calcul->sx;
+        //         printf("%f, %f\n", calcul->x, calcul->y);
+        //     }
+        //     else
+		// 	{
+        //         calcul->y = calcul->y + calcul->sy;
+        //     	printf(" %f, %f\n", calcul->x, calcul->y);
+        //     }
+        //     calcul->pk = calcul->pk + 2 * abs(calcul->dy);
+        // }
+        // else
+        // {
+        //     calcul->x = calcul->x + calcul->sx;
+        //     calcul->y = calcul->y + calcul->sy;
+        //     printf("%f, %f\n", calcul->x, calcul->y);
+        //     calcul->pk = calcul->pk + 2 * (abs(calcul->dy) - abs(calcul->dx));
+        // }
 
 
 
@@ -1642,11 +1889,11 @@ void ft_strdel(char **str)
 }
 
 
-void	ft_panic(char *str, void (*del)(char **str), int flag)
-{
-	ft_strdel(&del);
-	printf("%s", del);
-	write (2, str, ft_strlen(str));
-	write (2, "\n", 1);
-	exit (1);
-}
+// void	ft_panic(char *str, void (*del)(char **str), int flag)
+// {
+// 	ft_strdel(&del);
+// 	printf("%s", del);
+// 	write (2, str, ft_strlen(str));
+// 	write (2, "\n", 1);
+// 	exit (1);
+// }

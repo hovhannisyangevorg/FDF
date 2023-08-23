@@ -1,0 +1,10 @@
+ld - https://www.computerhope.com/unix/uld.htm
+On Unix-like operating systems, ld is a linker. It combines many compiled object and archive files,
+relocates their data, and ties up symbol references. Usually, the last step in compiling a program is to run ld.
+
+Linker process. Steps of the linking process
+1.Resolving Symbols:
+2.Memory Allocation:
+3.Address Resolution:
+4.Library Handling:
+5.Executable Output:

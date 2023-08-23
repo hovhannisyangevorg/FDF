@@ -5,13 +5,14 @@ INC_DIR		=	include
 OS 			=	$(shell uname -s)
 
 ifeq ($(OS), Linux)
-	LINKERS +=  -lXext -lX11 -lm -lz
-	MLX_DIR = mlx_linux
+	LINK +=   -lXext -lX11 -lm -lz
+	MLX_DIR = mlx/linux
 else
-	LINKERS +=  -framework OpenGL -framework AppKit
-	MLX_DIR		=	mlx
+	LINK +=  -framework OpenGL -framework AppKit
+	MLX_DIR		=	mlx/mac
 endif
 
+LINKERS		=	-L$(MLX_DIR) -lmlx -L$(FT_LIB) -lft $(LINK)
 FT_LIB			= libft
 LIBS			= $(FT_LIB)/libft.a
 
@@ -27,7 +28,6 @@ OBJS		=	$(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
 HEADERS		=	$(wildcard $(INC_DIR)/*.h)
 
 
-LINKERS		=	-L$(MLX_DIR) -lmlx -L$(FT_LIB) -lft -lm
 
 
 
@@ -55,6 +55,10 @@ fclean:	clean
 
 re:	fclean all
 
+
 #  DYLD_LIBRARY_PATH=`pwd`/mlx ./fdf
 #  -g3 -fsanitize=address
 .PHONY: all clean fclean re 
+
+
+

@@ -3,16 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_drawing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 02:22:22 by gevorg            #+#    #+#             */
-/*   Updated: 2023/08/18 14:40:36 by gehovhan         ###   ########.fr       */
+/*   Updated: 2023/08/23 18:30:58 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_drawing(t_point3d dr_cord)
+void	my_mlx_pixel_put(t_image *img_data, int x, int y, int color)
 {
-	printf("(%d, %d, %d, %d)\n", dr_cord.x, dr_cord.y, dr_cord.z, dr_cord.color);
+	char	*dst;
+	
+	printf("x =>[%d] y => [%d] dst =>[%d]\n",x,y,(y * img_data->line_length + x * (img_data->bits_per_pixel / 8)) );
+	dst = img_data->addr_ptr + ((y * img_data->line_length) + (x * (img_data->bits_per_pixel / 8)));
+	*(unsigned int*)dst = color;
 }

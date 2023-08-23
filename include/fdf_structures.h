@@ -6,19 +6,24 @@
 #ifndef MLX_STRUCTURES_H
 #define MLX_STRUCTURES_H
 
+#define SCREEN_WIDTH 1000
+#define SCREEN_HEIGHT 800
+
 typedef struct s_image t_image;
 typedef struct s_mlx t_mlx;
 typedef struct s_point3d t_point3d;
 typedef struct s_matrix t_matrix;
 typedef struct s_centr t_centr;
+typedef struct s_point2d t_point2d;
+typedef struct s_line_cord t_line_cord;
+typedef struct s_calcul_bresen t_calcul_bresen;
 
 
+typedef struct 	s_decimal_check t_decimal_check;
 typedef struct s_vector3d t_vector3d;
 typedef struct s_map t_map;
 typedef struct s_add t_add;
-typedef struct 	s_decimal_check t_decimal_check;
 // typedef struct s_vector2d t_vector2d;
-// typedef struct s_point2d t_point2d;
 // typedef struct s_calcul t_calcul;
 // typedef enum e_projection t_projection;
 // typedef enum e_move t_move;
@@ -33,10 +38,10 @@ typedef struct 	s_decimal_check t_decimal_check;
  */
 struct	s_image
 {
-	void	*ptr;
-	char	*data;
+	void	*img_ptr;
+	char	*addr_ptr;
 	int		bits_per_pixel;
-	int		size_line;
+	int		line_length;
 	int		endian;
 };
 
@@ -50,9 +55,9 @@ struct s_mlx
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	t_image	main;
-	int		sidex;
-	int		sidey;
+	t_image	img_data;
+	int		side_x;
+	int		side_y;
 };
 
 /**
@@ -66,6 +71,18 @@ struct s_point3d
 	int x;
 	int y;
 	int z;
+	int color;
+};
+
+
+
+
+
+
+struct s_point2d
+{
+	int x;
+	int y;
 	int color;
 };
 
@@ -112,37 +129,29 @@ struct s_vector3d
 	int 	color;
 };
 
-/**
- * @struct s_line_cord
- * @brief Represents the coordinates and color of a line +
- * Bresenham Line algorithm.
- */
+
+
+
 typedef struct s_line_cord
 {
 	int x1; 
 	int y1;
-	int z1;
 	int x2; 
 	int y2;
-	int z2;
 	int color;
 } t_line_cord;
 
-/**
- * @struct s_distance_formula
- * @brief Represents the coordinates and distances of the distance formula +
- * Bresenham Line algorithm.
- */
-typedef struct s_distance_formula
+typedef struct s_calcul_bresen
 {
-	int x;
-	int y;
-	int z;
-	int dx;
-	int dy;
-	int dz;
-	int d;
-} t_distance_formula;
+	float		x;
+	float		y;
+    float		dx;
+    float		dy;
+	int			sx;
+	int			sy;
+	float		m;
+	float 		pk;
+} t_calcul_bresen;
 
 /**
  * @struct s_add
@@ -172,14 +181,6 @@ struct s_decimal_check
 	int		mult;
 };
 
-
-
-
-struct s_centr
-{
-	size_t center_x;
-	size_t center_y;
-};
 
 #endif
 
