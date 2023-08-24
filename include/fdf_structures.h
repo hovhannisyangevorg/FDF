@@ -141,17 +141,6 @@ typedef struct s_line_cord
 	int color;
 } t_line_cord;
 
-typedef struct s_calcul_bresen
-{
-	float		x;
-	float		y;
-    float		dx;
-    float		dy;
-	int			sx;
-	int			sy;
-	float 		pk;
-} t_calcul_bresen;
-
 /**
  * @struct s_add
  * @brief Represents a dynamic array with associated properties.

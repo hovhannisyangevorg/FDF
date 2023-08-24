@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 22:02:07 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/24 15:45:47 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/08/24 20:52:29 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,10 +98,10 @@ void		ft_push_arrey(t_add *tab, int val);
 void	my_mlx_pixel_put(t_image *data, int x, int y, int color);
 
 /**
- * File: ft_bresenham.c
+ * File: ft_draw_line_DDA.c
  * Description: This file contains the implementation of the following functions.
  */
-void ft_bresenham(t_line_cord line_cord, t_image *img_data);
+void ft_draw_line_DDA(t_line_cord line_cord, t_image *img_data);
 
 
 

@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 14:40:10 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/24 20:22:53 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/08/24 21:20:54 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,33 +59,37 @@ void	ft_drow2d(t_mlx *mlx_data, t_map *map)
 {
 	size_t	i;
 	size_t	j;
-	int x;
-	int zoom = 30;
+	// int x;
+	int zoom = 20;
 	int moveX = 0;
-	int moveY = 0;
-	int y1;
+	int moveY = 20;
+	// int y1;
 	// (void)mlx_data;
 	int x1;
+	int curr;
 
 	i = 0;
 	j = 0;
+	// curr = i * map->width + j;
 	// printf("%ld\n", map->height);
 	// printf("%ld\n", map->width);
 	while (i < map->height)
 	{
-		// sleep(3);
+		curr = i * map->width + j;
 		j = 0;
 		while (j < map->width)
 		{
-			if (i + 1 < map->height)
-			{
-				x = i * map->width + j;
-				x1 = (i) * map->width + (j + 1);
-				y1 = (i + 1) * map->width + j;
-				printf("(%d %d %d)\n", x, x1, y1);
-				ft_bresenham((t_line_cord){map->matrix.cord[x].x * zoom + moveX, map->matrix.cord[x].y * zoom + moveY, map->matrix.cord[x1].x * zoom + moveX, map->matrix.cord[x1].y * zoom + moveY , map->matrix.cord[x1].color}, &mlx_data->img_data);
-				// ft_bresenham((t_line_cord){map->matrix.cord[x].x * zoom + moveY, map->matrix.cord[x].y * zoom + moveX, map->matrix.cord[y1].x * zoom + moveY, map->matrix.cord[y1].y * zoom + moveX , 0xff0000}, &mlx_data->img_data);
-			}
+	// 		if (i + 1 < map->height)
+	// 		{
+				// x = j * map->height + i;
+				x1 = curr + j;
+				// y1 = (i + 1) * map->width + j;
+				printf("(%d)\n", x1);
+				if (j + 1 < map->width)
+					ft_draw_line_DDA((t_line_cord){map->matrix.cord[curr].x * zoom + moveX, map->matrix.cord[curr].y * zoom + moveY, map->matrix.cord[x1].x * zoom + moveX, map->matrix.cord[x1].y * zoom + moveY , 0xff0000}, &mlx_data->img_data);
+				// ft_draw_line_DDA((t_line_cord){map->matrix.cord[x].x * zoom + moveY, map->matrix.cord[x].y * zoom + moveX, map->matrix.cord[y1].x * zoom + moveY, map->matrix.cord[y1].y * zoom + moveX , 0xff0000}, &mlx_data->img_data);
+			// }
+			// curr = x1;
 			++j;
 		}
 		++i;
@@ -111,28 +115,7 @@ int closeWin()
 	exit(0);
 	return 0;
 }
-void draw_line_DDA(int x1, int y1, int x2, int y2, t_image* img)
-{
-    int dx = x2 - x1;
-    int dy = y2 - y1;
-    
-    int steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
-    float xIncrement = (float)dx / steps;
-    float yIncrement = (float)dy / steps;
 
-    float x = x1;
-    float y = y1;
-    
-    // Loop to draw each pixel along the line
-    for (int i = 0; i <= steps; i++) 
-	{
-		my_mlx_pixel_put(img, x, y, 0xff0000);
-        // printf("Pixel at (%.1f, %.1f)\n", x, y);
-
-        x += xIncrement;
-        y += yIncrement;
-    }
-}
 int main() 
 {
 	int		fd;
@@ -155,33 +138,7 @@ int main()
 	// ft_init_mlx(&mlx_data);
 
 	
-	// ft_drow2d(&mlx_data, &map);
-	// ft_bresenham((t_line_cord){10, 10, 400, 10, 0x0000bf}, &mlx_data.img_data);
-	// ft_bresenham((t_line_cord){10, 10, 10, 400, 0xff0000}, &mlx_data.img_data);
-	// printf("yyyyy\n");
-	// ft_bresenham((t_line_cord){10, 10, 10, 400, 0xff0000}, &mlx_data.img_data);
-	draw_line_DDA(450, 400, 800, 400, &mlx_data.img_data);
-	draw_line_DDA(450, 400, 100, 400, &mlx_data.img_data);
-	draw_line_DDA(450, 400, 450, 100, &mlx_data.img_data);
-	draw_line_DDA(450, 400, 450, 700, &mlx_data.img_data);
-	// drawLineDDA(0, 0, 700, 700, &mlx_data.img_data);
-	// ft_bresenham((t_line_cord){450, 400, 800, 400, 0xff0000}, &mlx_data.img_data);
-	// ft_bresenham((t_line_cord){450, 400, 100, 400, 0x0000fd}, &mlx_data.img_data);
-	// ft_bresenham((t_line_cord){450, 400, 450, 100, 0xff0000}, &mlx_data.img_data);
-	// ft_bresenham((t_line_cord){450, 400, 450, 700, 0x0000fd}, &mlx_data.img_data);
-	
-	// ft_bresenham((t_line_cord){10, 10, 10, 400,  0x0000bf}, &mlx_data.img_data);
-	// ft_bresenham((t_line_cord){100, 10, 0, 10, 0x0000bf}, &mlx_data.img_data);
-	// ft_bresenham((t_line_cord){25, 10, 25, 10, 0x0000bf}, &mlx_data.img_data);
-	// ft_bresenham((t_line_cord){10, 10, 100, 10, 0x0000bf}, &mlx_data.img_data);
-	// ft_bresenham((t_line_cord){10, 10, 100, 10, 0x0000bf}, &mlx_data.img_data);
-	// ft_bresenham((t_line_cord){10, 10, 100, 10, 0x0000bf}, &mlx_data.img_data);
-	// ft_bresenham((t_line_cord){10, 10, 100, 10, 0x0000bf}, &mlx_data.img_data);
-	// ft_bresenham((t_line_cord){10, 10, 100, 10, 0x0000bf}, &mlx_data.img_data);
-	// ft_bresenham((t_line_cord){10, 10, 100, 10, 0x0000bf}, &mlx_data.img_data);
-	// ft_bresenham((t_line_cord){10, 10, 100, 10, 0x0000bf}, &mlx_data.img_data);
-	// ft_bresenham((t_line_cord){10, 10, 100, 10, 0x0000bf}, &mlx_data.img_data);
-	// ft_bresenham((t_line_cord){10, 10, 100, 10, 0x0000bf}, &mlx_data.img_data);
+	ft_drow2d(&mlx_data, &map);
 
 
 	mlx_loop(mlx_data.mlx_ptr);
