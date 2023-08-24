@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 00:01:47 by gevorg            #+#    #+#             */
-/*   Updated: 2023/08/24 16:01:57 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/08/24 16:24:43 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,9 @@ static int ft_get_sign(float delta)
 {
 	if (delta >= 0)
 		return (1);
-	else
-		return (0);
+	else if(delta < 0)
+		return (-1);
+	return (0);
 }
 
 /**
@@ -40,10 +41,11 @@ static int ft_get_sign(float delta)
  * 
  * m = (x2−x1) / (y2−y1).
  */
-static float ft_line_slope(float dx, float dy)
-{
-	return (dy / dx);
-}
+// static float ft_line_slope(float dx, float dy)
+// {
+// 	printf("%f %f\n", dx, dy);
+// 	return (ft_abs(dy) / ft_abs(dx));
+// }
 
 /**
  * Line slope formula
@@ -108,15 +110,18 @@ void ft_bresenham(t_line_cord line_cord, t_image *img_data)
 	calcul.dy = ft_delta(line_cord.y1, line_cord.y2);
     calcul.sx = ft_get_sign(calcul.dx);
     calcul.sy = ft_get_sign(calcul.dy);
-	calcul.m =	ft_line_slope(calcul.dx, calcul.dy);
+	// calcul.m =	ft_line_slope(calcul.dx, calcul.dy);
     is_swap	= 0;
-    if (calcul.m > 1)
+
+	printf("___________________________(%d %d)\n", calcul.sx, calcul.sy);
+	printf("___________________________(%d %d)\n", line_cord.x1, line_cord.x2);
+    
+	if (ft_abs(calcul.dy) > ft_abs(calcul.dx))
     {
 		ft_swap(&calcul.dx, &calcul.dy);
         is_swap = 1;
     }
     calcul.pk = 2 * ft_abs(calcul.y) - ft_abs(calcul.dx);
-	// printf("%d, %d", calcul.x, calcul.y);
 	if (calcul.x >= 0 && calcul.x < SCREEN_WIDTH && calcul.y >= 0 && calcul.y < SCREEN_HEIGHT)
 		my_mlx_pixel_put(img_data, calcul.x, calcul.y, line_cord.color);
 	ft_utils(&calcul, line_cord, img_data, is_swap);

@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 14:40:10 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/24 15:55:52 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/08/24 16:05:14 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,23 +128,23 @@ int main()
 
 	
 	// ft_drow2d(&mlx_data, &map);
-	ft_bresenham((t_line_cord){10, 10, 400, 10, 0x0000bf}, &mlx_data.img_data);
-	ft_bresenham((t_line_cord){10, 15, 500, 10, 0x0000bf}, &mlx_data.img_data);
-	ft_bresenham((t_line_cord){10, 20, 600, 10, 0x0000bf}, &mlx_data.img_data);
+	// ft_bresenham((t_line_cord){10, 10, 400, 10, 0x0000bf}, &mlx_data.img_data);
+	// ft_bresenham((t_line_cord){10, 15, 500, 10, 0x0000bf}, &mlx_data.img_data);
+	// ft_bresenham((t_line_cord){10, 20, 600, 10, 0x0000bf}, &mlx_data.img_data);
 
 	
 	ft_bresenham((t_line_cord){10, 400, 10, 10,  0x0000bf}, &mlx_data.img_data);
-	ft_bresenham((t_line_cord){10, 10, 100, 10, 0x0000bf}, &mlx_data.img_data);
-	ft_bresenham((t_line_cord){10, 10, 100, 10, 0x0000bf}, &mlx_data.img_data);
-	ft_bresenham((t_line_cord){10, 10, 100, 10, 0x0000bf}, &mlx_data.img_data);
-	ft_bresenham((t_line_cord){10, 10, 100, 10, 0x0000bf}, &mlx_data.img_data);
-	ft_bresenham((t_line_cord){10, 10, 100, 10, 0x0000bf}, &mlx_data.img_data);
-	ft_bresenham((t_line_cord){10, 10, 100, 10, 0x0000bf}, &mlx_data.img_data);
-	ft_bresenham((t_line_cord){10, 10, 100, 10, 0x0000bf}, &mlx_data.img_data);
-	ft_bresenham((t_line_cord){10, 10, 100, 10, 0x0000bf}, &mlx_data.img_data);
-	ft_bresenham((t_line_cord){10, 10, 100, 10, 0x0000bf}, &mlx_data.img_data);
-	ft_bresenham((t_line_cord){10, 10, 100, 10, 0x0000bf}, &mlx_data.img_data);
-	ft_bresenham((t_line_cord){10, 10, 100, 10, 0x0000bf}, &mlx_data.img_data);
+	// ft_bresenham((t_line_cord){10, 10, 100, 10, 0x0000bf}, &mlx_data.img_data);
+	// ft_bresenham((t_line_cord){10, 10, 100, 10, 0x0000bf}, &mlx_data.img_data);
+	// ft_bresenham((t_line_cord){10, 10, 100, 10, 0x0000bf}, &mlx_data.img_data);
+	// ft_bresenham((t_line_cord){10, 10, 100, 10, 0x0000bf}, &mlx_data.img_data);
+	// ft_bresenham((t_line_cord){10, 10, 100, 10, 0x0000bf}, &mlx_data.img_data);
+	// ft_bresenham((t_line_cord){10, 10, 100, 10, 0x0000bf}, &mlx_data.img_data);
+	// ft_bresenham((t_line_cord){10, 10, 100, 10, 0x0000bf}, &mlx_data.img_data);
+	// ft_bresenham((t_line_cord){10, 10, 100, 10, 0x0000bf}, &mlx_data.img_data);
+	// ft_bresenham((t_line_cord){10, 10, 100, 10, 0x0000bf}, &mlx_data.img_data);
+	// ft_bresenham((t_line_cord){10, 10, 100, 10, 0x0000bf}, &mlx_data.img_data);
+	// ft_bresenham((t_line_cord){10, 10, 100, 10, 0x0000bf}, &mlx_data.img_data);
 
 
 	mlx_loop(mlx_data.mlx_ptr);
