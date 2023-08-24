@@ -149,7 +149,6 @@ typedef struct s_calcul_bresen
     float		dy;
 	int			sx;
 	int			sy;
-	float		m;
 	float 		pk;
 } t_calcul_bresen;
 
