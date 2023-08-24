@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 00:01:47 by gevorg            #+#    #+#             */
-/*   Updated: 2023/08/23 18:33:22 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/08/24 16:01:57 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,14 @@ static void ft_suport_utils(t_calcul_bresen *calcul, t_line_cord line_cord, t_im
 		if (!is_swap)
 		{
 			calcul->x = calcul->x + calcul->sx;
-			my_mlx_pixel_put(img_data, calcul->x, calcul->y, line_cord.color);
+			if (calcul->x >= 0 && calcul->x < SCREEN_WIDTH && calcul->y >= 0 && calcul->y < SCREEN_HEIGHT)
+				my_mlx_pixel_put(img_data, calcul->x, calcul->y, line_cord.color);
 		}
 		else
 		{
 			calcul->y = calcul->y + calcul->sy;
-			my_mlx_pixel_put(img_data, calcul->x, calcul->y, line_cord.color);
+			if (calcul->x >= 0 && calcul->x < SCREEN_WIDTH && calcul->y >= 0 && calcul->y < SCREEN_HEIGHT)
+				my_mlx_pixel_put(img_data, calcul->x, calcul->y, line_cord.color);
 		}
 		calcul->pk = calcul->pk + 2 * ft_abs(calcul->dy);
 	}
@@ -78,7 +80,8 @@ static void ft_suport_utils(t_calcul_bresen *calcul, t_line_cord line_cord, t_im
 	{
 		calcul->x = calcul->x + calcul->sx;
 		calcul->y = calcul->y + calcul->sy;
-		my_mlx_pixel_put(img_data, calcul->x, calcul->y, line_cord.color);
+		if (calcul->x >= 0 && calcul->x < SCREEN_WIDTH && calcul->y >= 0 && calcul->y < SCREEN_HEIGHT)
+			my_mlx_pixel_put(img_data, calcul->x, calcul->y, line_cord.color);
 		// printf("%f, %f\n", calcul->x, calcul->y);
 		calcul->pk = calcul->pk + 2 * (ft_abs(calcul->dy) - ft_abs(calcul->dx));
 	}
@@ -112,8 +115,9 @@ void ft_bresenham(t_line_cord line_cord, t_image *img_data)
 		ft_swap(&calcul.dx, &calcul.dy);
         is_swap = 1;
     }
-
     calcul.pk = 2 * ft_abs(calcul.y) - ft_abs(calcul.dx);
-	my_mlx_pixel_put(img_data, calcul.x, calcul.y, line_cord.color);
+	// printf("%d, %d", calcul.x, calcul.y);
+	if (calcul.x >= 0 && calcul.x < SCREEN_WIDTH && calcul.y >= 0 && calcul.y < SCREEN_HEIGHT)
+		my_mlx_pixel_put(img_data, calcul.x, calcul.y, line_cord.color);
 	ft_utils(&calcul, line_cord, img_data, is_swap);
 }

@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 22:02:07 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/23 16:53:21 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/08/24 15:45:47 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 
 # define INVALID_COLOR "Error: Invalid color!\n"
 # define INVALID_OVERFLOW "Error: Overflow error\n"
-# define DEFAULT_COLOR (0x0000BF)  // (255 << 16 | 0 << 8 | 0)
+# define DEFAULT_COLOR (0xFF3333)  // (255 << 16 | 0 << 8 | 0)
 
 /**
  * File: ft_parse_data.c

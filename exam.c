@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 17:09:01 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/23 12:51:24 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/08/24 14:59:23 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -960,182 +960,151 @@ void			ft_panic(char *error);
 
 //{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{INPLEMENTATION FOR BRESENHAM LINE ALGORITM{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
 
-#include <stdio.h>
+// #include <stdio.h>
 
 
-typedef struct s_line_cord
-{
-	int x1; 
-	int y1;
-	int x2; 
-	int y2;
-	int color;
-} t_line_cord;
+// typedef struct s_line_cord
+// {
+// 	int x1; 
+// 	int y1;
+// 	int x2; 
+// 	int y2;
+// 	int color;
+// } t_line_cord;
 
-typedef struct s_calcul_bresen
-{
-	float		x;
-	float		y;
-    float		dx;
-    float		dy;
-	int			sx;
-	int			sy;
-	float		m;
-	float 		pk;
-} t_calcul_bresen;
-
-
-
-void ft_swap(float *dx, float *dy)
-{
-	float tmp_d;
-
-	tmp_d = *dx;
-    *dx = *dy;
-    *dy = tmp_d;
-}
-
-//Function for finding absolute value
-static int ft_abs (int n)
-{
-    return ((n > 0) ? n : ( n * (-1)));
-}
-
-static int ft_get_sign(float delta)
-{
-	if (delta >= 0)
-		return (1);
-	else
-		return (0);
-}
-
-/**
- * Line slope formula
- * 
- * m = (x2−x1) / (y2−y1).
- */
-static float ft_line_slope(float dx, float dy)
-{
-	return (dy / dx);
-}
-
-/**
- * Line slope formula
- * 
- * dx = x2 − x1.
- * dy = y2 - y1.
- */
-float ft_delta(float start, float end)
-{
-	return (end - start);
-}
-
-void ft_suport_utils(t_calcul_bresen *calcul, int is_swap)
-{
-	if (calcul->pk < 0)
-	{
-		if (!is_swap)
-		{
-			calcul->x = calcul->x + calcul->sx;
-			printf("%f, %f\n", calcul->x, calcul->y);
-		}
-		else
-		{
-			calcul->y = calcul->y + calcul->sy;
-			printf(" %f, %f\n", calcul->x, calcul->y);
-		}
-		calcul->pk = calcul->pk + 2 * ft_abs(calcul->dy);
-	}
-	else
-	{
-		calcul->x = calcul->x + calcul->sx;
-		calcul->y = calcul->y + calcul->sy;
-		printf("%f, %f\n", calcul->x, calcul->y);
-		calcul->pk = calcul->pk + 2 * (ft_abs(calcul->dy) - ft_abs(calcul->dx));
-	}
-}
-
-
-void ft_utils(t_calcul_bresen *calcul, int is_swap)
-{
-	int i;
-
-	i = -1;
-	while (++i <= ft_abs(calcul->dx))
-		ft_suport_utils(calcul, is_swap);
-}
-
-void ft_bresenham(t_line_cord line_cord)
-{
-	t_calcul_bresen  calcul;
-	int			is_swap;
-	float		tmp_dx;
-
-    calcul.x = line_cord.x1;
-    calcul.y = line_cord.y1;
-	calcul.dx = ft_delta(line_cord.x1, line_cord.x2);
-	calcul.dy = ft_delta(line_cord.y1, line_cord.y2);
-    calcul.sx = ft_get_sign(calcul.dx);
-    calcul.sy = ft_get_sign(calcul.dy);
-	calcul.m =	ft_line_slope(calcul.dx, calcul.dy);
-    is_swap	= 0;
-
-    if (calcul.m > 1)
-    {
-		ft_swap(&calcul.dx, &calcul.dy);
-        is_swap = 1;
-    }
-
-    calcul.pk = 2 * ft_abs(calcul.y) - ft_abs(calcul.dx);
-    printf("%f, %f\n", calcul.x, calcul.y);
-	ft_utils(&calcul, is_swap);
-}
-
-int main()
-{
-    ft_bresenham((t_line_cord){0, 5, 10, 5});
-    return 0;
-}
+// typedef struct s_calcul_bresen
+// {
+// 	float		x;
+// 	float		y;
+//     float		dx;
+//     float		dy;
+// 	int			sx;
+// 	int			sy;
+// 	float		m;
+// 	float 		pk;
+// } t_calcul_bresen;
 
 
 
+// void ft_swap(float *dx, float *dy)
+// {
+// 	float tmp_d;
+
+// 	tmp_d = *dx;
+//     *dx = *dy;
+//     *dy = tmp_d;
+// }
+
+// //Function for finding absolute value
+// static int ft_abs (int n)
+// {
+//     return ((n > 0) ? n : ( n * (-1)));
+// }
+
+// static int ft_get_sign(float delta)
+// {
+// 	if (delta >= 0)
+// 		return (1);
+// 	else
+// 		return (0);
+// }
+
+// /**
+//  * Line slope formula
+//  * 
+//  * m = (x2−x1) / (y2−y1).
+//  */
+// static float ft_line_slope(float dx, float dy)
+// {
+// 	return (dy / dx);
+// }
+
+// /**
+//  * Line slope formula
+//  * 
+//  * dx = x2 − x1.
+//  * dy = y2 - y1.
+//  */
+// float ft_delta(float start, float end)
+// {
+// 	return (end - start);
+// }
+
+// void ft_suport_utils(t_calcul_bresen *calcul, int is_swap)
+// {
+// 	if (calcul->pk < 0)
+// 	{
+// 		if (!is_swap)
+// 		{
+// 			calcul->x = calcul->x + calcul->sx;
+// 			printf("%f, %f\n", calcul->x, calcul->y);
+// 		}
+// 		else
+// 		{
+// 			calcul->y = calcul->y + calcul->sy;
+// 			printf(" %f, %f\n", calcul->x, calcul->y);
+// 		}
+// 		calcul->pk = calcul->pk + 2 * ft_abs(calcul->dy);
+// 	}
+// 	else
+// 	{
+// 		calcul->x = calcul->x + calcul->sx;
+// 		calcul->y = calcul->y + calcul->sy;
+// 		printf("%f, %f\n", calcul->x, calcul->y);
+// 		calcul->pk = calcul->pk + 2 * (ft_abs(calcul->dy) - ft_abs(calcul->dx));
+// 	}
+// }
+
+
+// void ft_utils(t_calcul_bresen *calcul, int is_swap)
+// {
+// 	int i;
+
+// 	i = -1;
+// 	while (++i <= ft_abs(calcul->dx))
+// 		ft_suport_utils(calcul, is_swap);
+// }
+
+// void ft_bresenham(t_line_cord line_cord)
+// {
+// 	t_calcul_bresen  calcul;
+// 	int			is_swap;
+// 	float		tmp_dx;
+
+//     calcul.x = line_cord.x1;
+//     calcul.y = line_cord.y1;
+// 	calcul.dx = ft_delta(line_cord.x1, line_cord.x2);
+// 	calcul.dy = ft_delta(line_cord.y1, line_cord.y2);
+//     calcul.sx = ft_get_sign(calcul.dx);
+//     calcul.sy = ft_get_sign(calcul.dy);
+// 	calcul.m =	ft_line_slope(calcul.dx, calcul.dy);
+//     is_swap	= 0;
+
+//     if (calcul.m > 1)
+//     {
+// 		ft_swap(&calcul.dx, &calcul.dy);
+//         is_swap = 1;
+//     }
+
+//     calcul.pk = 2 * ft_abs(calcul.y) - ft_abs(calcul.dx);
+//     printf("%f, %f\n", calcul.x, calcul.y);
+// 	ft_utils(&calcul, is_swap);
+// }
+
+// int main()
+// {
+//     ft_bresenham((t_line_cord){0, 5, 10, 5});
+//     return 0;
+// }
 
 
 
-
+// """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""||
 
 
 
 
 
-
-
-
-
-
-
-
-        // if (calcul->pk < 0)
-        // {
-        //     if (!is_swap)
-		// 	{
-        //         calcul->x = calcul->x + calcul->sx;
-        //         printf("%f, %f\n", calcul->x, calcul->y);
-        //     }
-        //     else
-		// 	{
-        //         calcul->y = calcul->y + calcul->sy;
-        //     	printf(" %f, %f\n", calcul->x, calcul->y);
-        //     }
-        //     calcul->pk = calcul->pk + 2 * abs(calcul->dy);
-        // }
-        // else
-        // {
-        //     calcul->x = calcul->x + calcul->sx;
-        //     calcul->y = calcul->y + calcul->sy;
-        //     printf("%f, %f\n", calcul->x, calcul->y);
-        //     calcul->pk = calcul->pk + 2 * (abs(calcul->dy) - abs(calcul->dx));
-        // }
 
 
 
