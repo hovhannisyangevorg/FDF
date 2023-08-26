@@ -9,14 +9,14 @@
 #define SCREEN_WIDTH 1000
 #define SCREEN_HEIGHT 800
 
-typedef struct s_image t_image;
 typedef struct s_mlx t_mlx;
+typedef struct s_image t_image;
 typedef struct s_point3d t_point3d;
 typedef struct s_matrix t_matrix;
 typedef struct s_centr t_centr;
 typedef struct s_point2d t_point2d;
+typedef struct s_dda t_dda;
 typedef struct s_line_cord t_line_cord;
-typedef struct s_calcul_bresen t_calcul_bresen;
 
 
 typedef struct 	s_decimal_check t_decimal_check;
@@ -131,15 +131,31 @@ struct s_vector3d
 
 
 
-
-typedef struct s_line_cord
+struct s_line_cord
 {
 	int x1; 
 	int y1;
 	int x2; 
 	int y2;
 	int color;
-} t_line_cord;
+};
+
+struct s_dda
+{
+	int x;
+	int y;
+	int dx;
+	int dy;
+	int steps;
+};
+
+
+
+
+
+
+
+
 
 /**
  * @struct s_add

@@ -6,58 +6,11 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 00:01:47 by gevorg            #+#    #+#             */
-/*   Updated: 2023/08/24 20:54:27 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/08/26 11:52:35 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-
-// static void ft_swap(float *dx, float *dy)
-// {
-// 	float tmp_d;
-
-// 	tmp_d = *dx;
-//     *dx = *dy;
-//     *dy = tmp_d;
-// }
-
-// static void ft_swap_int(int *dx, int *dy)
-// {
-// 	int tmp_d;
-
-// 	tmp_d = *dx;
-//     *dx = *dy;
-//     *dy = tmp_d;
-// }
-
-// static int ft_abs (int n)
-// {
-//     return ((n >= 0) ? n : ( n * (-1)));
-// }
-
-// static int ft_get_sign(float start, float end)
-// {
-// 	if (start > end)
-// 		return (-1);
-// 	if (start < end)
-// 		return (1);
-// 	return (0);
-// }
-
-// /**
-//  * Line slope formula
-//  * 
-//  * m = (x2−x1) / (y2−y1).
-//  */
-// // static float ft_line_slope(float dx, float dy)
-// // {
-// // 	printf("%f %f\n", dx, dy);
-// // 	return (ft_abs(dy) / ft_abs(dx));
-// // }
-
-
-
 
 /**
  * Line slope formula
@@ -65,30 +18,49 @@
  * dx = x2 − x1.
  * dy = y2 - y1.
  */
-// static float ft_delta(float start, float end)
-// {
-// 	return (end - start);
-// }
+static float ft_delta(float start, float end)
+{
+	return (end - start);
+}
 
+/**
+ * Draws a line using the Digital Differential Analyzer (DDA) algorithm.
+ *
+ * This function draws a line between two endpoints specified in the `line_cord` struct
+ * on the image data provided by `img_data`.
+ * The line is drawn using the DDA algorithm, ensuring a smooth representation.
+ *
+ * @param line_cord  A struct containing the line's coordinates (x1, y1) and (x2, y2),
+ *                   and the line's color.
+ * @param img_data   A pointer to the image data where the line will be drawn.
+ *
+ * @warning This function does not perform input validation, so ensure that the provided
+ *          endpoint coordinates are within the bounds of the image data.
+ */
 void	ft_draw_line_DDA(t_line_cord line_cord, t_image *img_data)
 {
-	int i = -1;
-    int dx = line_cord.x2 - line_cord.x1;
-    int dy = line_cord.y2 - line_cord.y1;
-    
-    int steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
-    float xIncrement = (float)dx / steps;
-    float yIncrement = (float)dy / steps;
+	int i;
+	t_dda calcul;
+	float x_increment;
+	float y_increment;
 
-    float x = line_cord.x1;
-    float y = line_cord.y1;
-
-    while (++i <= steps) 
+	calcul.x = line_cord.x1;
+	calcul.y = line_cord.y1;
+	calcul.dx = ft_delta(line_cord.x1, line_cord.x2);
+	calcul.dy = ft_delta(line_cord.y1, line_cord.y2);
+	if (abs(calcul.dx) > abs(calcul.dy))
+		calcul.steps = abs(calcul.dx);
+	else
+		calcul.steps = abs(calcul.dy);
+	x_increment = (float)calcul.dx / calcul.steps;
+	y_increment = (float)calcul.dy / calcul.steps;
+	i = -1;
+	while (++i <= calcul.steps)
 	{
-		my_mlx_pixel_put(img_data, x, y, 0xff0000);
-        x += xIncrement;
-        y += yIncrement;
-    }
+		my_mlx_pixel_put(img_data, calcul.x, calcul.y, line_cord.color);
+		calcul.x += x_increment;
+		calcul.y += y_increment;
+	}
 }
 
 

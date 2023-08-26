@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 14:40:10 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/24 21:20:54 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/08/26 12:00:44 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ int main()
 	if (fd == -1)
 		return (0);
 	ft_parse(&map, &tab, fd);
-	ft_print_matrix(&map.matrix);
+	// ft_print_matrix(&map.matrix);
 	mlx_data.mlx_ptr = mlx_init();
 	if (!mlx_data.mlx_ptr)
 		ft_panic("Minilibx not initialize\n");
@@ -138,8 +138,10 @@ int main()
 	// ft_init_mlx(&mlx_data);
 
 	
+	// printf("----------%ld\n", sizeof(float));
 	ft_drow2d(&mlx_data, &map);
-
+	// ft_draw_line_DDA((t_line_cord){10, 10, 20, 10, 0xff0000}, &mlx_data.img_data);
+	// ft_draw_line_DDA((t_line_cord){100, 500, 3000, 500, 0xff0000}, &mlx_data.img_data);
 
 	mlx_loop(mlx_data.mlx_ptr);
 	// mlx_hook(mlx_data.win_ptr, 17, 1L << 17, close_win, 0);
