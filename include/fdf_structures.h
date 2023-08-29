@@ -8,6 +8,8 @@
 
 #define SCREEN_WIDTH 1000
 #define SCREEN_HEIGHT 800
+#define SCREEN_ZOOM 20
+#define SCREEN_ZMOD 30
 
 typedef struct s_mlx t_mlx;
 typedef struct s_image t_image;
@@ -17,7 +19,7 @@ typedef struct s_centr t_centr;
 typedef struct s_point2d t_point2d;
 typedef struct s_dda t_dda;
 typedef struct s_line_cord t_line_cord;
-
+typedef struct s_conf t_conf;
 
 typedef struct 	s_decimal_check t_decimal_check;
 typedef struct s_vector3d t_vector3d;
@@ -45,6 +47,14 @@ struct	s_image
 	int		endian;
 };
 
+struct s_conf
+{
+	double x_move;
+	double y_move;
+	double z_mode;
+	double zoom;
+};
+
 /**
  * @struct s_mlx
  * @brief Represents the MLX (MiniLibX) graphics context.
@@ -68,9 +78,9 @@ struct s_mlx
  */
 struct s_point3d
 {
-	int x;
-	int y;
-	int z;
+	double x;
+	double y;
+	double z;
 	int color;
 };
 

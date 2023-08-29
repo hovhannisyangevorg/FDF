@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 17:09:01 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/26 11:09:25 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/08/29 12:56:55 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1100,72 +1100,6 @@ void			ft_panic(char *error);
 
 
 // """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""||
-
-
-
-
-
-
-
-#include <stdio.h>
-#include <math.h>
-
-// Function to draw a line using DDA algorithm
-// void drawLineDDA(int x1, int y1, int x2, int y2, )
-// {
-//     int dx = x2 - x1;
-//     int dy = y2 - y1;
-    
-//     int steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
-//     float xIncrement = (float)dx / steps;
-//     float yIncrement = (float)dy / steps;
-
-//     float x = x1;
-//     float y = y1;
-    
-//     // Loop to draw each pixel along the line
-//     for (int i = 0; i <= steps; i++) 
-// 	{
-		
-//         // printf("Pixel at (%.1f, %.1f)\n", x, y);
-
-//         x += xIncrement;
-//         y += yIncrement;
-//     }
-// }
-
-// int main() 
-// {   
-//     return 0;
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

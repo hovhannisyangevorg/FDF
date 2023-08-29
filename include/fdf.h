@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 22:02:07 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/24 20:52:29 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/08/29 13:41:41 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,12 @@ void ft_draw_line_DDA(t_line_cord line_cord, t_image *img_data);
 
 
 
-
-
+/*path->   ft_config.c*/
+void	ft_init_config(t_conf *config);
+void	ft_config(t_map *map, t_conf config);
+float	ft_deg_to_rad(float angle);
+void	ft_to_isometric(t_map *map, t_conf conf);
+void	ft_isometric(t_point3d *cord, t_conf conf);
 
 
 

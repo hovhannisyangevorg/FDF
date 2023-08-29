@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 00:01:47 by gevorg            #+#    #+#             */
-/*   Updated: 2023/08/26 11:52:35 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/08/27 13:00:02 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	ft_draw_line_DDA(t_line_cord line_cord, t_image *img_data)
 	i = -1;
 	while (++i <= calcul.steps)
 	{
+		if ((calcul.x >= 0 && calcul.x < SCREEN_WIDTH) && (calcul.y >= 0 && calcul.y < SCREEN_HEIGHT))
 		my_mlx_pixel_put(img_data, calcul.x, calcul.y, line_cord.color);
 		calcul.x += x_increment;
 		calcul.y += y_increment;
