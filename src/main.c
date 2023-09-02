@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 14:40:10 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/09/01 21:07:51 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/09/03 02:34:05 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_print_matrix(t_matrix *m)
 /*
 TODO: [Remove this function for fdf projects. ft_print_arrey()]
 */
-void	ft_print_arrey(t_add *tab, size_t size)
+void	ft_print_arrey(t_add *tab_data, size_t size)
 {
 	size_t i;
 
@@ -46,7 +46,7 @@ void	ft_print_arrey(t_add *tab, size_t size)
 	printf("\n--------------------Arrey------------------------\n");
 	while (i < size)
 	{
-		printf("%ld) Arrey arg %d\n", i, tab->arr[i]);
+		printf("%ld) Arrey arg %d\n", i, tab_data->arr[i]);
 		i++;
 	}
 	printf("\n-------------------------------------------------\n");
@@ -94,44 +94,37 @@ void	ft_init_mlx(t_mlx *mlx_data)
 	mlx_data->img_data.addr_ptr = mlx_get_data_addr(mlx_data->img_data.img_ptr, &mlx_data->img_data.bits_per_pixel, &mlx_data->img_data.line_length, &mlx_data->img_data.endian);
 }
 
-int close_win()
+int f(t_main *global)
 {
-	printf("10\n");
-	exit(0);
-	return (0);
+	(void)global;
+	printf("10000000000000000000000000 \n");
+	return(0);
 }
+void ft_hook_events(t_main *global);
 
-int main() 
+int main(__attribute_maybe_unused__ int ac, char** av) 
 {
 	int		fd;
-	t_mlx	mlx_data;
-	t_map	map;
-	t_add	tab;
-	t_conf	config;
+	t_main global;
 
-	fd = open("42test.fdf", O_RDONLY);
+	fd = open(av[1], O_RDONLY);
 	if (fd == -1)
 		return (0);
-	ft_init_config(&config);
-	ft_parse(&map, &tab, fd);
-	ft_config(&map, config);
-	ft_init_mlx(&mlx_data);
-	ft_change_projection(&map, config);
-	ft_drow2d(&mlx_data, &map);
-	mlx_put_image_to_window(mlx_data.mlx_ptr, mlx_data.win_ptr, mlx_data.img_data.img_ptr, 0, 0);
+	ft_init_config(&global.config);
+	ft_parse(&global.map_data, &global.tab_data, fd);
+	ft_config(&global.map_data, global.config);
+	ft_init_mlx(&global.mlx_data);
+	ft_change_projection(&global.map_data, global.config);
+	ft_drow2d(&global.mlx_data, &global.map_data);
+	mlx_put_image_to_window(global.mlx_data.mlx_ptr, global.mlx_data.win_ptr, global.mlx_data.img_data.img_ptr, 0, 0);
 	
+	ft_hook_events(&global);
 
-	
-	mlx_hook(mlx_data.win_ptr, 17, 1L << 17, close_win,  &mlx_data);
-	mlx_loop(mlx_data.mlx_ptr);
-	free(map.matrix.cord);
+	mlx_loop(global.mlx_data.mlx_ptr);
+	free(global.map_data.matrix.cord);
 	close(fd);
 	return (0);
 }
-
-	// ft_print_matrix(&map.matrix);
-	// config.projection = DIAMETRIC;
-
-
-
 	
+
+

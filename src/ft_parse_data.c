@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 18:48:41 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/16 18:59:24 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/09/03 03:13:50 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	ft_parse_data(char *token, t_matrix *matrix)
 	w_token2 = ft_extract_substring(token, '\0', ft_setindex(token, ','));
 	de_coord = ft_decimal_check(&w_token1, &w_token2);
 	hx_color = ft_hexdec_check(&w_token1, &w_token2);
+	free(w_token1);
+	free(w_token2);
 	ft_push_back(matrix, (t_point3d){0, 0, de_coord, hx_color});
 }
 
@@ -69,6 +71,11 @@ void 	ft_parse(t_map *map, t_add *tab, int fd)
 		ft_parse_data(token, &map->matrix);
 		free(token);
 	}
+	/*
+	for in array
+		
+	
+	*/
 	ft_push_arrey(tab, map->matrix.size);
 	map->width	= ft_determine_width(tab, tab->size);
 	map->height	= tab->size;

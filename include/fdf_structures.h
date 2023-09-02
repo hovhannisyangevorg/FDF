@@ -16,6 +16,7 @@ typedef struct	s_line_cord t_line_cord;
 typedef struct	s_calcul_bresen t_calcul_bresen;
 typedef struct	s_conf t_conf;
 typedef struct 	s_decimal_check t_decimal_check;
+typedef struct	s_main t_main;
 
 
 
@@ -91,6 +92,7 @@ struct s_map
  */
 struct s_add
 {
+	//char* token
     int *arr;
     size_t size;
     size_t capacity;
@@ -159,6 +161,14 @@ struct s_conf
 	double	zoom;
 	t_projection projection;
 	t_transform  rotation;
+};
+
+struct s_main
+{
+	t_mlx mlx_data;
+	t_map map_data;
+	t_add tab_data;
+	t_conf config;
 };
 
 #endif

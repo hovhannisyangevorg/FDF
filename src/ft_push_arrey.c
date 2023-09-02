@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push_arrey.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 18:43:26 by gevorg            #+#    #+#             */
-/*   Updated: 2023/08/15 22:37:16 by gehovhan         ###   ########.fr       */
+/*   Updated: 2023/09/03 03:11:05 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ static void	ft_update_capacity_arrey(t_add *tab)
 	}
 }
 
+//void	ft_push_arrey(t_add *tab, int val, char*)
 void	ft_push_arrey(t_add *tab, int val)
 {
 	int	last;

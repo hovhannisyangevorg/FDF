@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_word.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 18:23:24 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/15 21:58:23 by gehovhan         ###   ########.fr       */
+/*   Updated: 2023/09/03 02:44:41 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,11 @@ static char	*get_buffer(char *buff)
 	i = 0;
 	j = 0;
 	len = ft_strlen(buff);
+	if (!len)
+	{
+		free(buff);
+		return 0;
+	}
 	after = (char *)malloc(sizeof(char) * (len + 1));
 	if (!after)
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 17:49:40 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/16 16:43:58 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/09/03 01:30:10 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ int	ft_decimal_check(char **de_token, char **hx_token)
 		return (0);
 	i = -1;
 	value = 0;
+	if ((*de_token)[++i] == '-')
+	{}
 	while ((*de_token)[++i])
 		if (!ft_isdigit((*de_token)[i]))
 			ft_free_utils("Error: Invalid coordinate\n", de_token, hx_token);
