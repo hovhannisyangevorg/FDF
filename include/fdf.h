@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 22:02:07 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/08/29 13:41:41 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/09/01 20:39:12 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,10 @@
 # include <unistd.h>
 # include <fcntl.h>
 
+# include "fdf_define.h"
 # include "fdf_structures.h"
 # include "libft.h"
 # include "mlx.h"
-
-# define INVALID_COLOR "Error: Invalid color!\n"
-# define INVALID_OVERFLOW "Error: Overflow error\n"
-# define DEFAULT_COLOR (0xFF3333)  // (255 << 16 | 0 << 8 | 0)
 
 /**
  * File: ft_parse_data.c
@@ -97,26 +94,34 @@ void		ft_push_arrey(t_add *tab, int val);
  */
 void	my_mlx_pixel_put(t_image *data, int x, int y, int color);
 
-/**
- * File: ft_draw_line_DDA.c
- * Description: This file contains the implementation of the following functions.
- */
-void ft_draw_line_DDA(t_line_cord line_cord, t_image *img_data);
 
 
 
 /*path->   ft_config.c*/
 void	ft_init_config(t_conf *config);
 void	ft_config(t_map *map, t_conf config);
-float	ft_deg_to_rad(float angle);
-void	ft_to_isometric(t_map *map, t_conf conf);
+double	ft_deg_to_rad(double angle);
+
+
+
+
+
+/*path->  ft_projection.c*/
+double	ft_deg_to_rad(double angle);
 void	ft_isometric(t_point3d *cord, t_conf conf);
+void	ft_dimetric(t_point3d *cord, t_conf conf);
+void	ft_trimetric(t_point3d *cord, t_conf conf);
+void	ft_change_projection(t_map *map, t_conf conf);                   
+
+// ft_bresenham.c
+void ft_bresenham(t_line_cord line_cord, t_image *img_data);
 
 
 
-
-
-
+// ft_rotate.c
+t_point3d ft_rotate_x(t_point3d cord, double angle);
+t_point3d ft_rotate_y(t_point3d cord, double angle);
+t_point3d ft_rotate_z(t_point3d cord, double angle);
 
 
 /*

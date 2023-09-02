@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 03:02:42 by gevorg            #+#    #+#             */
-/*   Updated: 2023/08/23 11:59:56 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/09/01 17:09:32 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_determine_width(t_add *tab, size_t arr_size)
 		if (val && ft_tabcmp(tab->arr[i], tab->arr[i - 1]) && val != ft_tabcmp(tab->arr[i], tab->arr[i - 1]))
 		{
 			free(tab->arr);
-			ft_panic("Error: Invalid map is not square.");
+			ft_panic(INVALID_MAP);
 		}
 	}
 	return (val);
