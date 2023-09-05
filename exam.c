@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 17:09:01 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/09/01 20:16:25 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/09/03 04:14:46 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1105,10 +1105,59 @@ void			ft_panic(char *error);
 
 
 
+void ft()
+{
+	int x = 0;
+	while (x < 1500)
+	{
+		x++;
+	}
+}
 
+void f()
+{
+	int x = 0;
+	while (x < 2000)
+	{
+		x++;
+	}
+}
 
+#include <time.h>
 
+void f1()
+{
+	int x = 0;
+	while (x < 1000)
+	{
+		x++;
+	}
+}
 
+int main()
+{
+	clock_t start_t, end_t;
+   double total_t;
+   start_t = clock();
+	int i = 0;
+	while (i < 1000)
+	{
+		if ((i % 5) == 0)
+		{
+			ft();
+		}
+		f1();
+		//f();
+		i++;
+	}
+	for(int i = 0; i < 500; ++i)
+	
+	 end_t = clock();
+
+	 total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC;
+   printf("Total time taken by CPU: %f\n", total_t  );
+   printf("Exiting of the program...\n");
+}
 
 
 

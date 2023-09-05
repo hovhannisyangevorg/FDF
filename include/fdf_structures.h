@@ -17,6 +17,7 @@ typedef struct	s_calcul_bresen t_calcul_bresen;
 typedef struct	s_conf t_conf;
 typedef struct 	s_decimal_check t_decimal_check;
 typedef struct	s_main t_main;
+typedef struct	s_key_conf t_key_conf;
 
 
 
@@ -92,7 +93,6 @@ struct s_map
  */
 struct s_add
 {
-	//char* token
     int *arr;
     size_t size;
     size_t capacity;
@@ -163,12 +163,26 @@ struct s_conf
 	t_transform  rotation;
 };
 
+struct s_key_conf
+{
+	t_key_event w;
+	t_key_event a;
+	t_key_event s;
+	t_key_event d;
+	t_key_event up;
+	t_key_event down;
+	t_key_event left;
+	t_key_event right;
+};
+
 struct s_main
 {
 	t_mlx mlx_data;
 	t_map map_data;
 	t_add tab_data;
 	t_conf config;
+	t_key_conf key_conf;
 };
+
 
 #endif

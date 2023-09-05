@@ -4,6 +4,7 @@
 typedef enum	e_projection t_projection;
 typedef enum	e_operation t_operation;
 typedef enum	e_move t_move;
+typedef enum	e_key_event t_key_event;
 
 /**
  * @struct Screen Settings
@@ -42,19 +43,56 @@ enum e_projection
 	NONE
 };
 
-enum e_operation
+enum e_key_event
 {
-	ZOOM,
-	SCALE,
-	ROTATE
+	RELEASE,
+	PRESS
 };
 
 
-enum e_move
-{
-	MOVEX,
-	MOVEY,
-	MOVEZ
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// enum e_operation
+// {
+// 	ZOOM,
+// 	SCALE,
+// 	ROTATE
+// };
+
+
+// enum e_move
+// {
+// 	MOVEX,
+// 	MOVEY,
+// 	MOVEZ
+// };
 
 #endif

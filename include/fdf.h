@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 22:02:07 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/09/01 20:39:12 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/09/05 14:04:24 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,10 @@
 # include <unistd.h>
 # include <fcntl.h>
 
+# include "libft.h"
 # include "fdf_define.h"
 # include "fdf_structures.h"
-# include "libft.h"
+# include "fdf_keys.h"
 # include "mlx.h"
 
 /**
@@ -124,12 +125,44 @@ t_point3d ft_rotate_y(t_point3d cord, double angle);
 t_point3d ft_rotate_z(t_point3d cord, double angle);
 
 
+// ft_hook_events.c
+void ft_hook_events(t_main *global);
+
+// ft_key_config.c
+void ft_key_config(t_key_conf *key_conf);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
     ! TODO: [Remove this function for fdf projects. ft_print_matrix()]
 */
 void	ft_print_arrey(t_add *tab, size_t size);
 void	ft_print_matrix(t_matrix *m);
-
-
-
 #endif

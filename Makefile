@@ -20,7 +20,7 @@ CC			=	cc
 INCS		=	-I$(INC_DIR) -I$(MLX_DIR) -I$(FT_LIB)/include
 RM			=	rm -rf
 MK			=	mkdir -p
-CFLAGS		=	-Wall -Wextra -Werror $(SANIT_FLAG)
+CFLAGS		=	-Wall -Wextra -Werror $(SANIT_FLAG) -D$(OS)
 SANIT_FLAG	=	-g3 #-fsanitize=address
 
 SRCS		= 	$(wildcard $(SRC_DIR)/*.c)
