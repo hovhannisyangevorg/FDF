@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 22:02:07 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/09/05 14:04:24 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/09/05 21:28:53 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,11 @@ void ft_hook_events(t_main *global);
 // ft_key_config.c
 void ft_key_config(t_key_conf *key_conf);
 
+
+
+// drawing
+
+void	ft_drow2d(t_mlx *mlx_data, t_map *map);
 
 
 

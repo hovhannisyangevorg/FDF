@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 14:40:10 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/09/05 14:20:44 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/09/05 23:25:20 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	ft_drow2d(t_mlx *mlx_data, t_map *map)
 		{
 			index_x = row_index + j;
 			index_y = (i + 1) * map->width + j;
+			(void)(index_x + index_y);
 			if (j + 1 < map->width)
 				ft_bresenham((t_line_cord){map->matrix.cord[index_x].x, map->matrix.cord[index_x].y, map->matrix.cord[index_x + 1].x, map->matrix.cord[index_x + 1].y, map->matrix.cord[index_x].color}, &mlx_data->img_data);
 			if (i + 1 < map->height)
@@ -80,9 +81,6 @@ void	ft_drow2d(t_mlx *mlx_data, t_map *map)
 		++i;
 	} 
 }
-
-
-
 
 void	ft_init_mlx(t_mlx *mlx_data)
 {
@@ -102,15 +100,14 @@ int main(__attribute_maybe_unused__ int ac, char** av)
 	fd = open(av[1], O_RDONLY);
 	if (fd == -1)
 		return (0);
-	printf("%d\n", KEY_W);
-	ft_init_config(&global.config);
 	ft_parse(&global.map_data, &global.tab_data, fd);
-	ft_config(&global.map_data, global.config);
 	ft_init_mlx(&global.mlx_data);
+	ft_init_config(&global.config);
 	ft_key_config(&global.key_conf);
-	ft_change_projection(&global.map_data, global.config);
-	ft_drow2d(&global.mlx_data, &global.map_data);
-	mlx_put_image_to_window(global.mlx_data.mlx_ptr, global.mlx_data.win_ptr, global.mlx_data.img_data.img_ptr, 0, 0); //
+	// ft_config(&global.map_data, global.config);
+	// ft_change_projection(&global.map_data, global.config);
+	// ft_drow2d(&global.mlx_data, &global.map_data);
+	// mlx_put_image_to_window(global.mlx_data.mlx_ptr, global.mlx_data.win_ptr, global.mlx_data.img_data.img_ptr, 0, 0); //
 
 	ft_hook_events(&global);
 
@@ -121,4 +118,25 @@ int main(__attribute_maybe_unused__ int ac, char** av)
 }
 	
 
+
+
+// int handleMouseClick(int button, int x, int y, void *param) {
+// 	(void)param;
+//     printf("Mouse button %d pressed at (%d, %d)\n", button, x, y);
+//     return 0;
+// }
+
+// int main() {
+//     void *mlx;
+//     void *window;
+
+//     mlx = mlx_init();
+//     window = mlx_new_window(mlx, 800, 600, "My Window");
+
+//     mlx_hook(window, 4, 1L<<2, handleMouseClick, NULL);
+
+//     mlx_loop(mlx);
+
+//     return 0;
+// }
 

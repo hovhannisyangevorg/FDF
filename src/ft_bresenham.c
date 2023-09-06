@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 16:15:45 by gevorg            #+#    #+#             */
-/*   Updated: 2023/09/03 01:06:47 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/09/05 22:45:36 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 //     return ((n > 0) ? n : ( n * (-1)));
 // }
 
-static int ft_get_sign(int start, int end)
+ int ft_get_sign(int start, int end)
 {
 	if (end >= start)
 		return (1);
@@ -32,14 +32,14 @@ static int ft_get_sign(int start, int end)
  * dx = x2 − x1.
  * dy = y2 - y1.
  */
-static int ft_delta(int start, int  end)
+ int ft_delta(int start, int  end)
 {
 	return (end - start);
 }
 
 
 
-static void drawHigh(t_calcul_bresen *calcul, t_line_cord line_cord, t_image *img_data)
+ void drawHigh(t_calcul_bresen *calcul, t_line_cord line_cord, t_image *img_data)
 {
 	int i;
 
@@ -59,8 +59,10 @@ static void drawHigh(t_calcul_bresen *calcul, t_line_cord line_cord, t_image *im
 	}
 }
 
-static void drawLow(t_calcul_bresen *calcul, t_line_cord line_cord, t_image *img_data)
+ void drawLow(t_calcul_bresen *calcul, t_line_cord line_cord, t_image *img_data)
 {
+	(void)line_cord;
+	(void)img_data;
 	int i;
 
 	i = -1;
@@ -81,6 +83,8 @@ static void drawLow(t_calcul_bresen *calcul, t_line_cord line_cord, t_image *img
 
 void ft_bresenham(t_line_cord line_cord, t_image *img_data)
 {
+	// (void)line_cord;
+	// (void)img_data;
 	t_calcul_bresen  calcul;
 
 	calcul.x = line_cord.x1;

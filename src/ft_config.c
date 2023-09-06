@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 12:42:21 by gevorg            #+#    #+#             */
-/*   Updated: 2023/09/03 01:06:52 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/09/05 21:33:34 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ void	ft_init_config(t_conf *config)
 void	ft_config(t_map *map, t_conf config)
 {
 	size_t i;
-	if (!map)
-		return ;	
+	
 	i = -1;
 	while (++i < map->matrix.size)
 	{

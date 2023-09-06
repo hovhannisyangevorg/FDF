@@ -6,7 +6,7 @@
 /*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 13:26:32 by gevorg            #+#    #+#             */
-/*   Updated: 2023/09/03 01:07:30 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/09/05 23:05:26 by gevorg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void ft_trimetric(t_point3d *cord, t_conf conf)
 
 void	ft_change_projection(t_map *map, t_conf conf)                      
 {
+	printf("y_move: %d\n", conf.y_move);
 	size_t i;
 
 	i = -1;
