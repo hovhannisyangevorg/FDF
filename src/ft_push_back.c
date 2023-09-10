@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push_back.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 11:16:15 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/09/03 01:07:37 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/09/08 17:44:33 by gehovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_init(t_map *map, size_t size)
 {
 	if (!map)
 		return ;
+	map->height = 0;
+	map->width = 0;
 	map->matrix.size = size;
 	map->matrix.capacity = size;
 	map->matrix.cord = 0;

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_key_config.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 14:03:23 by gevorg            #+#    #+#             */
-/*   Updated: 2023/09/05 14:04:03 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/09/08 14:34:06 by gehovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void ft_key_config(t_key_conf *key_conf)
+void	ft_key_config(t_key_conf *key_conf)
 {
 	key_conf->w = RELEASE;
 	key_conf->a = RELEASE;

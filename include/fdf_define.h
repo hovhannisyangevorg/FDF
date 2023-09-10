@@ -1,10 +1,22 @@
-#ifndef FDF_DEFINE_H
-#define FDF_DEFINE_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf_define.h                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/08 14:37:21 by gehovhan          #+#    #+#             */
+/*   Updated: 2023/09/08 16:37:42 by gehovhan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-typedef enum	e_projection t_projection;
-typedef enum	e_operation t_operation;
-typedef enum	e_move t_move;
-typedef enum	e_key_event t_key_event;
+#ifndef FDF_DEFINE_H
+# define FDF_DEFINE_H
+
+typedef enum e_projection	t_projection;
+typedef enum e_operation	t_operation;
+typedef enum e_move			t_move;
+typedef enum e_key_event	t_key_event;
 
 /**
  * @struct Screen Settings
@@ -18,7 +30,7 @@ typedef enum	e_key_event t_key_event;
  * @def DEFAULT_COLOR
  * @brief Coordinate default color represented as an RGB value.
  */
-# define DEFAULT_COLOR (255 << 16 | 18 << 8 | 0)
+# define DEFAULT_COLOR	0xff0000
 
 /**
  * @struct Error Messages
@@ -43,56 +55,14 @@ enum e_projection
 	NONE
 };
 
+/**
+ * @enum e_key_event
+ * @brief Enumeration representing keyboard events.
+ */
 enum e_key_event
 {
 	RELEASE,
 	PRESS
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// enum e_operation
-// {
-// 	ZOOM,
-// 	SCALE,
-// 	ROTATE
-// };
-
-
-// enum e_move
-// {
-// 	MOVEX,
-// 	MOVEY,
-// 	MOVEZ
-// };
 
 #endif

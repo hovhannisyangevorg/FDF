@@ -1,40 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parse_util.c                                    :+:      :+:    :+:   */
+/*   ft_mouse_events.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/10 16:39:26 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/09/08 22:19:52 by gehovhan         ###   ########.fr       */
+/*   Created: 2023/09/08 13:52:39 by gehovhan          #+#    #+#             */
+/*   Updated: 2023/09/08 18:04:45 by gehovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	ft_strlen_start(const char *str, int start, char c)
+int	ft_mouse_press(int key, int x, int y, t_main *global)
 {
-	int	len;
-
-	len = 0;
-	while (str && str[start] != '\0' && str[start] != c)
-	{
-		++start;
-		len++;
-	}
-	return (len);
+	(void)global;
+	(void)x;
+	(void)y;
+	(void)key;
+	return (0);
 }
 
-int	ft_setindex(char *token, int c)
+int	ft_mouse_release(int key, int x, int y, t_main *global)
 {
-	int	i;
+	(void)global;
+	(void)x;
+	(void)y;
+	(void)key;
+	return (0);
+}
 
-	i = 0;
-	if (!token)
-		return (0);
-	while (token && token[i] && token[i] != c)
-		i++;
-	if (token[i] != '\0')
-		++i;
-	return (i);
+int	ft_mouse_move(int x, int y, t_main *global)
+{
+	(void)global;
+	(void)x;
+	(void)y;
+	return (0);
 }

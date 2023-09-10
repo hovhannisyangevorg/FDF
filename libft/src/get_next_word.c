@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_word.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 18:23:24 by gehovhan          #+#    #+#             */
-/*   Updated: 2023/09/03 02:44:41 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/09/08 18:00:26 by gehovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static char	*get_buffer(char *buff)
 	if (!len)
 	{
 		free(buff);
-		return 0;
+		return (0);
 	}
 	after = (char *)malloc(sizeof(char) * (len + 1));
 	if (!after)
@@ -64,15 +64,31 @@ static char	*get_buffer(char *buff)
 	return (after);
 }
 
-static char	*get_token(char **buff, size_t*h)
+static size_t	ft_util(char **buff, size_t *h, size_t *j)
 {
-	int		i;
-	int		j;
-	int		len;
+	size_t	i;
+	size_t	len;
+
+	i = 0;
+	len = 0;
+	*j = 0;
+	while ((*buff) && (*buff)[i] && ft_isspace((*buff)[i]))
+		if ((*buff)[i++] == '\n')
+			(*h)++;
+	*j = i;
+	while ((*buff) && (*buff)[i] && !ft_isspace((*buff)[i++]))
+		len++;
+	return (len);
+}
+
+static char	*get_token(char **buff, size_t *h)
+{
+	size_t	i;
+	size_t	j;
+	size_t	len;
 	char	*token;
 
 	i = 0;
-	j = 0;
 	len = 0;
 	if (!buff || !*buff)
 		return (0);
@@ -83,15 +99,7 @@ static char	*get_token(char **buff, size_t*h)
 		(*h)++;
 		return (0);
 	}
-	while ((*buff) && (*buff)[i] && ft_isspace((*buff)[i]))
-	{
-		if ((*buff)[i] == '\n')
-			(*h)++;
-		i++;
-	}
-	j = i;
-	while ((*buff) && (*buff)[i] && !ft_isspace((*buff)[i++]))
-		len++;
+	len = ft_util(buff, h, &j);
 	token = (char *)malloc(sizeof(char) * (len + 1));
 	if (!token)
 		return (0);

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_determine.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gehovhan <gehovhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 03:02:42 by gevorg            #+#    #+#             */
-/*   Updated: 2023/09/03 01:07:00 by gevorg           ###   ########.fr       */
+/*   Updated: 2023/09/07 22:35:48 by gehovhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static int ft_tabcmp(int val1, int val2)
+static int	ft_tabcmp(int val1, int val2)
 {
 	return (val1 - val2);
 }
@@ -20,7 +20,8 @@ static int ft_tabcmp(int val1, int val2)
 int	ft_determine_width(t_add *tab, size_t arr_size)
 {
 	size_t	i;
-	int 	val;
+	int		val;
+
 	if (arr_size == 1)
 		return (tab->arr[0]);
 	i = 0;
@@ -29,7 +30,8 @@ int	ft_determine_width(t_add *tab, size_t arr_size)
 	val = tab->arr[i];
 	while (++i < arr_size)
 	{
-		if (val && ft_tabcmp(tab->arr[i], tab->arr[i - 1]) && val != ft_tabcmp(tab->arr[i], tab->arr[i - 1]))
+		if (val && ft_tabcmp(tab->arr[i], tab->arr[i - 1])
+			&& val != ft_tabcmp(tab->arr[i], tab->arr[i - 1]))
 		{
 			free(tab->arr);
 			ft_panic(INVALID_MAP);
