@@ -50,5 +50,4 @@ fclean:	clean
 
 re:	fclean all
 .PHONY: all clean fclean re 
-.SILENT:
 #  DYLD_LIBRARY_PATH=/Users/gehovhan/Desktop/FDF/mlx/mac ./fdf maps/42.fdf

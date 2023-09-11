@@ -6,7 +6,7 @@
 #    By: gevorg <gevorg@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/27 21:12:42 by gehovhan          #+#    #+#              #
-#    Updated: 2023/08/11 20:01:48 by gevorg           ###   ########.fr        #
+#    Updated: 2023/09/11 22:03:21 by gevorg           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRCS			=	src/ft_isalpha.c src/ft_isdigit.c src/ft_isalnum.c  src/ft_isascii.c sr
 					src/ft_lstnew.c src/ft_lstadd_front.c src/ft_lstsize.c src/ft_lstlast.c src/ft_lstadd_back.c \
 					src/ft_lstdelone.c  src/ft_lstclear.c src/ft_lstiter.c src/ft_lstmap.c src/ft_isspace.c \
 					src/get_next_word.c src/ft_isxdigit.c src/ft_panic.c src/ft_overflow.c src/ft_strdel.c \
-					src/ft_threestrdel.c src/ft_vecstrdel.c
+					src/ft_threestrdel.c src/ft_vecstrdel.c src/ft_strcmp.c
 OBJS			= $(SRCS:.c=.o)
 
 HDRS			=	include/libft.h
